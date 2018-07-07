@@ -1,0 +1,314 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    max-width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+main {
+    width: 100vw;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: Ubuntu;
+    background: url("../img/bg.png")    
+}
+
+section{
+    width: 100vw;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    margin-top: 15vh;
+}
+
+a{
+    text-decoration: none;
+    color: inherit
+}
+
+header{
+    height: 20vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #ffffff;
+    z-index: 4;
+    transition: .7s ease;
+}
+
+header nav {
+    display: flex;
+    width: 60vw;
+    justify-content: space-evenly;
+    list-style: none;
+    align-items: center;
+    color: rgba(red, green, blue, alpha)
+}
+
+header nav div a h4:hover {
+    transition: scaleX(1.1);
+}
+
+header div {
+    width: 20vw;
+}
+
+button {
+    height: 7vh;
+    width: 10vmax;
+    background: #379846;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    border-radius: 20vw;
+    transition: ease .8s;
+    font-family: Ubuntu;
+}
+
+button:hover{
+    box-shadow: -2px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+div.logo{
+    display: flex;
+    justify-content: space-evenly;
+    color: #379846; 
+    align-items: center;
+}
+
+div.logo > img{
+    width: 15vw; 
+}
+
+header div{
+    width: 40vw;
+}
+
+header nav div h4{
+    font-size: 1.5vw;
+}
+
+section div.carousel{
+    height: 80vh;
+    width: 100vw;
+    background: url("img/placeholder.jpg");
+    position: absolute;
+    top: 10vh;
+    left: 0;
+}
+
+section div.more{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    font-size: 5vw;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+main section.options{
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+main section.options div.day-opt{
+    width: 20vw;
+    height: 30vw;
+    background: #379846;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vw;
+    font-family: Ubuntu;
+}
+
+section#about{
+    justify-content: flex-start;
+    height: 200vh;
+}
+
+section#about h2{
+    font-size: 3vw;
+}
+
+div.carousel{
+    display: flex;
+    transition: 500ms ease-in-out;
+    /* overflow: hidden; */
+}
+
+div.carousel div.window {
+    width: 100vw;
+    height: 100%;
+    flex: none;
+    transition: ease 1s;
+}
+
+div.carousel div.window img{
+    width: 100vw;
+}
+
+div.carousel-override{
+    height: 77.5vh;
+    width: 100vw;
+    flex: none;
+    position: absolute;
+    top: 20vh;
+    left: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(90deg, rgba(15, 104, 4, 0.61), rgba(31, 148, 16, 0.61));
+    color: rgba(255, 255, 255, 0.9);
+}
+
+div.carousel-override h1{
+    font-size: 4vw;
+}
+
+div.step{
+    display: block;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 5vw;
+    background: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+}
+
+div.steps{
+    width: 20vw;
+    height: 20vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+header div.logo img.logo{
+    width: 17%;
+}
+
+header{
+    overflow: visible;
+}
+
+.homelink{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+nav.mobile{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+@media (max-aspect-ratio: 1/1){
+
+    header{
+        height: 10vh;
+    }
+    nav.mobile{
+        display: flex;
+        width: 100vw;
+    }
+
+    div.panel-default{
+        border: 0;
+    }
+
+    div.panel, div.panel-heading{
+        height: 10vh;
+        background-color: #ffffff !important;
+    }
+
+    div.panel-heading{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .panel-title{
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    ul.list-group{
+        width: 100vw;
+    }
+
+    li.list-group-item{
+        width: 100vw;
+        border-radius: 0 !important;
+        border-bottom: 1px solid #ccc !important;
+    }
+
+    div#collapse1{
+        width: 100vw;
+    }
+
+    nav.mobile div.panel-group, nav.mobile div.panel, nav.mobile div.panel-heading{
+        width: 100vw;
+    }
+
+    nav.desktop{
+        display: none;
+    }
+
+    a.homelink{
+        display: none;
+    }
+
+    button.menuToggle{
+        border-radius: 1vw;
+        width: 15vw;
+    }
+
+    section div.carousel{
+        margin-top: -10vh;
+        height: 100vh;
+    }
+
+    div.carousel-override{
+        top: 0;
+        height: 100vh;
+        padding: 5vw;
+    }
+
+    div.carousel-override h1{
+        font-size: 10vw;
+    }
+
+    div.step{
+        width: 10vw;
+        height: 10vw;
+        border: 100vw;
+    }
+
+    div.steps{
+        width: 80vw;
+    }
+
+    a[href="#about"]{
+        display: none;
+    }
+}

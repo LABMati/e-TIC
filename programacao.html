@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>e-TIC - Programação</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+    <!-- Schedule -->
+    <link rel="stylesheet" href="vendor/schedule/css/style.css">
+    <link rel="stylesheet" href="vendor/schedule/css/reset.css">
+
+    <!-- Bootstrapshit -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <!-- Custom styles -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/programacao.css" />
+
+    <!-- Custom scripts -->
+    <script defer src="js/Scroller.js"></script>
+    <script defer src="js/programacao.js"></script>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html" class="homelink">
+                <div class="logo" style="overflow: hidden;">
+                    <img src="img/logo.png" class="logo">
+                    <img src="img/etic.png">
+                </div>
+            </a>
+            <nav class="desktop">
+                <div>
+                    <h4>Edições</h4>
+                </div>
+                <div>
+                    <a href="programacao.html"><h4>Programação</h4></a>
+                </div>
+                <div>
+                    <h4>Hackathon</h4>
+                </div>
+                <div>
+                    <button>Inscreva-se</button>
+                </div>
+            </nav>
+            <nav class="mobile">
+                <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                    <h4 class="panel-title">
+                        IX ETIC
+                        <a data-toggle="collapse" href="#collapse1"><button class="menuToggle"><i class="fas fa-bars"></i></button></a>
+                    </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                    <ul class="list-group">
+                        <a href=""><li class="list-group-item">Edições</li></a>
+                        <a href="programacao.html"><li class="list-group-item">Programação</li></a>
+                        <a href=""><li class="list-group-item">Hackathon</li></a>
+                        <a href=""><li class="list-group-item">Inscreva-se</li></a>
+                    </ul>
+                </div>
+                </div>
+            </nav>
+        </header>
+        <section>
+            <nav class="day-selector">
+                <div class="day step" data-pos="1" style="background: #0d7b34">
+                    <h2>Segunda</h2>
+                </div>
+                <div class="day step" data-pos="2" style="background: #199138">
+                    <h2>Terça</h2>
+                </div>
+                <div class="day step" data-pos="3" style="background: #23a538">
+                    <h2>Quarta</h2>
+                </div>
+                <div class="day step" data-pos="4" style="background: #33aa36">
+                    <h2>Quinta</h2>
+                </div>
+                <div class="day step" data-pos="5" style="background: #47ae3b">
+                    <h2>Sexta</h2>
+                </div>
+            </nav>
+
+            <div class="carousel programacao">
+                <div class="window">
+                    <div class="cd-schedule">
+                        <div class="timeline">
+                            <ul>
+                                <li><span>08:00</span></li>
+                                <li><span>09:00</span></li>
+                                <li><span>10:00</span></li>
+                                <li><span>11:00</span></li>
+                                <li><span>12:00</span></li>
+                                <li><span>13:00</span></li>
+                                <li><span>14:00</span></li>
+                                <li><span>15:00</span></li>
+                                <li><span>16:00</span></li>
+                                <li><span>17:00</span></li>
+                                <li><span>18:00</span></li>
+                                <li><span>19:00</span></li>
+                                <li><span>20:00</span></li>
+                                <li><span>21:00</span></li>
+                                <li><span>22:00</span></li>
+                            </ul>
+                        </div>
+                                
+                        <div class="events">
+                            <ul>
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                                    <ul>
+                                        <li class="single-event palestra" data-start="08:00" data-end="12:00" data-content="event-abs-circuit" data-event="event-1">
+                                            <a href="#0">
+                                                <em class="event-name">Palestra Dr. Valderi</em>
+                                            </a>
+                                        </li>
+                                        <li class="single-event" data-start="13:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-2">
+                                            <a href="">
+                                                <em class="event-name">Palestra X</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                    <!-- events here -->
+                                    </ul>
+                                </li>
+                
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                    <!-- events here -->
+                                    </ul>
+                                </li>
+                
+                                    
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                        <li class="single-event minicurso" data-start="08:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-3">
+                                            <a href="#1">
+                                                <em class="event-name">Minicurso Arduino</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                        <li class="single-event minicurso" data-start="08:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-2">
+                                            <a href="#1">
+                                                <em class="event-name">Minicurso p5.js</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                    <!-- additional li.events-group here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="window">
+                    <div class="cd-schedule">
+                        <div class="timeline">
+                            <ul>
+                                <li><span>08:00</span></li>
+                                <li><span>09:00</span></li>
+                                <li><span>10:00</span></li>
+                                <li><span>11:00</span></li>
+                                <li><span>12:00</span></li>
+                                <li><span>13:00</span></li>
+                                <li><span>14:00</span></li>
+                                <li><span>15:00</span></li>
+                                <li><span>16:00</span></li>
+                                <li><span>17:00</span></li>
+                                <li><span>18:00</span></li>
+                                <li><span>19:00</span></li>
+                                <li><span>20:00</span></li>
+                                <li><span>21:00</span></li>
+                                <li><span>22:00</span></li>
+                            </ul>
+                        </div>
+                                
+                        <div class="events">
+                            <ul>
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                                    <ul>
+                                        <li class="single-event palestra" data-start="08:00" data-end="12:00" data-content="event-abs-circuit" data-event="event-1">
+                                            <a href="#0">
+                                                <em class="event-name">Palestra Dr. Valderi</em>
+                                            </a>
+                                        </li>
+                                        <li class="single-event" data-start="13:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-2">
+                                            <a href="">
+                                                <em class="event-name">Palestra X</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                    <!-- events here -->
+                                    </ul>
+                                </li>
+                
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                    <!-- events here -->
+                                    </ul>
+                                </li>
+                
+                                    
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                        <li class="single-event minicurso" data-start="08:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-3">
+                                            <a href="#1">
+                                                <em class="event-name">Minicurso Arduino</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                        <li class="single-event minicurso" data-start="08:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-2">
+                                            <a href="#1">
+                                                <em class="event-name">Minicurso p5.js</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                    <!-- additional li.events-group here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="window">
+                    <div class="cd-schedule">
+                        <div class="timeline">
+                            <ul>
+                                <li><span>08:00</span></li>
+                                <li><span>09:00</span></li>
+                                <li><span>10:00</span></li>
+                                <li><span>11:00</span></li>
+                                <li><span>12:00</span></li>
+                                <li><span>13:00</span></li>
+                                <li><span>14:00</span></li>
+                                <li><span>15:00</span></li>
+                                <li><span>16:00</span></li>
+                                <li><span>17:00</span></li>
+                                <li><span>18:00</span></li>
+                                <li><span>19:00</span></li>
+                                <li><span>20:00</span></li>
+                                <li><span>21:00</span></li>
+                                <li><span>22:00</span></li>
+                            </ul>
+                        </div>
+                                
+                        <div class="events">
+                            <ul>
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                                    <ul>
+                                        <li class="single-event palestra" data-start="08:00" data-end="12:00" data-content="event-abs-circuit" data-event="event-1">
+                                            <a href="#0">
+                                                <em class="event-name">Palestra Dr. Valderi</em>
+                                            </a>
+                                        </li>
+                                        <li class="single-event" data-start="13:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-2">
+                                            <a href="">
+                                                <em class="event-name">Palestra X</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                    <!-- events here -->
+                                    </ul>
+                                </li>
+                
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                    <!-- events here -->
+                                    </ul>
+                                </li>
+                
+                                    
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                        <li class="single-event minicurso" data-start="08:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-3">
+                                            <a href="#1">
+                                                <em class="event-name">Minicurso Arduino</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                        <li class="single-event minicurso" data-start="08:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-2">
+                                            <a href="#1">
+                                                <em class="event-name">Minicurso p5.js</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                    <!-- additional li.events-group here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="window">
+                    <div class="cd-schedule">
+                        <div class="timeline">
+                            <ul>
+                                <li><span>08:00</span></li>
+                                <li><span>09:00</span></li>
+                                <li><span>10:00</span></li>
+                                <li><span>11:00</span></li>
+                                <li><span>12:00</span></li>
+                                <li><span>13:00</span></li>
+                                <li><span>14:00</span></li>
+                                <li><span>15:00</span></li>
+                                <li><span>16:00</span></li>
+                                <li><span>17:00</span></li>
+                                <li><span>18:00</span></li>
+                                <li><span>19:00</span></li>
+                                <li><span>20:00</span></li>
+                                <li><span>21:00</span></li>
+                                <li><span>22:00</span></li>
+                            </ul>
+                        </div>
+                                
+                        <div class="events">
+                            <ul>
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                                    <ul>
+                                        <li class="single-event palestra" data-start="08:00" data-end="12:00" data-content="event-abs-circuit" data-event="event-1">
+                                            <a href="#0">
+                                                <em class="event-name">Palestra Dr. Valderi</em>
+                                            </a>
+                                        </li>
+                                        <li class="single-event" data-start="13:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-2">
+                                            <a href="">
+                                                <em class="event-name">Palestra X</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                    <!-- events here -->
+                                    </ul>
+                                </li>
+                
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                    <!-- events here -->
+                                    </ul>
+                                </li>
+                
+                                    
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                        <li class="single-event minicurso" data-start="08:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-3">
+                                            <a href="#1">
+                                                <em class="event-name">Minicurso Arduino</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                        <li class="single-event minicurso" data-start="08:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-2">
+                                            <a href="#1">
+                                                <em class="event-name">Minicurso p5.js</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                    <!-- additional li.events-group here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="window">
+                    <div class="cd-schedule">
+                        <div class="timeline">
+                            <ul>
+                                <li><span>08:00</span></li>
+                                <li><span>09:00</span></li>
+                                <li><span>10:00</span></li>
+                                <li><span>11:00</span></li>
+                                <li><span>12:00</span></li>
+                                <li><span>13:00</span></li>
+                                <li><span>14:00</span></li>
+                                <li><span>15:00</span></li>
+                                <li><span>16:00</span></li>
+                                <li><span>17:00</span></li>
+                                <li><span>18:00</span></li>
+                                <li><span>19:00</span></li>
+                                <li><span>20:00</span></li>
+                                <li><span>21:00</span></li>
+                                <li><span>22:00</span></li>
+                            </ul>
+                        </div>
+                                
+                        <div class="events">
+                            <ul>
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                                    <ul>
+                                        <li class="single-event palestra" data-start="08:00" data-end="12:00" data-content="event-abs-circuit" data-event="event-1">
+                                            <a href="#0">
+                                                <em class="event-name">Palestra Dr. Valderi</em>
+                                            </a>
+                                        </li>
+                                        <li class="single-event" data-start="13:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-2">
+                                            <a href="">
+                                                <em class="event-name">Palestra X</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                    <!-- events here -->
+                                    </ul>
+                                </li>
+                
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                    <!-- events here -->
+                                    </ul>
+                                </li>
+                
+                                    
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                        <li class="single-event minicurso" data-start="08:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-3">
+                                            <a href="#1">
+                                                <em class="event-name">Minicurso Arduino</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                
+                                <li class="events-group">
+                                    <div class="top-info"><span>Atividades</span></div>
+                        
+                                    <ul>
+                                        <li class="single-event minicurso" data-start="08:00" data-end="18:00" data-content="event-abs-circuit" data-event="event-2">
+                                            <a href="#1">
+                                                <em class="event-name">Minicurso p5.js</em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                    <!-- additional li.events-group here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="vendor/schedule/js/modernizr.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script>
+        if( !window.jQuery ) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
+    </script>
+    <script src="vendor/schedule/js/main.js"></script> <!-- Resource jQuery -->
+</body>
+</html>
