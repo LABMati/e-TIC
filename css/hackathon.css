@@ -1,0 +1,9 @@
+section div.carousel div.window{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+section div.carousel div.window div.window-item{
+    flex-grow: 1;
+}

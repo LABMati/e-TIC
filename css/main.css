@@ -4,6 +4,26 @@
     scroll-behavior: smooth;
 }
 
+.spaced{
+    display: flex;
+    justify-content: space-between;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.a-center{
+    display: flex;
+    align-items: center;
+}
+
 body {
     max-width: 100vw;
     min-height: 100vh;
@@ -16,7 +36,7 @@ main {
     justify-content: space-evenly;
     align-items: center;
     font-family: Ubuntu;
-    background: url("../img/bg.png")    
+    background: url("../img/png/bg.png")    
 }
 
 section{
@@ -164,7 +184,7 @@ div.carousel div.window img{
 }
 
 div.carousel-override{
-    height: 77.5vh;
+    height: 70vh;
     width: 100vw;
     flex: none;
     position: absolute;
@@ -176,6 +196,12 @@ div.carousel-override{
     flex-direction: column;
     background: linear-gradient(90deg, rgba(15, 104, 4, 0.61), rgba(31, 148, 16, 0.61));
     color: rgba(255, 255, 255, 0.9);
+}
+
+
+img.svg{
+    width: 60%;
+    mix-blend-mode: multiply;
 }
 
 div.carousel-override h1{
@@ -220,7 +246,55 @@ nav.mobile{
     left: 0;
 }
 
+div.window img{
+    height: 100%;
+    width: auto;
+}
+
+div.window{
+    overflow: hidden;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+section#about div.about-item{
+    margin-top: 10vh;
+    width: 100vw;
+    opacity: 0;
+    transition: 5s ease;
+    display: flex
+}
+
+div.about-item img{
+    width: 50vw;
+}
+
+div.about-item img.infografico-100{
+    width: 100vw;
+}
+
+div.about-item p{
+    width: 50%;
+    font-size: 2em;
+}
+
+section#about div.op1 {
+    opacity: 1;
+}
+
 @media (max-aspect-ratio: 1/1){
+
+    div.about-item{
+        display: block;
+        flex-wrap: wrap;
+        min-height: 30vh;
+    }
+
+    div.about-item img{
+        width: 90vw;
+    }
 
     header{
         height: 10vh;
@@ -298,10 +372,15 @@ nav.mobile{
         font-size: 10vw;
     }
 
-    div.step{
+    main nav.day-selector div.step{
         width: 10vw;
         height: 10vw;
         border: 100vw;
+    }
+
+    div.step{
+        width: 10vw;
+        height: 10vw;
     }
 
     div.steps{
@@ -310,5 +389,15 @@ nav.mobile{
 
     a[href="#about"]{
         display: none;
+    }
+
+    div.carousel div.window img{
+        height: 100%;
+        width: auto;
+    }
+
+    section#about h2{
+        font-size: 10vw;
+        margin-top: 0;
     }
 }
