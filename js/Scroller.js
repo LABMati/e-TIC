@@ -13,6 +13,10 @@ class Scroller {
 
     }
 
+    // setTimer(time){
+    //     setInterval(this.slide(this.current+2), time)
+    // }
+
     slideTimes(step) {
         this.slide(this.current + step)
     }

@@ -31,12 +31,14 @@ body {
 }
 
 main {
-    width: 100vw;
+    max-width: 100vw;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     font-family: Ubuntu;
-    background: url("../img/png/bg.png")    
+    background: url("../img/png/bg-min.png");
+    overflow: hidden;
+
 }
 
 section{
@@ -122,7 +124,6 @@ header nav div h4{
 section div.carousel{
     height: 80vh;
     width: 100vw;
-    background: url("img/placeholder.jpg");
     position: absolute;
     top: 10vh;
     left: 0;
@@ -319,11 +320,24 @@ section#about div.op1 {
         align-items: center;
     }
 
-    .panel-title{
+    div.panel-heading h4.panel-title{
         width: 100vw;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        font-size: 2em;
+        padding: 4vw;
+        margin: 0;
+    }
+
+    div.panel-heading h4.panel-title a button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    div.panel-heading h4.panel-title i{
+        font-size: 8vw;
     }
 
     ul.list-group{

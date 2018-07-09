@@ -23,6 +23,7 @@ class Carousel {
         this.current = 0
     }
 
+
     setImageDiv(){
         //cria container para as imagens
         let imgContainer = document.createElement("div")
