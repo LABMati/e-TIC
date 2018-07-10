@@ -19,6 +19,7 @@
   
     <!-- Custom scripts -->
     <script defer src="js/Scroller.js"></script>
+    <script defer src="js/Countdown.js"></script>
     <script defer src="js/main.js"></script>
 
      <!-- Custom style -->
@@ -41,10 +42,12 @@
                     <a href="programacao.html"><h4>Programação</h4></a>
                 </div>
                 <div>
-                    <h4>Hackathon</h4>
+                    <a href="hackathon.html">
+                        <h4>Hackathon</h4>
+                    </a>
                 </div>
                 <div>
-                    <button>Inscreva-se</button>
+                    <button>Em breve</button>
                 </div>
             </nav>
             <nav class="mobile">
@@ -68,10 +71,10 @@
             </nav>
         </header>
 
-        <section>
-            <div class="carousel">
+        <section class="carousel-container">
+            <div class="carousel main-carousel">
                 <div class="window">
-                    <img src="img/jpg/0.jpg" alt="">
+                    <img src="img/png/0-min.png" alt="">
                 </div>
                 <div class="window">
                     <img src="img/png/8-min.png" alt="">
@@ -84,16 +87,17 @@
             <div class="carousel-override">
                 <h1>IX e-TIC</h1>
                 <h2>Encontro de Tecnologia do Instituto Federal Catarinense – Campus Camboriú</h2>
+                <div class="countdown">
+                    <div class="timer"></div>
+                    <div class="timer"></div>
+                    <div class="timer"></div>
+                    <div class="timer"></div>
+                </div>
                 <div class="steps">
                     <div class="step" data-pos="1"></div>
                     <div class="step" data-pos="2"></div>
                     <div class="step" data-pos="3"></div>
                 </div>
-                <a href="#about">
-                    <div class="more">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </a>
             </div>
         </section>
 
@@ -103,15 +107,29 @@
             <div class="about-item center"><img src="img/infografico/info2-m.png" alt="" class="infografico"><img src="img/infografico/info3-m.png" alt="" class="infografico"></div>
             <div class="about-item center"><img src="img/infografico/info4-m.png" alt="" class="infografico"><img src="img/infografico/info5-m.png" alt="" class="infografico"></div>
             <div class="about-item center"><img src="img/infografico/info6-m.png" alt="" class="infografico-100"><img></div>
-            <div class="about-item center"><img src="" alt=""><img src="" alt=""></div>
+            <div class="about-item center"><img src="" alt=""></div>
             <div class="about-item a-center column">
                 <h2 class="center">E nesse ano voltaremos ainda maiores</h2>
-                <h3>Novidades em breve..</h3>
+                <h3></h3>
             </div>
-            <div class="about-item center"></div>
-            <div class="about-item center"></div>
-            <div class="about-item center"></div>
+            
+            <div class="about-item center">
+                <img src="img/png/final1.png" alt="">
+                <div class="flex2 column center a-center">
+                    <h3>Hackathon: Mobilidade sustentável</h3>
+                    <h5>Após o sucesso do último ano, onde contamos com a participação de 100 pessoas, a parceria com o SEBRAE continua trazendo para nosso evento o Hackathon Turismo Inteligente, desta vez com o tema Mobilidade Sustentável</h5>
+                </div>
+            </div>
+            <div class="about-item center">
+                <div class="flex2 column center a-center">
+                    <h3>Tecnologias emergentes e consagradas</h3>
+                    <h5>Palestras e workshops em áreas com grande foco do mercado atual, como Blockchain e IoT, além disso conteúdo para participantes que queiram apenas se descontrair com criação de jogos e animações. </h5>
+                </div>
+                <img src="img/png/Blockchain-Icon.png" alt="">
+                
+            </div>
+            <h1>Inscrições em breve</h1>
         </section>
     </main>
 </body>
-</html>
+</html> 

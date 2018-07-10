@@ -1,0 +1,26 @@
+div.about-item {
+    height: 10vh;
+}
+
+#info {
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+#info div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3em;
+    align-items: center;
+    width: 80vw;
+    padding-top: 2%; 
+}
+
+#info div:nth-child(even) { flex-direction: row-reverse }
+
+#info div img {
+    height: 20vh;
+    width: 30vw;
+}

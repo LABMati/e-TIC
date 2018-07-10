@@ -64,26 +64,26 @@ jQuery(document).ready(function($){
 	SchedulePlan.prototype.initEvents = function() {
 		var self = this;
 
-		this.singleEvents.each(function(){
-			//create the .event-date element for each event
-			var durationLabel = '<span class="event-date">'+$(this).data('start')+' - '+$(this).data('end')+'</span>';
-			$(this).children('a').prepend($(durationLabel));
+		// this.singleEvents.each(function(){
+		// 	//create the .event-date element for each event
+		// 	var durationLabel = '<span class="event-date">'+$(this).data('start')+' - '+$(this).data('end')+'</span>';
+		// 	$(this).children('a').prepend($(durationLabel));
 
-			//detect click on the event and open the modal
-			$(this).on('click', 'a', function(event){
-				event.preventDefault();
-				if( !self.animating ) self.openModal($(this));
-			});
-		});
+		// 	//detect click on the event and open the modal
+		// 	$(this).on('click', 'a', function(event){
+		// 		event.preventDefault();
+		// 		if( !self.animating ) self.openModal($(this));
+		// 	});
+		// });
 
-		//close modal window
-		this.modal.on('click', '.close', function(event){
-			event.preventDefault();
-			if( !self.animating ) self.closeModal(self.eventsGroup.find('.selected-event'));
-		});
-		this.element.on('click', '.cover-layer', function(event){
-			if( !self.animating && self.element.hasClass('modal-is-open') ) self.closeModal(self.eventsGroup.find('.selected-event'));
-		});
+		// //close modal window
+		// this.modal.on('click', '.close', function(event){
+		// 	event.preventDefault();
+		// 	if( !self.animating ) self.closeModal(self.eventsGroup.find('.selected-event'));
+		// });
+		// this.element.on('click', '.cover-layer', function(event){
+		// 	if( !self.animating && self.element.hasClass('modal-is-open') ) self.closeModal(self.eventsGroup.find('.selected-event'));
+		// });
 	};
 
 	SchedulePlan.prototype.placeEvents = function() {
