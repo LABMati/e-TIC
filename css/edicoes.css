@@ -9,6 +9,10 @@ div.about-item {
     flex-direction: column;
 }
 
+section#about{
+    height: 150vh !important;
+}
+
 #info div {
     display: flex;
     justify-content: space-between;
@@ -23,4 +27,29 @@ div.about-item {
 #info div img {
     height: 20vh;
     width: 30vw;
+}
+
+div.carousel-override{
+    height: 77.5vh !important;
+}
+
+@media (max-aspect-ratio: 1/1){
+
+    div.carousel-override{
+        height: 85vh !important;
+        top: 15vh;
+    }
+
+    main section{
+        margin-top: 10vh;
+    }
+
+    div#info{
+        margin-top: -25vh;
+    }
+
+    section#about{
+        height: 350vh !important;
+    }
+    
 }

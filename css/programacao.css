@@ -47,10 +47,17 @@ div.step{
 }
 
 section div.programacao{
-    height: 150vh;
+    height: 100vh;
     position: absolute;
     top: 50vh;
+    /* overflow-x: hidden; */
 }
+
+div.window{
+    display: flex;
+    justify-content: center;
+}
+
 @media (max-aspect-ratio:1/1){
     main nav.day-selector div.step{
         width: 15vw;

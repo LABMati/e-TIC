@@ -205,6 +205,26 @@ div.carousel{
     /* overflow: hidden; */
 }
 
+aside{
+    height: 8vh;
+    width: 8vh;
+    border-radius: 10vw;
+    position: fixed;
+    top: 42vh;
+    right: 2vw;
+    background: #379846;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2vw;
+}
+
+aside:hover{
+    color: black;
+}
+
 div.carousel div.window {
     width: 100vw;
     height: 100%;
@@ -495,5 +515,13 @@ section#about div.op1 {
     
     #info div:nth-child(even) {
         flex-direction: column
+    }
+
+    aside{
+        font-size: 5vw;
+    }
+
+    .mob-hide{
+        display: none !important;
     }
 }

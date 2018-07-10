@@ -5,7 +5,6 @@ let steps = document.querySelectorAll(".step")
 let carouselImg = document.querySelectorAll(".window")
 let carousel = new Scroller(document.querySelector(".carousel"), 3)
 let mediaQuery = window.matchMedia("(max-aspect-ratio: 1/1)")
-let parallax = new Poorallax("div.carousel", 10)
 
 window.onload = function () {
     if (mediaQuery.matches) {
@@ -34,12 +33,6 @@ window.addEventListener("scroll", ev => {
         }
     }
 })
-
-function addBg(windows, imgs) {
-    for (let i = 0; i < windows.length; i++) {
-        windows[i].style.background = "url(" + imgs[i] + ")"
-    }
-}
 
 steps.forEach(step => {
     step.addEventListener('click', ev => {
