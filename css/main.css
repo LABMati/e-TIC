@@ -57,9 +57,8 @@ main {
     justify-content: space-evenly;
     align-items: center;
     font-family: Ubuntu;
-    background: url("../img/png/bg-min.png");
+    background: url("../img/png/bg-min2.png");
     overflow: hidden;
-    background-blend-mode: exclusion
 }
 
 section{
@@ -280,6 +279,14 @@ div.carousel-override h1{
     font-size: 4vw;
 }
 
+.h2-timer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 div.step{
     display: block;
     width: 2vw;
@@ -291,7 +298,7 @@ div.step{
 
 div.steps{
     width: 20vw;
-    height: 20vh;
+    height: 10vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -523,5 +530,13 @@ section#about div.op1 {
 
     .mob-hide{
         display: none !important;
+    }
+
+    div.timer h4{
+        font-size: 3vw;
+    }
+
+    div.timer h2{
+        margin: 0;
     }
 }
