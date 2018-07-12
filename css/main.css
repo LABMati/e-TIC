@@ -45,14 +45,13 @@ body {
 footer{
     height: 30vh;
     background: linear-gradient(180deg,#379846, #298036);
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
 main {
-    max-width: 100vw;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
@@ -62,13 +61,13 @@ main {
 }
 
 section{
-    width: 100vw;
+    width: 100%;
     height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column; 
-    margin-top: 15vh;
+    margin-top: 20vh;
 }
 
 a{
@@ -78,7 +77,7 @@ a{
 
 header{
     height: 20vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
     position: fixed;
@@ -141,29 +140,28 @@ header nav div h4{
     font-size: 1.5vw;
 }
 
-.main-carousel{
-    position: absolute;
-    top: 10vh;
-    left: 0;
+section.carousel-container{
+    display: inline-block;
+    overflow: hidden;
 }
 
 div.carousel{
     height: 80vh;
-    width: 100vw;
+    width: 100%;
 }
 
 section div.more{
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 15vh;
+    height: 20vh;
     font-size: 5vw;
     color: rgba(255, 255, 255, 0.7);
 }
 
 main section.options{
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
@@ -190,8 +188,10 @@ section#about h2{
     font-size: 3vw;
 }
 
-h5{
+main p{
     width: 80%;
+    font-size: 1.3em;
+    text-align: justify 
 }
 
 a:hover{
@@ -210,7 +210,7 @@ aside{
     border-radius: 10vw;
     position: fixed;
     top: 42vh;
-    right: 2vw;
+    left: 90vw;
     background: #379846;
     z-index: 10;
     display: flex;
@@ -225,7 +225,7 @@ aside:hover{
 }
 
 div.carousel div.window {
-    width: 100vw;
+    width: 100%;
     height: 100%;
     flex: none;
     transition: ease 1s;
@@ -233,12 +233,12 @@ div.carousel div.window {
 
 
 div.carousel div.window img{
-    width: 100vw;
+    width: 100%;
 }
 
 div.carousel-override{
-    height: 70vh;
-    width: 100vw;
+    height: 80vh;
+    width: 100%;
     flex: none;
     position: absolute;
     top: 20vh;
@@ -252,7 +252,7 @@ div.carousel-override{
 }
 
 div.countdown{
-    width: 100vw;
+    width: 100%;
     height: 20vh;
     display: flex;
     justify-content: space-evenly;
@@ -340,7 +340,7 @@ a:hover{
 
 section#about div.about-item{
     margin-top: 10vh;
-    width: 100vw;
+    width: 100%;
     opacity: 0;
     transition: 5s ease;
     display: flex
@@ -351,7 +351,7 @@ div.about-item img{
 }
 
 div.about-item img.infografico-100{
-    width: 100vw;
+    width: 100%;
 }
 
 div.about-item p{
@@ -380,7 +380,7 @@ section#about div.op1 {
     }
     nav.mobile{
         display: flex;
-        width: 100vw;
+        width: 100%;
     }
 
     div.panel-default{
@@ -399,7 +399,7 @@ section#about div.op1 {
     }
 
     div.panel-heading h4.panel-title{
-        width: 100vw;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -419,21 +419,21 @@ section#about div.op1 {
     }
 
     ul.list-group{
-        width: 100vw;
+        width: 100%;
     }
 
     li.list-group-item{
-        width: 100vw;
+        width: 100%;
         border-radius: 0 !important;
         border-bottom: 1px solid #ccc !important;
     }
 
     div#collapse1{
-        width: 100vw;
+        width: 100%;
     }
 
     nav.mobile div.panel-group, nav.mobile div.panel, nav.mobile div.panel-heading{
-        width: 100vw;
+        width: 100%;
     }
 
     nav.desktop{
@@ -476,7 +476,7 @@ section#about div.op1 {
     main nav.day-selector div.step{
         width: 10vw;
         height: 10vw;
-        border: 100vw;
+        border: 100%;
     }
 
     div.step{
