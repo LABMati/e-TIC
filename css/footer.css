@@ -1,0 +1,36 @@
+footer{
+    color: #fff;
+    height: 30vh;
+}
+footer .header{
+    height: 10vh;
+    width: 50vw;
+    background-image: url('../img/parceiros/logo-ifc.png');
+}
+footer .side{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center
+}
+footer .side hr{
+    width: 50%;
+    background-color: #fff
+}
+footer .side h2{
+    text-align: center
+}
+
+@media (max-aspect-ratio: 1/1){
+    footer{
+        flex-direction: column;
+        height: 50vh;
+    }
+    footer .side{
+        margin-top: 5vh;
+    }
+    footer .side hr{
+        width: 80%;
+    }
+}
