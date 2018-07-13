@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script>
+
+            
+        const velo = 20;  
+        var posx = 200;
+        var posy = 200; 
+        var sizex = sizey = 10;
+        var applex = appley = Math.floor(Math.random()*400);
+        var canvas, ctx;
+
+
+
+        function start(){
+
+        canvas = document.createElement('canvas');
+        ctx = canvas.getContext('2d');
+        canvas.width = 400;
+        canvas.height = 400;
+        canvas.style.backgroundColor = 'black';
+        document.body.appendChild(canvas)
+        ctx.fillStyle='red'
+        ctx.fillRect(posx, posy, sizex, sizey)
+
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

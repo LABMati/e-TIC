@@ -3,7 +3,6 @@ main nav.day-selector {
     width: 100vw;
     justify-content: center;
     align-items: center;
-    height: 20vh;
     position: absolute;
     top: 20vh;
     left: 0;
@@ -23,8 +22,14 @@ main nav.day-selector div:hover{
     filter: brightness(120%);
 }
 
+section{
+    min-height: 120vh;
+    justify-content: flex-start;
+}
+
 div.cd-schedule {
     width: 100%;
+    height:60vh;
 }
 
 ul li.palestra{
@@ -46,17 +51,59 @@ div.step{
     border-radius: 0 !important;
 }
 
-section div.programacao{
-    height: 100vh;
-    position: absolute;
-    top: 50vh;
-    /* overflow-x: hidden; */
-}
-
 div.window{
     display: flex;
     justify-content: center;
 }
+
+.cd-schedule .events .events-group > ul{
+    display: flex;
+    
+}
+
+.cd-schedule .events .events-group > ul > li.half{
+    width: 50%;
+    position: unset;
+}
+
+.cd-schedule .events .events-group > ul > li > a > em{
+    font-size: 100%;
+}
+
+.cd-schedule .timeline li span{
+    display: none;
+}
+
+.cd-schedule > .events .events-group > ul > .single-event{
+    box-shadow: 0px 0px rgba(0, 0, 0, 0) !important;
+    border: 1px solid #ccc !important;
+    transition: .5s ease;
+}
+
+.cd-schedule > .events .events-group > ul > .single-event:hover{
+    filter: brightness(120%)    
+}
+
+.segunda{
+    background: #0d7b34 !important;
+}
+
+.terca{
+    background: #0d7b34 !important;
+}
+
+.quarta{
+    background: #0d7b34 !important;
+}
+
+.quinta{
+    background: #23a538 !important;
+}
+
+.sexta{
+    background: #23a538 !important;
+}
+    
 
 @media (max-aspect-ratio:1/1){
     main nav.day-selector div.step{
@@ -64,5 +111,11 @@ div.window{
         height: 15vw;
         font-size: 5vw
     }
+
+    section{
+        overflow-x: hidden;
+        margin-top: 10vh;
+    }
+    
 }
 

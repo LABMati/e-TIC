@@ -38,10 +38,6 @@ body {
     width: 80vw !important;
 }
 
-.event-name{
-    font-size: 1.5em !important;
-}
-
 footer{
     height: 30vh;
     background: linear-gradient(180deg,#379846, #298036);
@@ -453,6 +449,10 @@ section#about div.op1 {
         height: 90vh;
     }
 
+    section.carousel-container{
+        margin-top: 10vh;
+    }
+
     div.carousel-override{
         top: 10vh;
         height: 90vh;
@@ -526,6 +526,7 @@ section#about div.op1 {
 
     aside{
         font-size: 5vw;
+        left: 82vw;
     }
 
     .mob-hide{
