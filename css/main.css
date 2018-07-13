@@ -146,6 +146,7 @@ section.carousel-container{
 div.carousel{
     height: 80vh;
     width: 100%;
+    will-change: transform;
 }
 
 section div.more{

@@ -49,7 +49,7 @@ class Scroller {
             this.current = this.windows.length - 1
 
         if (this.toLeft)
-            return this.container.style.transform = `translateX(${this.current * -100}%)`
+            return this.container.style.transform = `translate3d(${this.current * -100}%,0,0)`
 
         return this.container.style.transform = `translateY(${this.current * -100}%)`
     }
