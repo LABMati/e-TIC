@@ -7,14 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="css/webfonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
     <!-- Bootstrapshit -->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <script src="vendor/jquery/jquery.slim.min.js"></script>
-    <script src="vendor/popper.js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/sweetalert/swal.min.js"></script>
 
     <!-- Schedule -->
     <link rel="stylesheet" href="vendor/schedule/css/style.css">
@@ -24,9 +22,11 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/programacao.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/footer.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="vendor/sweetalert/swal.min.css" />
 
     <!-- Custom scripts -->
     <script defer src="js/Scroller.js"></script>
+    <script defer src="js/mobile-menu.js"></script>
     <script defer src="js/programacao.js"></script>
 </head>
 <body>
@@ -54,24 +54,22 @@
                     <button>Em Breve</button>
                 </div>
             </nav>
-            <nav class="mobile">
-                <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a href="index.html">IX ETIC</a>
-                        <a data-toggle="collapse" href="#collapse1"><button class="menuToggle"><i class="fas fa-bars"></i></button></a>
-                    </h4>
-                    </div>
-                    <div id="collapse1" class="panel-collapse collapse">
+            <nav class="mobile">                
+                <div class="nav-header">                    
+                    <a href="index.html">
+                        <img src="img/png/logo.png" class="logo">
+                        <img src="img/png/etic.png">
+                    </a>
+                    <button class="menuToggle"><i class="fas fa-bars"></i></button>
+                </div>
+                <div class= "nav-menu">
                     <ul class="list-group">
-                        <a href="edicoes.html"><li class="list-group-item">Edições</li></a>
-                        <a href="programacao.html"><li class="list-group-item">Programação</li></a>
-                        <a href="hackathon.html"><li class="list-group-item">Hackathon</li></a>
-                        <a href="#"><li class="list-group-item">Inscrições em breve</li></a>
+                        <a href="edicoes.html">Edições</a>
+                        <a href="programacao.html">Programação</a>
+                        <a href="hackathon.html">Hackathon</a>
+                        <a href="#">Inscrições em breve</a>
                     </ul>
-                </div>
-                </div>
+                </div>                
             </nav>
         </header>
         <section>
@@ -101,22 +99,27 @@
                         <li class="events-group">
                             <div class="top-info"><span>Segunda-Feira</span></div>
                             <ul>
-                                <li class="single-event segunda" data-start="08:00" data-end="10:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event segunda" data-start="08:00" data-end="10:00" data-content="event-abs-circuit" data-event="0">
                                     <a href="#0">
                                         <em class="event-name">Credenciamento</em>
                                     </a>
                                 </li>
-                                <li class="single-event segunda" data-start="10:00" data-end="12:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event segunda" data-start="10:00" data-end="11:00" data-content="event-abs-circuit" data-event="1">
                                     <a href="#1">
-                                        <em class="event-name">Palestra sobre Inteligência Artificial</em>
+                                        <em class="event-name">Palestra Inteligência Artificial</em>
                                     </a>
                                 </li>
-                                <li class="single-event segunda" data-start="13:00" data-end="17:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event segunda" data-start="11:00" data-end="12:00" data-content="event-abs-circuit" data-event="2">
+                                    <a href="#1">
+                                        <em class="event-name">Palestra IoT e Blockchain</em>
+                                    </a>
+                                </li>
+                                <li class="single-event segunda" data-start="13:00" data-end="17:00" data-content="event-abs-circuit" data-event="3">
                                     <a href="#2">
                                         <em class="event-name">Minicursos a serem definidos</em>
                                     </a>
                                 </li>
-                                <li class="single-event segunda" data-start="18:00" data-end="22:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event segunda" data-start="18:00" data-end="22:00" data-content="event-abs-circuit" data-event="4">
                                     <a href="#2">
                                         <em class="event-name">Cerimônia de abertura</em>
                                     </a>
@@ -128,19 +131,29 @@
                             <div class="top-info"><span>Terça-Feira</span></div>
                 
                             <ul>
-                                <li class="single-event terca" data-start="08:00" data-end="12:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event terca" data-start="08:00" data-end="12:00" data-content="event-abs-circuit" data-event="5">
                                     <a href="#0">
                                         <em class="event-name">Minicursos a serem definidos</em>
                                     </a>
                                 </li>
-                                <li class="single-event terca" data-start="13:00" data-end="15:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event terca" data-start="13:00" data-end="15:00" data-content="event-abs-circuit" data-event="6">
                                     <a href="#0">
                                         <em class="event-name">Painel e-Sports</em>
                                     </a>
                                 </li>
-                                <li class="single-event terca" data-start="15:00" data-end="17:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event terca" data-start="15:00" data-end="17:00" data-content="event-abs-circuit" data-event="7">
                                     <a href="#0">
                                         <em class="event-name">Palestra - Segurança da Informação</em>
+                                    </a>
+                                </li>
+                                <li class="single-event terca" data-start="18:00" data-end="20:00" data-content="event-abs-circuit" data-event="8">
+                                    <a href="#0">
+                                        <em class="event-name">Palestra a ser definida</em>
+                                    </a>
+                                </li>
+                                <li class="single-event terca" data-start="20:00" data-end="22:00" data-content="event-abs-circuit" data-event="9">
+                                    <a href="#0">
+                                        <em class="event-name">Painel Profissão Trader - Conheça o mundo da bolsa de valores, FOREX e criptomoedas</em>
                                     </a>
                                 </li>
                             </ul>
@@ -150,22 +163,22 @@
                             <div class="top-info"><span>Quarta-Feira</span></div>
                 
                             <ul>
-                                <li class="single-event quarta" data-start="08:00" data-end="10:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta" data-start="08:00" data-end="10:00" data-content="event-abs-circuit" data-event="10">
                                     <a href="#0">
                                         <em class="event-name">Palestra a ser definida</em>
                                     </a>
                                 </li>
-                                <li class="single-event quarta" data-start="10:00" data-end="12:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta" data-start="10:00" data-end="12:00" data-content="event-abs-circuit" data-event="11">
                                     <a href="#0">
-                                        <em class="event-name">ACATE</em>
+                                        <em class="event-name">Palestra a ser definida</em>
                                     </a>
                                 </li>
-                                <li class="single-event quarta" data-start="13:00" data-end="17:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta" data-start="13:00" data-end="17:00" data-content="event-abs-circuit" data-event="12">
                                     <a href="#0">
                                         <em class="event-name">Minicursos a serem definidos</em>
                                     </a>
                                 </li>
-                                <li class="single-event quarta" data-start="18:00" data-end="22:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta" data-start="18:00" data-end="22:00" data-content="event-abs-circuit" data-event="13">
                                     <a href="#0">
                                         <em class="event-name">Minicursos a serem definidos</em>
                                     </a>
@@ -178,12 +191,12 @@
                             <div class="top-info"><span>Quinta-Feira</span></div>
                 
                             <ul>
-                                <li class="single-event quarta half" data-start="08:00" data-end="22:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta half" data-start="08:00" data-end="22:00" data-content="event-abs-circuit" data-event="14">
                                     <a href="#0">
                                         <em class="event-name">Hackathon</em>
                                     </a>
                                 </li>
-                                <li class="single-event quarta half" data-start="08:00" data-end="22:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta half" data-start="08:00" data-end="22:00" data-content="event-abs-circuit" data-event="15">
                                     <a href="#0">
                                         <em class="event-name">e-Sports</em>
                                     </a>
@@ -195,17 +208,17 @@
                             <div class="top-info"><span>Sexta-Feira</span></div>
                 
                             <ul>
-                                <li class="single-event quarta half" data-start="08:00" data-end="17:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta half" data-start="08:00" data-end="17:00" data-content="event-abs-circuit" data-event="14">
                                     <a href="#0">
                                         <em class="event-name">Hackathon</em>
                                     </a>
                                 </li>
-                                <li class="single-event quarta half" data-start="08:00" data-end="17:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta half" data-start="08:00" data-end="17:00" data-content="event-abs-circuit" data-event="15">
                                     <a href="#0">
                                         <em class="event-name">e-Sports</em>
                                     </a>
                                 </li>
-                                <li class="single-event quarta" data-start="18:00" data-end="22:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta" data-start="18:00" data-end="22:00" data-content="event-abs-circuit" data-event="16">
                                     <a href="#0">
                                         <em class="event-name">Cerimônia de encerramento</em>
                                     </a>
@@ -222,14 +235,14 @@
         <div class="side">
             <h2>Endereço</h2>
             <hr>
-            <span>Rua Joaquim Garcia S/N - Caixa Postal Nº 2016</span>
-            <span>CEP 88340-055 - Camboriú - SC</span>
+            <p>Rua Joaquim Garcia S/N - Caixa Postal Nº 2016</p>
+            <p>CEP 88340-055 - Camboriú - SC</p>
         </div>
         <div class="side">
             <h2>Contato</h2>
             <hr>
-            <span>Fone: (47) 2104-0800</span>
-            <span>E-mail: etic@ifc-camboriu.edu.br</span>
+            <p>Fone: (47) 2104-0800</p>
+            <p>E-mail: etic@ifc-camboriu.edu.br</p>
         </div>
     </footer>
     <script src="vendor/schedule/js/modernizr.js"></script>

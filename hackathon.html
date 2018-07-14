@@ -13,11 +13,9 @@
 
     <!-- Bootstrapshit -->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <script src="vendor/jquery/jquery.slim.min.js"></script>
-    <script src="vendor/popper.js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  
-    <!-- Custom scripts -->
+    
+	<!-- Custom scripts -->
+	<script defer src="js/mobile-menu.js"></script>
     <script defer src="js/carousel.js"></script>
     <script defer src="js/hackathon.js"></script>
 
@@ -49,34 +47,23 @@
 	                <button>Em Breve</button>
 	            </div>
 	        </nav>
-	        <nav class="mobile">
-	            <div class="panel-group">
-	                <div class="panel panel-default">
-	                    <div class="panel-heading">
-	                    <h4 class="panel-title">
-	                        <a href="index.html">IX ETIC</a>
-	                        <a data-toggle="collapse" href="#collapse1"><button class="menuToggle"><i class="fas fa-bars"></i></button></a>
-	                    </h4>
-	                    </div>
-	                    <div id="collapse1" class="panel-collapse collapse">
-		                    <ul class="list-group">
-		                        <a href="edicoes.html">
-		                        	<li class="list-group-item">Edições</li>
-		                        </a>
-		                        <a href="programacao.html">
-		                        	<li class="list-group-item">Programação</li>
-		                        </a>
-		                        <a href="hackathon.html">
-		                        	<li class="list-group-item">Hackathon</li>
-		                        </a>
-		                        <a href="#">
-		                        	<li class="list-group-item">Inscrições em breve</li>
-		                        </a>
-		                    </ul>
-	                	</div>
-	            	</div>
-	            </div>
-	        </nav>
+	        <nav class="mobile">                
+                <div class="nav-header">                    
+                    <a href="index.html">
+                        <img src="img/png/logo.png" class="logo">
+                        <img src="img/png/etic.png">
+                    </a>
+                    <button class="menuToggle"><i class="fas fa-bars"></i></button>
+                </div>
+                <div class= "nav-menu">
+                    <ul class="list-group">
+                        <a href="edicoes.html">Edições</a>
+                        <a href="programacao.html">Programação</a>
+                        <a href="hackathon.html">Hackathon</a>
+                        <a href="#">Inscrições em breve</a>
+                    </ul>
+                </div>                
+            </nav>
 	    </header>
 	    <section id="about">
 	        <!-- <div class="about-item center op1"><h2>Hackathon SEBRAE</h2></div> -->
@@ -105,16 +92,21 @@
 	                </div>
 	                <div class="item before">
 	                    <h2>E já aconteceu algum Hackathon no IFC antes?</h2>
-	                    <hr>
-	                    <div class="history"></div>
-	                    <p>Sim, no ano passado. O tema proposto foi "Turismo Inteligente", aplicado à região da Costa Verde e Mar.</p>
-	                    <p>As premiações consistiram em:</p>
-	                    <div class="rewards"></div>
-	                    <ul>
-	                        <li>1º Lugar: Visita ao Instituto Tecnológico Gênesis e Rio Criativo - Rio de Janeiro - RJ, incluindo passagem aérea ida e volta e hospedagem;</li>
-	                        <li>2º Lugar: Inscrição no "Workshop de Inovação SEBRAE/SC" e bolsas de participação no Seminário Empretec;</li>
-	                        <li>3º Lugar: Inscrição no "Workshop de Inovação SEBRAE/SC" e passaportes de entrada no Parque Beto Carrero World.</li>
-	                    </ul>
+						<hr>
+						<div>
+							<p>Sim, no ano passado. O tema proposto foi "Turismo Inteligente", aplicado à região da Costa Verde e Mar.</p>
+	                    	<img class="history" src="img/infografico/info7.png">
+	                    </div>
+						<p>As premiações consistiram em:</p>
+						<div class="rewards">
+							<img  src="img/infografico/info8.png">
+							<ul>
+								<li><strong>1º Lugar:</strong> Visita ao Instituto Tecnológico Gênesis e Rio Criativo - Rio de Janeiro - RJ, incluindo passagem aérea ida e volta
+									e hospedagem;</li>
+								<li><strong>2º Lugar:</strong> Inscrição no "Workshop de Inovação SEBRAE/SC" e bolsas de participação no Seminário Empretec;</li>
+								<li><strong>3º Lugar:</strong> Inscrição no "Workshop de Inovação SEBRAE/SC" e passaportes de entrada no Parque Beto Carrero World.</li>
+							</ul>
+						</div>
 	                </div>
 	            </div>
 	        </div>

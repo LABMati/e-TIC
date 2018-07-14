@@ -103,7 +103,14 @@ div.window{
 .sexta{
     background: #23a538 !important;
 }
-    
+
+.swal2-popup .swal2-styled.swal2-confirm{
+    background: #23a538 !important;
+}
+
+div.hide{
+    display: none;
+}
 
 @media (max-aspect-ratio:1/1){
     main nav.day-selector div.step{
@@ -118,4 +125,3 @@ div.window{
     }
     
 }
-

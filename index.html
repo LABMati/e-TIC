@@ -13,13 +13,11 @@
 
     <!-- Bootstrapshit -->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <script src="vendor/jquery/jquery.slim.min.js"></script>
-    <script src="vendor/popper.js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
   
     <!-- Custom scripts -->
     <script defer src="js/Scroller.js"></script>
     <script defer src="js/Countdown.js"></script>
+	<script defer src="js/mobile-menu.js"></script>    
     <script defer src="js/main.js"></script>
 
      <!-- Custom style -->
@@ -51,24 +49,22 @@
                     <button>Em breve</button>
                 </div>
             </nav>
-            <nav class="mobile">
-                <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a href="index.html">IX ETIC</a>
-                        <a data-toggle="collapse" href="#collapse1"><button class="menuToggle"><i class="fas fa-bars"></i></button></a>
-                    </h4>
-                    </div>
-                    <div id="collapse1" class="panel-collapse collapse">
+            <nav class="mobile">                
+                <div class="nav-header">                    
+                    <a href="index.html">
+                        <img src="img/png/logo.png" class="logo">
+                        <img src="img/png/etic.png">
+                    </a>
+                    <button class="menuToggle"><i class="fas fa-bars"></i></button>
+                </div>
+                <div class= "nav-menu">
                     <ul class="list-group">
-                        <a href="edicoes.html"><li class="list-group-item">Edições</li></a>
-                        <a href="programacao.html"><li class="list-group-item">Programação</li></a>
-                        <a href="hackathon.html"><li class="list-group-item">Hackathon</li></a>
-                        <a href="#"><li class="list-group-item">Inscrições em breve</li></a>
+                        <a href="edicoes.html">Edições</a>
+                        <a href="programacao.html">Programação</a>
+                        <a href="hackathon.html">Hackathon</a>
+                        <a href="#">Inscrições em breve</a>
                     </ul>
-                </div>
-                </div>
+                </div>                
             </nav>
         </header>
 
