@@ -52,8 +52,12 @@ main {
     justify-content: space-evenly;
     align-items: center;
     font-family: Ubuntu;
-    background: url("../img/png/bg-min2.png");
+    background: url("../img/png/bg-min.png");
     overflow: hidden;
+}
+
+div.about-item p{
+    background: white;
 }
 
 section{
@@ -213,7 +217,7 @@ aside{
     width: 8vh;
     border-radius: 10vw;
     position: fixed;
-    top: 42vh;
+    top: 22vh;
     left: 90vw;
     background: #379846;
     z-index: 10;
@@ -222,6 +226,7 @@ aside{
     align-items: center;
     color: white;
     font-size: 2vw;
+    box-shadow: -3px 3px 2px rgba(0, 0, 0, 0.3)
 }
 
 aside:hover{
@@ -414,7 +419,7 @@ section.support .row .partner:hover {
     }
 
     div.about-item img{
-        width: 90vw;
+        width: 100vw;
     }
 
     header{
@@ -594,7 +599,13 @@ section.support .row .partner:hover {
     }
 
     .mob-hide{
-        display: none !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    div.about-item p {
+        width: 90%;
+        font-size: 1em;
     }
 
     div.timer h4{

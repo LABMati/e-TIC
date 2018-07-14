@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/webfonts/fontawesome-all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
     <!-- Bootstrapshit -->
@@ -19,8 +19,6 @@
   
     <!-- Custom scripts -->
     <script defer src="js/carousel.js"></script>
-    <script defer src="js/Scroller.js"></script>
-    <script defer src="js/Poorallax.js"></script>
     <script defer src="js/hackathon.js"></script>
 
      <!-- Custom style -->
@@ -29,100 +27,112 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/footer.css" />
 </head>
 <body>
-    <header>
-        <a href="index.html" class="homelink">
-            <div class="logo" style="overflow: hidden;">
-                <img src="img/png/logo.png" class="logo">
-                <img src="img/hackathon/Ativo 3.png">
-            </div>
-        </a>
-        <nav class="desktop">
-            <div>
-                <a href="edicoes.html"><h4>Edições</h4></a>
-            </div>
-            <div>
-                <a href="programacao.html"><h4>Programação</h4></a>
-            </div>
-            <div>
-                <a href="hackathon.html"><h4>Hackathon</h4></a>
-            </div>
-            <div>
-                <button>Em Breve</button>
-            </div>
-        </nav>
-        <nav class="mobile">
-            <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a href="index.html">IX ETIC</a>
-                        <a data-toggle="collapse" href="#collapse1"><button class="menuToggle"><i class="fas fa-bars"></i></button></a>
-                    </h4>
-                    </div>
-                    <div id="collapse1" class="panel-collapse collapse">
-                    <ul class="list-group">
-                        <a href="edicoes.html"><li class="list-group-item">Edições</li></a>
-                        <a href="programacao.html"><li class="list-group-item">Programação</li></a>
-                        <a href="hackathon.html"><li class="list-group-item">Hackathon</li></a>
-                        <a href="#"><li class="list-group-item">Inscrições em breve</li></a>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <section id="about">
-        <!-- <div class="about-item center op1"><h2>Hackathon SEBRAE</h2></div> -->
-        <div class="center header"></div>
-        <div class="center a-center" id="content">
-            <div class="info">
-                <h1>Hackathon - SEBRAE</h1>
-                <div class="center"></div>
-                <div class="item about">
-                    <h2>O que é?</h2>
-                    <hr>
-                    <p>A palavra Hackathon vem da mistura de duas outras palavras: “hack”, que significa programar com excelência, e “marathon”, de maratona. Traduzindo o conceito para o português, Hackathon é uma maratona de programação que movimenta toda a área de tecnologia de uma empresa, podendo durar dias e totalmente focada no desenvolvimento de soluções que possam impactar a organização tanto interna quanto externamente.</p>
-                    <p>A primeira Hackathon de que se tem notícias aconteceu em 1999, e desde então se tornou uma prática popular, especialmente nos Estados Unidos. Logo esse conceito se espalhou por diversos outros países, proporcionando até maratonas de programação simultâneas entre equipes internacionais.</p>
-                    <div class="parl"></div>
-                </div>
-                <div class="item how-works">
-                    <h2>Como funciona?</h2>
-                    <hr>
-                    <p>Você deve se inscrever, com ou sem equipe pré-formada. O desafio é em time, então procure colegas de equipe que mandem
-                        bem, assim como você.</p>
-                    <p>No dia 30 de agosto, as equipes irão se reunir e começar a planejar o projeto incrível sobre o tema, que este ano é "Mobilidade sustentável". A equipe tem até o dia 31 para montar o plano e apresentá-lo.</p>
-                    <p>O desafio consiste em criar um projeto para aperfeiçoar a Mobilidade sustentável na região da Costa Verde e Mar. Durante os dois dias, as equipes devem designar papeis aos integrantes para que possam ser entregue: as ideias, documentação e até mesmo protótipos do projeto.</p>
-                    <p> Haverá uma banca para julgar os projetos e escolher os vencedores.</p>
-                    <div class="parl"></div>
-                </div>
-                <div class="item before">
-                    <h2>E já aconteceu algum Hackathon no IFC antes?</h2>
-                    <hr>
-                    <div class="history"></div>
-                    <p>Sim, no ano passado. O tema proposto foi "Turismo Inteligente", aplicado à região da Costa Verde e Mar.</p>
-                    <p>As premiações consistiram em:</p>
-                    <div class="rewards"></div>
-                    <ul>
-                        <li>1º Lugar: Visita ao Instituto Tecnológico Gênesis e Rio Criativo - Rio de Janeiro - RJ, incluindo passagem aérea ida e volta e hospedagem;</li>
-                        <li>2º Lugar: Inscrição no "Workshop de Inovação SEBRAE/SC" e bolsas de participação no Seminário Empretec;</li>
-                        <li>3º Lugar: Inscrição no "Workshop de Inovação SEBRAE/SC" e passaportes de entrada no Parque Beto Carrero World.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="side">
-            <h2>Endereço</h2>
-            <hr>
-            <p>Rua Joaquim Garcia S/N - Caixa Postal Nº 2016</p>
-            <p>CEP 88340-055 - Camboriú - SC</p>
-        </div>
-        <div class="side">
-            <h2>Contato</h2>
-            <hr>
-            <p>Fone: (47) 2104-0800</p>
-            <p>E-mail: ifc@ifc-camboriu.edu.br</p>
-        </div>
-    </footer>
+	<main>
+	    <header>
+	        <a href="index.html" class="homelink">
+	            <div class="logo" style="overflow: hidden;">
+	                <img src="img/png/logo.png" class="logo">
+	                <img src="img/hackathon/Ativo 3.png">
+	            </div>
+	        </a>
+	        <nav class="desktop">
+	            <div>
+	                <a href="edicoes.html"><h4>Edições</h4></a>
+	            </div>
+	            <div>
+	                <a href="programacao.html"><h4>Programação</h4></a>
+	            </div>
+	            <div>
+	                <a href="hackathon.html"><h4>Hackathon</h4></a>
+	            </div>
+	            <div>
+	                <button>Em Breve</button>
+	            </div>
+	        </nav>
+	        <nav class="mobile">
+	            <div class="panel-group">
+	                <div class="panel panel-default">
+	                    <div class="panel-heading">
+	                    <h4 class="panel-title">
+	                        <a href="index.html">IX ETIC</a>
+	                        <a data-toggle="collapse" href="#collapse1"><button class="menuToggle"><i class="fas fa-bars"></i></button></a>
+	                    </h4>
+	                    </div>
+	                    <div id="collapse1" class="panel-collapse collapse">
+		                    <ul class="list-group">
+		                        <a href="edicoes.html">
+		                        	<li class="list-group-item">Edições</li>
+		                        </a>
+		                        <a href="programacao.html">
+		                        	<li class="list-group-item">Programação</li>
+		                        </a>
+		                        <a href="hackathon.html">
+		                        	<li class="list-group-item">Hackathon</li>
+		                        </a>
+		                        <a href="#">
+		                        	<li class="list-group-item">Inscrições em breve</li>
+		                        </a>
+		                    </ul>
+	                	</div>
+	            	</div>
+	            </div>
+	        </nav>
+	    </header>
+	    <section id="about">
+	        <!-- <div class="about-item center op1"><h2>Hackathon SEBRAE</h2></div> -->
+	        <div class="center header"></div>
+	        <div class="center a-center" id="content">
+	            <div class="info">
+	                <h1>Hackathon</h1>
+	            	<h2>Turismo Inteligente: Mobilidade Sustentável</h2>
+	                <div class="center"></div>
+	                <div class="item about">
+	                    <h2>O que é?</h2>
+	                    <hr>
+	                    <p>A palavra Hackathon vem da mistura de duas outras palavras: “hack”, que significa programar com excelência, e “marathon”, de maratona. Traduzindo o conceito para o português, Hackathon é uma maratona de programação que movimenta toda a área de tecnologia de uma empresa, podendo durar dias e totalmente focada no desenvolvimento de soluções que possam impactar a organização tanto interna quanto externamente.</p>
+	                    <p>A primeira Hackathon de que se tem notícias aconteceu em 1999, e desde então se tornou uma prática popular, especialmente nos Estados Unidos. Logo esse conceito se espalhou por diversos outros países, proporcionando até maratonas de programação simultâneas entre equipes internacionais.</p>
+	                    <div class="parl"></div>
+	                </div>
+	                <div class="item how-works">
+	                    <h2>Como funciona?</h2>
+	                    <hr>
+	                    <p>Você deve se inscrever, com ou sem equipe pré-formada. O desafio é em time, então procure colegas de equipe que mandem
+	                        bem, assim como você.</p>
+	                    <p>No dia 30 de agosto, as equipes irão se reunir e começar a planejar o projeto incrível sobre o tema, que este ano é "Mobilidade sustentável". A equipe tem até o dia 31 para montar o plano e apresentá-lo.</p>
+	                    <p>O desafio consiste em criar um projeto para aperfeiçoar a Mobilidade sustentável na região da Costa Verde e Mar. Durante os dois dias, as equipes devem designar papeis aos integrantes para que possam ser entregue: as ideias, documentação e até mesmo protótipos do projeto.</p>
+	                    <p> Haverá uma banca para julgar os projetos e escolher os vencedores.</p>
+	                    <div class="parl"></div>
+	                </div>
+	                <div class="item before">
+	                    <h2>E já aconteceu algum Hackathon no IFC antes?</h2>
+	                    <hr>
+	                    <div class="history"></div>
+	                    <p>Sim, no ano passado. O tema proposto foi "Turismo Inteligente", aplicado à região da Costa Verde e Mar.</p>
+	                    <p>As premiações consistiram em:</p>
+	                    <div class="rewards"></div>
+	                    <ul>
+	                        <li>1º Lugar: Visita ao Instituto Tecnológico Gênesis e Rio Criativo - Rio de Janeiro - RJ, incluindo passagem aérea ida e volta e hospedagem;</li>
+	                        <li>2º Lugar: Inscrição no "Workshop de Inovação SEBRAE/SC" e bolsas de participação no Seminário Empretec;</li>
+	                        <li>3º Lugar: Inscrição no "Workshop de Inovação SEBRAE/SC" e passaportes de entrada no Parque Beto Carrero World.</li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+	    <footer>
+	        <div class="side">
+	            <h2>Endereço</h2>
+	            <hr>
+	            <span>Rua Joaquim Garcia S/N - Caixa Postal Nº 2016</span>
+	            <span>CEP 88340-055 - Camboriú - SC</span>
+	        </div>
+	        <div class="side">
+	            <h2>Contato</h2>
+	            <hr>
+	            <span>Fone: (47) 2104-0800</span>
+	            <span>E-mail: etic@ifc-camboriu.edu.br</span>
+	        </div>
+	    </footer>
+	</main>
 </body>
 </html>

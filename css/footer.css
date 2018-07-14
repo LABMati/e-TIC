@@ -2,15 +2,10 @@ footer{
     color: #fff;
     height: 30vh;
 }
-footer .header{
-    height: 10vh;
-    width: 50vw;
-    background-image: url('../img/parceiros/logo-ifc.png');
-}
 footer .side{
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    width: 50%;
     justify-content: center;
     align-items: center
 }
@@ -21,6 +16,10 @@ footer .side hr{
 footer .side h2{
     text-align: center
 }
+footer .side span{
+    font-size: 1.2em;
+    text-align: center;
+}
 
 @media (max-aspect-ratio: 1/1){
     footer{
@@ -28,7 +27,8 @@ footer .side h2{
         height: 50vh;
     }
     footer .side{
-        margin-top: 5vh;
+        width: 100%;
+        margin: 2.5vh 0;
     }
     footer .side hr{
         width: 80%;

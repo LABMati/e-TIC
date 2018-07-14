@@ -10,7 +10,7 @@ let carousel2 = new Scroller(document.querySelector(".carousel"), 3)
 let mobileNavBt = document.querySelector("nav.mobile div.nav-header button")
 let mobileNavMenu = document.querySelector("nav.mobile div.nav-menu")
 // Everything timer needs to work
-let timer = new Countdown(new Date('08/23/2018').getTime())
+let timer = new Countdown(new Date('08/27/2018').getTime())
 let timerContainers = document.querySelectorAll("div.timer")
 
 let interval = setInterval(()=>{
@@ -66,9 +66,13 @@ mobileNavBt.addEventListener('click', ev=>{
 steps.forEach(step =>{
     step.addEventListener('click',ev=>{
         carousel.slide(step.dataset.pos)
+        clearInterval(carouselInterval)    
+        carouselInterval = setInterval(() => {
+            carousel.slide(carousel.current + 2)
+        }, 5000)
     })
 })
 
-setInterval(() => {
+let carouselInterval = setInterval(() => {
     carousel.slide(carousel.current + 2)
 }, 5000)
