@@ -1,71 +1,26 @@
-// let carousel = new Scroller(document.querySelector("div.carousel"), 5)
-let steps = document.querySelectorAll(".step")
-let mediaQuery = window.matchMedia("(max-aspect-ratio: 1/1)")
 
-if(mediaQuery.matches){
-    let i = 27
-    for (let step of steps) {
-        step.innerText = i
-        i++
-    }
-}
+let eventTriggers = document.querySelectorAll("li.single-event")
 
-steps.forEach(step =>{
-    step.addEventListener('click',ev=>{
-        carousel.slide(step.dataset.pos)
+let eventos 
+let url = "200.135.34.151"
+
+let response = await fetch(url+"/2018/eventos.json");
+eventos = await response.json()
+
+for (let i = 0; i < eventTriggers.length; i++) {
+    eventTriggers[i].addEventListener("click", (ev)=>{
+        let eventId = ev.target.closest("li.single-event").dataset.event
+        swal({
+            title: eventos[eventId].nome,
+            html: '<h3>' + eventos[eventId].palestrante + '</h3> <br> <h2 class="toggleHide" id="tog' +eventId+ '"> Mais informações </h2>' + '<div class="hide" id=div' + eventId+ '>' + eventos[eventId].descricao +'</div>', 
+            footer: eventos[eventId].local + ' - ' + eventos[eventId].inicio + ' : ' + eventos[eventId].final
+          })
+        if(eventTriggers[i].descricao){
+            document.querySelector("h2#tog"+eventId).addEventListener("click", ()=>{
+                let div = document.querySelector("div#div"+eventId)
+                div.style.display = 'block'
+                document.querySelector("h2#tog"+eventId).style.display = 'none'
+            })
+        }
     })
-})
-
-const velo = 20;  
-   var posx = 200;
-   var posy = 200; 
-   var sizex = sizey = 10;
-   var applex = appley = Math.floor(Math.random()*400);
-   var canvas, ctx;
-   
-  
- 
-function start(){
-  
-    canvas = document.createElement('canvas');
-    ctx = canvas.getContext('2d');
-    canvas.width = 400;
-    canvas.height = 400;
-    canvas.style.background = 'black';
-    document.body.appendChild(canvas);
- 
-
-    ctx.fillStyle='white'
-    ctx.fillRect(posx, posy, sizex, sizey)
-    
 }
-
-start()
-
-// Esse evento não to funcionando, tenta usar windowao invés de document
-document.addEventListener('load', start)
-
-
-const velo = 20;  
-var posx = 200;
-var posy = 200; 
-var sizex = sizey = 10;
-var applex = appley = Math.floor(Math.random()*400);
-var canvas, ctx;
-   
-  
- 
-function start(){
-  
-    canvas = document.createElement('canvas');
-    ctx = canvas.getContext('2d');
-    canvas.width = 400;
-    canvas.height = 400;
-    canvas.style.backgroundColor = 'black';
-    ctx.fillStyle='red'
-    ctx.fillRect(posx, posy, sizex, sizey)
-    
-}
-
-
-window.addEventListener("load", start)

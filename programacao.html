@@ -15,6 +15,7 @@
     <script src="vendor/jquery/jquery.slim.min.js"></script>
     <script src="vendor/popper.js/popper.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/sweetalert/swal.min.js"></script>
 
     <!-- Schedule -->
     <link rel="stylesheet" href="vendor/schedule/css/style.css">
@@ -24,6 +25,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/programacao.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/footer.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="vendor/sweetalert/swal.min.css" />
 
     <!-- Custom scripts -->
     <script defer src="js/Scroller.js"></script>
@@ -101,22 +103,27 @@
                         <li class="events-group">
                             <div class="top-info"><span>Segunda-Feira</span></div>
                             <ul>
-                                <li class="single-event segunda" data-start="08:00" data-end="10:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event segunda" data-start="08:00" data-end="10:00" data-content="event-abs-circuit" data-event="0">
                                     <a href="#0">
                                         <em class="event-name">Credenciamento</em>
                                     </a>
                                 </li>
-                                <li class="single-event segunda" data-start="10:00" data-end="12:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event segunda" data-start="10:00" data-end="11:00" data-content="event-abs-circuit" data-event="1">
                                     <a href="#1">
-                                        <em class="event-name">Palestra sobre Inteligência Artificial</em>
+                                        <em class="event-name">Palestra Inteligência Artificial</em>
                                     </a>
                                 </li>
-                                <li class="single-event segunda" data-start="13:00" data-end="17:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event segunda" data-start="11:00" data-end="12:00" data-content="event-abs-circuit" data-event="2">
+                                    <a href="#1">
+                                        <em class="event-name">Palestra IoT e Blockchain</em>
+                                    </a>
+                                </li>
+                                <li class="single-event segunda" data-start="13:00" data-end="17:00" data-content="event-abs-circuit" data-event="3">
                                     <a href="#2">
                                         <em class="event-name">Minicursos a serem definidos</em>
                                     </a>
                                 </li>
-                                <li class="single-event segunda" data-start="18:00" data-end="22:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event segunda" data-start="18:00" data-end="22:00" data-content="event-abs-circuit" data-event="4">
                                     <a href="#2">
                                         <em class="event-name">Cerimônia de abertura</em>
                                     </a>
@@ -128,19 +135,29 @@
                             <div class="top-info"><span>Terça-Feira</span></div>
                 
                             <ul>
-                                <li class="single-event terca" data-start="08:00" data-end="12:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event terca" data-start="08:00" data-end="12:00" data-content="event-abs-circuit" data-event="5">
                                     <a href="#0">
                                         <em class="event-name">Minicursos a serem definidos</em>
                                     </a>
                                 </li>
-                                <li class="single-event terca" data-start="13:00" data-end="15:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event terca" data-start="13:00" data-end="15:00" data-content="event-abs-circuit" data-event="6">
                                     <a href="#0">
                                         <em class="event-name">Painel e-Sports</em>
                                     </a>
                                 </li>
-                                <li class="single-event terca" data-start="15:00" data-end="17:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event terca" data-start="15:00" data-end="17:00" data-content="event-abs-circuit" data-event="7">
                                     <a href="#0">
                                         <em class="event-name">Palestra - Segurança da Informação</em>
+                                    </a>
+                                </li>
+                                <li class="single-event terca" data-start="18:00" data-end="20:00" data-content="event-abs-circuit" data-event="8">
+                                    <a href="#0">
+                                        <em class="event-name">Palestra a ser definida</em>
+                                    </a>
+                                </li>
+                                <li class="single-event terca" data-start="20:00" data-end="22:00" data-content="event-abs-circuit" data-event="9">
+                                    <a href="#0">
+                                        <em class="event-name">Painel Profissão Trader - Conheça o mundo da bolsa de valores, FOREX e criptomoedas</em>
                                     </a>
                                 </li>
                             </ul>
@@ -150,22 +167,22 @@
                             <div class="top-info"><span>Quarta-Feira</span></div>
                 
                             <ul>
-                                <li class="single-event quarta" data-start="08:00" data-end="10:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta" data-start="08:00" data-end="10:00" data-content="event-abs-circuit" data-event="10">
                                     <a href="#0">
                                         <em class="event-name">Palestra a ser definida</em>
                                     </a>
                                 </li>
-                                <li class="single-event quarta" data-start="10:00" data-end="12:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta" data-start="10:00" data-end="12:00" data-content="event-abs-circuit" data-event="11">
                                     <a href="#0">
-                                        <em class="event-name">ACATE</em>
+                                        <em class="event-name">Palestra a ser definida</em>
                                     </a>
                                 </li>
-                                <li class="single-event quarta" data-start="13:00" data-end="17:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta" data-start="13:00" data-end="17:00" data-content="event-abs-circuit" data-event="12">
                                     <a href="#0">
                                         <em class="event-name">Minicursos a serem definidos</em>
                                     </a>
                                 </li>
-                                <li class="single-event quarta" data-start="18:00" data-end="22:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta" data-start="18:00" data-end="22:00" data-content="event-abs-circuit" data-event="13">
                                     <a href="#0">
                                         <em class="event-name">Minicursos a serem definidos</em>
                                     </a>
@@ -178,12 +195,12 @@
                             <div class="top-info"><span>Quinta-Feira</span></div>
                 
                             <ul>
-                                <li class="single-event quarta half" data-start="08:00" data-end="22:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta half" data-start="08:00" data-end="22:00" data-content="event-abs-circuit" data-event="14">
                                     <a href="#0">
                                         <em class="event-name">Hackathon</em>
                                     </a>
                                 </li>
-                                <li class="single-event quarta half" data-start="08:00" data-end="22:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta half" data-start="08:00" data-end="22:00" data-content="event-abs-circuit" data-event="15">
                                     <a href="#0">
                                         <em class="event-name">e-Sports</em>
                                     </a>
@@ -195,17 +212,17 @@
                             <div class="top-info"><span>Sexta-Feira</span></div>
                 
                             <ul>
-                                <li class="single-event quarta half" data-start="08:00" data-end="17:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta half" data-start="08:00" data-end="17:00" data-content="event-abs-circuit" data-event="14">
                                     <a href="#0">
                                         <em class="event-name">Hackathon</em>
                                     </a>
                                 </li>
-                                <li class="single-event quarta half" data-start="08:00" data-end="17:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta half" data-start="08:00" data-end="17:00" data-content="event-abs-circuit" data-event="15">
                                     <a href="#0">
                                         <em class="event-name">e-Sports</em>
                                     </a>
                                 </li>
-                                <li class="single-event quarta" data-start="18:00" data-end="22:00" data-content="event-abs-circuit" data-event="event-1">
+                                <li class="single-event quarta" data-start="18:00" data-end="22:00" data-content="event-abs-circuit" data-event="16">
                                     <a href="#0">
                                         <em class="event-name">Cerimônia de encerramento</em>
                                     </a>
