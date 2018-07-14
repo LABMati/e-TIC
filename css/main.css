@@ -84,6 +84,7 @@ header{
     background: #ffffff;
     z-index: 4;
     transition: .7s ease;
+    box-shadow: 0 .4vh .4vh #e6e6e6;
 }
 
 header nav {
@@ -115,8 +116,13 @@ button {
     font-family: Ubuntu;
 }
 
-button:hover{
+button:focus {
+    outline: 0
+}
+
+button:hover {
     box-shadow: -2px 2px 1px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
 
 div.logo{
@@ -283,15 +289,21 @@ div.carousel-override h1{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 3.2rem;
 }
 
 div.step{
     display: block;
-    width: 2vw;
-    height: 2vw;
+    width: 1.3vw;
+    height: 1.3vw;
     border-radius: 5vw;
-    background: rgba(255, 255, 255, 0.7);
+    border: .1vw solid rgba(255, 255, 255, 0.7);
     cursor: pointer;
+    transition: .2s ease-in-out;
+}
+
+div.step:hover {
+    transform: scale(1.12);
 }
 
 div.steps{
@@ -490,7 +502,7 @@ section.support .row .partner:hover {
 
     div.carousel-override{
         top: 10vh;
-        height: 90vh;
+        height: 85vh;
         padding: 5vw;
     }
 
@@ -515,8 +527,8 @@ section.support .row .partner:hover {
     }
 
     div.step{
-        width: 10vw;
-        height: 10vw;
+        width: 5vw;
+        height: 5vw;
     }
 
     div.steps{
@@ -586,5 +598,12 @@ section.support .row .partner:hover {
     }
     section.support .row .partner img{
         max-width: 80%;
+    }
+    section.carousel-container {
+        height: 85vh;
+    }
+
+    .h2-timer {
+        font-size: 2rem;
     }
 }

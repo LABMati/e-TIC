@@ -61,3 +61,6 @@ steps.forEach(step =>{
     })
 })
 
+setInterval(() => {
+    carousel.slide(carousel.current + 2)
+}, 5000)

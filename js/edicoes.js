@@ -14,28 +14,8 @@ window.onload = function () {
     }
 }
 
-window.addEventListener("scroll", ev => {
-    for (const aboutItem of about) {
-        if (scrollY + window.innerHeight >= aboutItem.offsetTop)
-            aboutItem.style.opacity = "1"
-        else {
-            aboutItem.style.opacity = "0"
-        }
-    }
-
-    if (mediaQuery.matches) {
-        return
-    } else {
-        if (window.scrollY > 150)
-            header.style.height = "15vh"
-        else {
-            header.style.height = '20vh'
-        }
-    }
-})
-
 steps.forEach(step => {
-    step.addEventListener('click', ev => {
+    step.addEventListener('click', () => {
         carousel.slide(step.dataset.pos)
     })
 })
