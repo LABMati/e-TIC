@@ -7,11 +7,12 @@ let carouselImg = document.querySelectorAll(".window")
 let carousel = new Scroller(document.querySelector(".carousel"), 3)
 let carousel2 = new Scroller(document.querySelector(".carousel"), 3)
 
+let mobileNavBt = document.querySelector("nav.mobile div.nav-header button")
+let mobileNavMenu = document.querySelector("nav.mobile div.nav-menu")
 // Everything timer needs to work
 let timer = new Countdown(new Date('08/23/2018').getTime())
 let timerContainers = document.querySelectorAll("div.timer")
 
-    
 let interval = setInterval(()=>{
     timerContainers[0].firstElementChild.innerText = timer.actual.days 
     timerContainers[1].firstElementChild.innerText = timer.actual.hours
@@ -53,6 +54,13 @@ window.addEventListener("scroll", ev=>{
             header.style.height = '20vh'
         }
     }
+})
+
+mobileNavBt.addEventListener('click', ev=>{
+    if(mobileNavMenu.offsetHeight == 0)
+        mobileNavMenu.style.height = "30vh"
+    else
+        mobileNavMenu.style.height = "0"
 })
 
 steps.forEach(step =>{

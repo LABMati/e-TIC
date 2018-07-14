@@ -366,7 +366,6 @@ div.about-item img.infografico-100{
 
 div.about-item p{
     width: 50%;
-    font-size: 2em;
 }
 
 section#about div.op1 {
@@ -421,28 +420,18 @@ section.support .row .partner:hover {
     header{
         height: 10vh;
     }
+
     nav.mobile{
         display: flex;
+        flex-direction: column;
         width: 100%;
-    }
-
-    div.panel-default{
-        border: 0;
-    }
-
-    div.panel, div.panel-heading{
-        height: 10vh;
+        /* height: 10vh; */
         background-color: #ffffff !important;
     }
 
-    div.panel-heading{
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-
-    div.panel-heading h4.panel-title{
+    nav.mobile div.nav-header{
         width: 100%;
+        height: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -451,31 +440,58 @@ section.support .row .partner:hover {
         margin: 0;
     }
 
-    div.panel-heading h4.panel-title a button{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    nav.mobile div.nav-header a img{
+        height: 6vh
     }
 
-    div.panel-heading h4.panel-title i{
-        font-size: 8vw;
+    nav.mobile div.nav-header button{
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    nav.mobile div.nav-header button i{
+        font-size: 60%;
+        margin: 1vw
+    }
+
+    nav.mobile div.nav-menu{
+        overflow: hidden;
+        display: flex;
+        width: 100%;
+        flex: none;
+        height: 0;
+        transition: 500ms ease-out
+    }
+
+    nav.mobile div.nav-menu ul{
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        border-top: 1px solid #ccc !important;
+    }
+
+    nav.mobile div.nav-menu a{
+        display: flex;
+        flex-grow: 1;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 5%;   
+        font-size: 1.2em;
+        border-top: 1px solid #ccc !important;
+    }
+
+    nav.mobile div.nav-menu li{ 
+        list-style-type: none;
     }
 
     ul.list-group{
         width: 100%;
     }
 
-    li.list-group-item{
-        width: 100%;
-        border-radius: 0 !important;
-        border-bottom: 1px solid #ccc !important;
-    }
-
-    div#collapse1{
-        width: 100%;
-    }
-
-    nav.mobile div.panel-group, nav.mobile div.panel, nav.mobile div.panel-heading{
+    nav.mobile, nav.mobile div.nav-header, nav.mobile div.nav-header{
         width: 100%;
     }
 
@@ -490,6 +506,7 @@ section.support .row .partner:hover {
     button.menuToggle{
         border-radius: 1vw;
         width: 15vw;
+        
     }
 
     section div.carousel{
