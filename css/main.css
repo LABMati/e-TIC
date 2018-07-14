@@ -52,8 +52,12 @@ main {
     justify-content: space-evenly;
     align-items: center;
     font-family: Ubuntu;
-    background: url("../img/png/bg-min2.png");
+    background: url("../img/png/bg-min4.png");
     overflow: hidden;
+}
+
+div.about-item p{
+    background: white;
 }
 
 section{
@@ -416,7 +420,7 @@ section.support .row .partner:hover {
     }
 
     div.about-item img{
-        width: 90vw;
+        width: 100vw;
     }
 
     header{
@@ -578,7 +582,13 @@ section.support .row .partner:hover {
     }
 
     .mob-hide{
-        display: none !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    div.about-item p {
+        width: 90%;
+        font-size: 1em;
     }
 
     div.timer h4{
