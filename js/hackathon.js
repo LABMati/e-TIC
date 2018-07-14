@@ -3,7 +3,7 @@ let steps = document.querySelectorAll(".step")
 let header = document.querySelector("header")
 let aboutBut = document.querySelector("div.more")
 let about = document.querySelectorAll("section#about div.about-item")
-let carousel = new Scroller(document.querySelector(".carousel"), 3)
+//let carousel = new Scroller(document.querySelector(".carousel"), 3)
 
 window.addEventListener("scroll", ev=>{
     for (const aboutItem of about) {

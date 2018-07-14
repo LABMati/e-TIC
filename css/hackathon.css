@@ -1,5 +1,4 @@
 section {
-    background-image: url('../img/png/bg-min4.png');
     height: auto !important;
 }
 section div.carousel div.window{
@@ -88,27 +87,55 @@ div.how-works div.parl{
     background-image: url('../img/hackathon/hack.jpg');
 }
 div.before div{
-    background-size: contain;
-    width: 100vw;
-    height: 40vh;
-    background-repeat: no-repeat;
-    background-position: center
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center
 }
-div.before div.history{
-    background-image: url('../img/infografico/info7.png');
+div.before{
+    display: flex;
+    flex-direction: column
+}
+div.before p{
+    text-align: center
+}
+div.before div img{
+    width: 60vw;
+    height: auto;
 }
 div.before div.rewards{
-    background-image: url('../img/infografico/info8.png');
+    width: 100vw;
+    display: block;
+    background: rgba(255, 255, 255, .4)
+}
+div.before div.rewards img{
+    height: 80vh;
+    width: auto;
+}
+div.before div ul{
+    display: none
 }
 
 @media (max-aspect-ratio: 1/1){
     section{
         margin-top: 5vh;
     }
-    .header{
-        height: 40vh;
-    }
     div.before div{
-        height: 20vh;
+        width: 100%;
+        flex-direction: column
+    }
+    div.before div img{
+        width: 100%;
+    }
+    div.before div.rewards img{
+         width: 100%;
+         height: auto;
+    }
+    div.before div.rewards ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
 }
