@@ -1,11 +1,15 @@
-// let carousel = new Scroller(document.querySelector("div.carousel"), 5)
 let eventTriggers = document.querySelectorAll("li.single-event")
-
 let eventos 
-let url = "200.135.34.151"
+let url = "http://200.135.34.151/2018/eventos.json"
 
-let response = await fetch(url+"/2018/eventos.json");
-eventos = await response.json()
+async function getEvents(){
+
+    let response = await fetch(url);
+    eventos = await response.json()
+    
+}
+
+getEvents()
 
 for (let i = 0; i < eventTriggers.length; i++) {
     eventTriggers[i].addEventListener("click", (ev)=>{

@@ -35,13 +35,13 @@ window.onload = function(){
 
 window.addEventListener("scroll", ev=>{
     let mediaQuery = window.matchMedia("(max-aspect-ratio: 1/1)")
-    for (const aboutItem of about) {
-        if(scrollY + window.innerHeight >= aboutItem.offsetTop)
-            aboutItem.style.opacity = "1"
-        else{
-            aboutItem.style.opacity = "0"
-        }
-    }
+    // for (const aboutItem of about) {
+    //     if(scrollY + window.innerHeight >= aboutItem.offsetTop)
+    //         aboutItem.style.opacity = "1"
+    //     else{
+    //         aboutItem.style.opacity = "0"
+    //     }
+    // }
     if(mediaQuery.matches){
 
         return

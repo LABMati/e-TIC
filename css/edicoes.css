@@ -45,11 +45,11 @@ div.carousel-override{
     }
 
     div#info{
-        margin-top: -25vh;
+        /* margin-top: 10vh; */
     }
 
     section#about{
-        height: 350vh !important;
+        height: 300vh !important;
     }
     
 }

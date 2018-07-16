@@ -4,6 +4,10 @@
     scroll-behavior: smooth;
 }
 
+h1, h2, h3, h4, h5, h5{
+    font-weight: normal;
+}
+
 .spaced{
     display: flex;
     justify-content: space-between;
@@ -31,6 +35,14 @@ body {
 
 .cd-schedule{
     width: 80vw !important;
+}
+
+.mb-5{
+    margin-bottom: 5vh !important;
+}
+
+.mt-5{
+    margin-top: 5vh !important;
 }
 
 main {
@@ -259,7 +271,7 @@ div.countdown{
 div.countdown div{
     height: 20vh;
     width: 20vh;
-    font-size: 3vw;
+    font-size: 1.3vw;
     border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: 1vw;
     display: flex;
@@ -344,7 +356,7 @@ a:hover{
 section#about div.about-item{
     margin-top: 10vh;
     width: 100vw;
-    opacity: 0;
+    opacity: 1;
     transition: 5s ease;
     display: flex
 }
@@ -421,7 +433,7 @@ section.support .row .partner:hover {
     }
 
     div.about-item img{
-        width: 100vw;
+        width: 100%;
     }
 
     header{
@@ -444,6 +456,7 @@ section.support .row .partner:hover {
         font-size: 2em;
         padding: 4vw;
         margin: 0;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1)
     }
 
     nav.mobile div.nav-header a img{
@@ -530,8 +543,8 @@ section.support .row .partner:hover {
 
     div.carousel-override{
         top: 10vh;
-        height: 85vh;
-        padding: 5vw;
+        height: 90vh;
+        padding: 10vw;
     }
 
     div.carousel-override h1{
@@ -542,6 +555,10 @@ section.support .row .partner:hover {
         height: 10vh;
         width: 10vh;
         font-size: 5vw;
+    }
+
+    header nav button.menuToggle{
+        height: 7vh;
     }
 
     h2, h3{
@@ -636,7 +653,7 @@ section.support .row .partner:hover {
         max-width: 80%;
     }
     section.carousel-container {
-        height: 85vh;
+        height: 90vh;
     }
 
     .h2-timer {
