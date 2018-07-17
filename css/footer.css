@@ -16,7 +16,10 @@ footer .side{
 }
 footer .side hr{
     width: 50%;
-    background-color: #fff
+    background-color: #fff;
+    border: 1px solid white;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
 }
 footer .side h2{
     text-align: center;

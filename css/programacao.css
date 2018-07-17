@@ -27,9 +27,9 @@ section{
     justify-content: flex-start;
 }
 
-div.cd-schedule {
-    width: 100%;
-    height:60vh;
+section#about div.cd-schedule {
+    width: 80%;
+    height:80%;
 }
 
 ul li.palestra{
@@ -70,10 +70,6 @@ div.window{
     font-size: 100%;
 }
 
-.cd-schedule .timeline li span{
-    display: none;
-}
-
 .cd-schedule > .events .events-group > ul > .single-event{
     box-shadow: 0px 0px rgba(0, 0, 0, 0) !important;
     border: 1px solid #ccc !important;
@@ -110,6 +106,11 @@ div.window{
 
 div.hide{
     display: none;
+}
+
+h2.toggleHide{
+    cursor: pointer;
+    color: #2200CC;
 }
 
 @media (max-aspect-ratio:1/1){

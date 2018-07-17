@@ -1,10 +1,10 @@
 let eventTriggers = document.querySelectorAll("li.single-event")
 let eventos 
-let url = "http://200.135.34.151/2018/eventos.json"
+let url = "http://etic.ifc-camboriu.edu.br/2018/"
 
 async function getEvents(){
 
-    let response = await fetch(url);
+    let response = await fetch(url+"json/getJson.php?path=eventos");
     eventos = await response.json()
     
 }
@@ -19,7 +19,7 @@ for (let i = 0; i < eventTriggers.length; i++) {
             html: '<h3>' + eventos[eventId].palestrante + '</h3> <br> <h2 class="toggleHide" id="tog' +eventId+ '"> Mais informações </h2>' + '<div class="hide" id=div' + eventId+ '>' + eventos[eventId].descricao +'</div>', 
             footer: eventos[eventId].local + ' - ' + eventos[eventId].inicio + ' : ' + eventos[eventId].final
           })
-        if(eventTriggers[i].descricao){
+        if(eventos[i].descricao){
             document.querySelector("h2#tog"+eventId).addEventListener("click", ()=>{
                 let div = document.querySelector("div#div"+eventId)
                 div.style.display = 'block'
