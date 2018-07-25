@@ -14,10 +14,8 @@ Special thanks to our beloved staff
 
 Sadly because of the production time we had to use some bad frameworks, we're trying to remove all the heavy dependencies and probably this will be resolved before the event day.
 
- - Bootstrap 
  - JQuery
  - Font Awesome
- - Popper JS
  - A schedule template from CodyHouse
  
  ### Help me Obi-Wan Kenobi, you're my only hope
