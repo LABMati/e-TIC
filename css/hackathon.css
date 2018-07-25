@@ -1,6 +1,3 @@
-section {
-    height: auto !important;
-}
 section div.carousel div.window{
     display: flex;
     justify-content: space-evenly;
@@ -125,10 +122,9 @@ div.before div ul{
 
 @media (max-aspect-ratio: 1/1){
     section{
-        margin-top: 5vh;
+        margin-top: 11vh;
     }
     .header{
-        margin-top: 10vh;
         width: 100vw;
         height: 40vh;
     }

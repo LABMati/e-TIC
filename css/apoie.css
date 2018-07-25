@@ -1,13 +1,18 @@
 section#about h1{
     margin: 0;
 }
-
-input{
-    margin-top: 2vh;
+form{
+    width:50vw;
+    align-items: flex-end
 }
-
+form >*{
+    margin-top: 2vh;
+    width: 100%;
+}
+form button{
+    width: 30%;
+}
 input[type=text], input[type=email]{
-    width: 40vw;
     height: 6vh;
     border-radius: 4vw;
     border: none;
@@ -42,4 +47,12 @@ form{
     margin-top: 5vh;
     display: flex;
     flex-direction: column;
+}
+@media (max-aspect-ratio: 1/1){
+    form{
+        width:85vw
+    }
+    form button{
+        width: 100%;
+    }
 }

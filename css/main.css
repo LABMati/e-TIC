@@ -135,7 +135,9 @@ button:hover {
     box-shadow: -2px 2px 1px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
-
+div.parl{
+    background-attachment: fixed;
+}
 div.logo{
     display: flex;
     justify-content: space-evenly;
