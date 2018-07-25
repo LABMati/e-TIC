@@ -1,0 +1,35 @@
+img.e-banner{
+    width: 100vw;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+img.lolzinho{
+
+}
+
+div.slide-lol{
+    position: absolute;
+    transition: 2s ease;
+    top: 150vh;
+    left: -40vw;
+    width: 50vw;
+    height: 60vh;
+}
+
+img.cszinho{
+    position: absolute;
+    top: 130vh;
+    left: 200vw;
+    transition: 1s ease;
+}
+
+section#about{
+    overflow-x: hidden;
+}
+
+h1{
+    font-size: 3vmax;
+}

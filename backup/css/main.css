@@ -1,0 +1,684 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h5{
+    font-weight: normal;
+}
+
+.spaced{
+    display: flex;
+    justify-content: space-between;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.a-center{
+    display: flex;
+    align-items: center;
+}
+
+body {
+    max-width: 100vw;
+    min-height: 100vh;
+}
+
+.cd-schedule{
+    width: 80vw !important;
+}
+
+.mb-5{
+    margin-bottom: 5vh !important;
+}
+
+.mb-2{
+    margin-bottom: 2vh !important;
+}
+
+.mt-5{
+    margin-top: 5vh !important;
+}
+
+main {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: Ubuntu;
+    background: url("../img/png/bg2-min-min.png");
+    overflow: hidden;
+    background-attachment: fixed;
+    will-change: scroll-position;
+}
+
+section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    margin-top: 20vh;
+}
+section h2{
+    text-align: center
+}
+
+a{
+    text-decoration: none;
+    color: inherit
+}
+
+header{
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index: 4;
+    transition: .7s ease;
+    box-shadow: 0 .4vh .4vh #e6e6e6;
+}
+
+header nav {
+    display: flex;
+    width: 60vw;
+    justify-content: space-evenly;
+    list-style: none;
+    align-items: center;
+}
+
+header nav.desktop div {
+    width: 20vw;
+}
+
+button {
+    height: 7vh;
+    width: 10vmax;
+    background: #379846;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    border-radius: 20vw;
+    transition: box-shadow ease .8s;
+    font-family: Ubuntu;
+}
+
+header nav button{
+    height: 10vh;
+    font-size: 1;
+    line-height: 1.3
+}
+
+button:focus {
+    outline: 0
+}
+
+button:hover {
+    box-shadow: -2px 2px 1px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+div.logo{
+    display: flex;
+    justify-content: space-evenly;
+    color: #379846; 
+    align-items: center;
+}
+
+div.logo > img{
+    width: 15vw; 
+}
+
+header div{
+    width: 40vw;
+}
+
+header nav div h4{
+    font-size: 1.3em;
+    text-align: center;
+}
+
+section.carousel-container{
+    display: inline-block;
+    overflow: hidden;
+}
+
+div.carousel{
+    height: 80vh;
+    width: 100%;
+    will-change: transform;
+}
+
+section div.more{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    font-size: 5vw;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+main section.options{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+main section.options div.day-opt{
+    width: 20vw;
+    height: 30vw;
+    background: #379846;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vw;
+    font-family: Ubuntu;
+}
+
+img.esports-banner{
+    width: 100%;
+    margin-top: 3vh;
+}
+
+section#about h1.header-esports{
+    margin-top: 5vh;
+}
+
+a.green_link{
+    color: #379846;
+    text-decoration: underline;
+}
+
+section#about{
+    justify-content: flex-start;
+}
+
+section#about h2{
+    font-size: 3vw;
+}
+
+main p{
+    width: 80%;
+    font-size: 1.3em;
+    text-align: justify 
+}
+
+a:hover{
+    color: #379846;
+}
+
+div.carousel{
+    display: flex;
+    transition: 500ms ease-in-out;
+    /* overflow: hidden; */
+}
+
+aside{
+    height: 8vh;
+    width: 8vh;
+    border-radius: 10vw;
+    position: fixed;
+    top: 22vh;
+    left: 90vw;
+    background: #379846;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2vw;
+    box-shadow: -3px 3px 2px rgba(0, 0, 0, 0.3);
+    transition: .5s ease;
+}
+
+aside:hover{
+    transform: scale(1.2)
+}
+
+div.carousel div.window {
+    width: 100%;
+    height: 100%;
+    flex: none;
+    transition: ease 1s;
+}
+
+
+div.carousel div.window img{
+    width: 100%;
+}
+
+div.carousel-override{
+    height: 80vh;
+    width: 100%;
+    flex: none;
+    position: absolute;
+    top: 20vh;
+    left: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(90deg, rgba(15, 104, 4, 0.61), rgba(31, 148, 16, 0.61));
+    color: rgba(255, 255, 255, 0.9);
+}
+
+div.countdown{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+div.countdown div{
+    height: 20vh;
+    width: 20vh;
+    font-size: 1.3vw;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img.svg{
+    width: 60%;
+    mix-blend-mode: multiply;
+}
+
+div.carousel-override h1{
+    font-size: 4vw;
+}
+
+.h2-timer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.2rem;
+}
+
+div.step{
+    display: block;
+    width: 1.3vw;
+    height: 1.3vw;
+    border-radius: 5vw;
+    border: .1vw solid rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+
+div.step:hover {
+    transform: scale(1.12);
+}
+
+div.steps{
+    width: 20vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+header div.logo img.logo{
+    width: 17%;
+}
+
+header{
+    overflow: visible;
+}
+
+.homelink{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+nav.mobile{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+div.window img{
+    height: 100%;
+    width: auto;
+}
+
+div.window{
+    overflow: hidden;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+section#about div.about-item{
+    margin-top: 10vh;
+    width: 100vw;
+    opacity: 1;
+    transition: 5s ease;
+    display: flex
+}
+
+div.about-item{
+    width: 100vw;
+    display: flex;
+}
+
+div.about-item img{
+    width: 50%;
+    height: 100%
+}
+
+div.about-item img.infografico-100{
+    width: 100%;
+}
+
+div.about-item p{
+    width: 70%;
+    font-size: 1.3em;
+    background: white;
+    margin-top: 3vh;
+    margin-bottom: 1vh;
+}
+
+div.paragraph-section div{
+    width: 80%
+}
+
+section#about div.op1 {
+    opacity: 1;
+}
+
+section#about h1{
+    margin-top: 2em
+}
+
+section.support{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+section.support h2{
+   text-align: center;
+}
+section.support hr{
+    width: 50%;
+}
+section.support .row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+section.support .row .partner{
+    width: calc(100%/3);
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    transition: transform .5s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+    margin-bottom: 3%
+}
+section.support .row .partner img{
+    max-width: 50%;
+}
+
+section.support .row .partner:hover {
+    transform: scale(1.2);
+}
+
+@media (max-aspect-ratio: 1/1){
+
+    div.about-item{
+        display: block;
+        flex-wrap: wrap;
+    }
+
+    div.about-item img{
+        width: 100%;
+    }
+
+    header{
+        height: 10vh;
+    }
+    nav.mobile{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        /* height: 10vh; */
+        background-color: #ffffff !important;
+    }
+
+    nav.mobile div.nav-header{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 2em;
+        padding: 4vw;
+        margin: 0;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1)
+    }
+
+    nav.mobile div.nav-header a img{
+        height: 6vh
+    }
+
+    nav.mobile div.nav-header button{
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    nav.mobile div.nav-header button i{
+        font-size: 60%;
+        margin: 1vw
+    }
+
+    nav.mobile div.nav-menu{
+        overflow: hidden;
+        display: flex;
+        width: 100%;
+        flex: none;
+        height: 0;
+        transition: 500ms ease-out
+    }
+
+    nav.mobile div.nav-menu ul{
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        border-top: 1px solid #ccc !important;
+    }
+
+    nav.mobile div.nav-menu a{
+        display: flex;
+        flex-grow: 1;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 5%;   
+        font-size: 1.2em;
+        border-top: 1px solid #ccc !important;
+    }
+
+    nav.mobile div.nav-menu li{ 
+        list-style-type: none;
+    }
+
+    ul.list-group{
+        width: 100%;
+    }
+
+    nav.mobile, nav.mobile div.nav-header, nav.mobile div.nav-header{
+        width: 100%;
+    }
+
+    nav.desktop{
+        display: none;
+    }
+
+    a.homelink{
+        display: none;
+    }
+
+    button.menuToggle{
+        border-radius: 1vw;
+        width: 15vw;
+        
+    }
+
+    section div.carousel{
+        height: 90vh;
+    }
+
+    section.carousel-container{
+        margin-top: 10vh;
+    }
+
+    section.carousel-container .window{
+        display: flex;
+        justify-content: center
+    }
+
+    div.carousel-override{
+        top: 10vh;
+        height: 90vh;
+        padding: 10vw;
+    }
+
+    div.carousel-override h1{
+        font-size: 10vw;
+    }
+
+    div.countdown div{
+        height: 10vh;
+        width: 10vh;
+        font-size: 5vw;
+    }
+
+    header nav button.menuToggle{
+        height: 7vh;
+    }
+
+    h2, h3{
+        width: 80vw;
+    }
+
+    main nav.day-selector div.step{
+        width: 10vw;
+        height: 10vw;
+        border: 100%;
+    }
+
+    div.step{
+        width: 5vw;
+        height: 5vw;
+    }
+
+    div.steps{
+        width: 80vw;
+    }
+
+    a[href="#about"]{
+        display: none;
+    }
+
+    div.carousel div.window img{
+        height: 100%;
+        width: auto;
+    }
+
+    section#about h2{
+        font-size: 10vw;
+        margin-top: 0;
+    }
+
+    #info div img {
+        height: 20vh;
+        width: 30vw;
+    }
+    
+    div#info div {
+        justify-content: center;
+        flex-direction: column;
+        padding-bottom: 10vh;
+        text-align: center;
+    }
+    
+    div#info div img {
+        width: 100%;
+        height: 50%;
+        padding-bottom: 2%
+    }
+    
+    #info div:nth-child(even) {
+        flex-direction: column
+    }
+
+    aside{
+        font-size: 5vw;
+        left: 82vw;
+    }
+
+    .mob-hide{
+        flex-direction: column !important;
+        align-items: center !important;
+
+    }
+
+    div.about-item p {
+        width: 90%;
+        font-size: 1em;
+    }
+
+    div.timer h4{
+        font-size: 3vw;
+    }
+
+    div.timer h2{
+        margin: 0;
+    }
+    section.support h2{
+        font-size: 2.5em;
+    }
+    section.support .row{
+        align-items: center;
+        margin-bottom: 4vh
+    }
+    section.support .row .partner{
+        width: 50%;
+    }
+    section.support .row .partner img{
+        max-width: 80%;
+    }
+    section.carousel-container {
+        height: 90vh;
+    }
+
+    .h2-timer {
+        font-size: 2rem;
+    }
+}

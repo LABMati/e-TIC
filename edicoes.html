@@ -9,26 +9,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/webfonts/fontawesome-all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
-    <!-- Bootstrapshit -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-
     <!-- Custom scripts -->
-    <script defer src="js/Poorallax.js"></script>
     <script defer src="js/Scroller.js"></script>
+    <script defer src="js/mobile-menu.js"></script>
     <script defer src="js/edicoes.js"></script>
     
     <!-- Custom style -->
     <link rel="stylesheet" type="text/css" media="screen" href="css/edicoes.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/footer.css" />
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/icon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/icon/favicon.ico" type="image/x-icon">  
+
 </head>
 
 <body>
@@ -37,12 +35,14 @@
             <a href="index.html" class="homelink">
                 <div class="logo" style="overflow: hidden;">
                     <img src="img/png/logo.png" class="logo">
-                    <img src="img/hackathon/Ativo 3.png">
+                    <img src="img/png/etic.png">
                 </div>
             </a>
             <nav class="desktop">
                 <div>
-                    <h4>Edições</h4>
+                    <a href="edicoes.html">
+                        <h4>Edições</h4>
+                    </a>
                 </div>
                 <div>
                     <a href="programacao.html">
@@ -50,43 +50,36 @@
                     </a>
                 </div>
                 <div>
-                    <h4>Hackathon</h4>
+                    <a href="hackathon.html">
+                        <h4>Hackathon</h4>
+                    </a>
                 </div>
                 <div>
-                    <button>Inscreva-se</button>
+                    <a href="jogos.html">
+                        <h4>Jogos</h4>
+                    </a>
+                </div>
+                <div>
+                    <button>Em Breve</button>
                 </div>
             </nav>
-            <nav class="mobile">
-                <div class="panel-group">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                IX ETIC - Hackathon
-                                <a data-toggle="collapse" href="#collapse1">
-                                    <button class="menuToggle">
-                                        <i class="fas fa-bars"></i>
-                                    </button>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapse1" class="panel-collapse collapse">
-                            <ul class="list-group">
-                                <a href="">
-                                    <li class="list-group-item">Edições</li>
-                                </a>
-                                <a href="programacao.html">
-                                    <li class="list-group-item">Programação</li>
-                                </a>
-                                <a href="">
-                                    <li class="list-group-item">Hackathon</li>
-                                </a>
-                                <a href="">
-                                    <li class="list-group-item">Inscreva-se</li>
-                                </a>
-                            </ul>
-                        </div>
-                    </div>
+            <nav class="mobile">                
+                <div class="nav-header">                    
+                    <a href="index.html">
+                        <img src="img/png/logo.png" class="logo">
+                        <img src="img/png/etic.png">
+                    </a>
+                    <button class="menuToggle"><i class="fas fa-bars"></i></button>
                 </div>
+                <div class= "nav-menu">
+                    <ul class="list-group">
+                        <a href="edicoes.html">Edições</a>
+                        <a href="programacao.html">Programação</a>
+                        <a href="hackathon.html">Hackathon</a>
+                        <a href="jogos.html">Jogos</a>
+                        <a href="#">Inscrições em breve</a>
+                    </ul>
+                </div>                
             </nav>
         </header>
         <section>
@@ -121,12 +114,26 @@
                 <h2>e-TIC 2017</h2>
             </div>
             <div id="info">
-                <div><img src="img/e-TIC2017/Info-1.png" alt="">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio, quia ab perspiciatis rem consequuntur modi ea voluptates aliquid sed, veniam architecto cum provident nulla maiores eveniet aliquam deleniti commodi debitis.</div>
-                <div><img src="img/e-TIC2017/Info-2.png" alt="">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio, quia ab perspiciatis rem consequuntur modi ea voluptates aliquid sed, veniam architecto cum provident nulla maiores eveniet aliquam deleniti commodi debitis.</div>
-                <div><img src="img/e-TIC2017/Info-3.png" alt="">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio, quia ab perspiciatis rem consequuntur modi ea voluptates aliquid sed, veniam architecto cum provident nulla maiores eveniet aliquam deleniti commodi debitis.</div>
-                <div><img src="img/e-TIC2017/Info-4.png" alt="">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio, quia ab perspiciatis rem consequuntur modi ea voluptates aliquid sed, veniam architecto cum provident nulla maiores eveniet aliquam deleniti commodi debitis.</div>
+                <div><img src="img/e-TIC2017/Info-1.png" alt="">Durante os 3 dias do evento, mais de 1300 pessoas participaram de atividades distintas como palestras, minicursos, mesas redondas, campeonatos de e-Sposts e maratonas de desenvolvimento.</div>
+                <div><img src="img/e-TIC2017/Info-2.png" alt="">O vídeo de divulgação em nossa página no Facebook alcançaou mais de 20 mil pessoas, gerando repercusão nacional e reconhecimento do evento em outras instituições de ensino pelo país.</div>
+                <div><img src="img/e-TIC2017/Info-3.png" alt="">Além dos participantes terem a oportunidade de aprender com nossos palestrantes, empresas de tecnologia e das mais variadas áreas marcaram presença no evento, assistindo aos projetos apresentados no Hackathon e contribuindo com a construção do evento.</div>
+                <div><img src="img/e-TIC2017/Info-4.png" alt="">Por último mas não menos importantes, mais de 50 instituições de ensino e pesquisa participaram do evento, mostrando que o VII eTIC foi um evento que beneficiou as mais diversar áreas, com oportunidades de aprendizado, empresariais e acadêmicas.</div>
             </div>
         </section>
+        <footer>
+            <div class="side">
+                <h2>Endereço</h2>
+                <hr>
+                <span>Rua Joaquim Garcia S/N - Caixa Postal Nº 2016</span>
+                <span>CEP 88340-055 - Camboriú - SC</span>
+            </div>
+            <div class="side">
+                <h2>Contato</h2>
+                <hr>
+                <span>Fone: (47) 2104-0800</span>
+                <span>E-mail: etic@ifc-camboriu.edu.br</span>
+            </div>
+        </footer>
     </main>
 </body>
 
