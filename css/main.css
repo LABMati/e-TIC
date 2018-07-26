@@ -98,14 +98,10 @@ header{
 
 header nav {
     display: flex;
-    width: 70vw;
+    width: 60vw;
     justify-content: space-evenly;
     list-style: none;
     align-items: center;
-}
-
-header a.homelink{
-    width: 30vw;
 }
 
 header nav.desktop div {
@@ -518,14 +514,12 @@ section.support .row .partner:hover {
         width: 100%;
         flex: none;
         height: 0;
-        transition: 500ms ease-out
+        transition: 300ms ease-out
     }
 
     nav.mobile div.nav-menu ul{
         padding: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
+        display: grid;
         height: 100%;
         border-top: 1px solid #ccc !important;
     }
