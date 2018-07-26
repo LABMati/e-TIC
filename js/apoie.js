@@ -12,7 +12,7 @@ async function sendEmail() {
         "message": form.querySelector('textarea[name="mensagem"]').value,
         "phone": form.querySelector('input[name="telefone"]').value
     })
-    let response = await fetch('http://127.0.0.1/contact_me.php', {
+    let response = await fetch('http://etic.ifc-camboriu.edu.br/2018/contato.php', {
         method: 'POST',
         body: body
     });

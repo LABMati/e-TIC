@@ -98,10 +98,14 @@ header{
 
 header nav {
     display: flex;
-    width: 60vw;
+    width: 70vw;
     justify-content: space-evenly;
     list-style: none;
     align-items: center;
+}
+
+header a.homelink{
+    width: 30vw;
 }
 
 header nav.desktop div {
