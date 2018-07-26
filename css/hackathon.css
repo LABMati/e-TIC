@@ -14,6 +14,7 @@ section div.carousel div.window div.window-item{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center
