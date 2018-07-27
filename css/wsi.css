@@ -1,0 +1,35 @@
+section div.center ul{
+    font-size: 1.1em;
+}
+section div.center ul li {
+    margin-top: 1em;
+}
+
+section div.center div.ul-container{
+    width: 70vw;
+    display: flex;
+}
+
+section div.center div.ul-container ul{
+    flex-grow: 1;
+}
+
+@media (max-aspect-ratio: 1/1){
+    section div.center div.ul-container{
+        flex-direction: column;
+        width: 90vw;
+    }
+}
+
+section div.center div.data-container{
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
+section div.center div.data-container h3{
+    font-weight: bold;
+    font-size: 1.7em;
+}

@@ -19,6 +19,15 @@ async function sendEmail() {
     let values = await response.json()
     if (!values.result)
         swal("Erro!", values.body, "error");
-    else
+    else{
         swal("Obrigado!", '', "success");
+        clearFields()
+    }
+}
+
+function clearFields(){
+    let fields = document.querySelectorAll("input, textarea")
+    for (let field of fields) {
+        field.value = ""
+    }
 }
