@@ -77,6 +77,13 @@ a.more{
     z-index: 5;
 }
 
+button.regulamento{
+    width: 20vw;
+    height: 10vh;
+    background: #379846;
+    margin-top: 5vh;
+}
+
 div.info{
     margin-top: 100vh;
     padding-top: 15vh;

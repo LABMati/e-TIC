@@ -19,7 +19,7 @@ main nav.day-selector div{
 }
 
 main nav.day-selector div:hover{
-    filter: brightness(120%);
+    filter: brightness(105%);
 }
 
 section{
@@ -30,6 +30,13 @@ section{
 section#about div.cd-schedule {
     width: 80%;
     height:80%;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.hidden{
+    display: none !important;
 }
 
 ul li.palestra{
@@ -68,6 +75,7 @@ div.window{
 
 .cd-schedule .events .events-group > ul > li > a > em{
     font-size: 100%;
+    color: white;
 }
 
 .cd-schedule > .events .events-group > ul > .single-event{
@@ -81,23 +89,23 @@ div.window{
 }
 
 .segunda{
-    background: #0d7b34 !important;
+    background: #3aa05e !important;
 }
 
 .terca{
-    background: #0d7b34 !important;
+    background: #3aa05e !important;
 }
 
 .quarta{
-    background: #0d7b34 !important;
+    background: #3aa05e !important;
 }
 
 .quinta{
-    background: #23a538 !important;
+    background: #3aa05e !important;
 }
 
 .sexta{
-    background: #23a538 !important;
+    background: #3aa05e !important;
 }
 
 .swal2-popup .swal2-styled.swal2-confirm{
@@ -113,6 +121,30 @@ h2.toggleHide{
     color: #2200CC;
 }
 
+div.daySelection{
+    width: 40vw;
+    display: flex;
+    height: 10vh;
+    margin-top: 5vh;
+}
+
+div.daySelection > button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    font-size: 2em;
+    user-select: none;
+    color: white;
+    background: #379846;
+    margin-left: 1vw;
+    transition: .5s ease-in-out;
+}
+
+div.daySelection > button:focus{
+    transform: scale(1.1)
+}
+
 @media (max-aspect-ratio:1/1){
     main nav.day-selector div.step{
         width: 15vw;
@@ -123,6 +155,13 @@ h2.toggleHide{
     section{
         overflow-x: hidden;
         margin-top: 10vh;
+    }
+
+    div.daySelection{
+        width: 80vw;
+        display: flex;
+        height: 10vh;
+        margin-top: 5vh;
     }
     
 }

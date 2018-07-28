@@ -5,7 +5,7 @@ class Scroller {
         this.currentWindow = this.windows[0]
         this.current = 0
         this.toLeft = (container.scrollWidth > container.offsetWidth)
-        this.steps = document.querySelectorAll("div.step")
+        this.steps = document.querySelectorAll(".step")
         this.max = max-1
         this.setup()
     }

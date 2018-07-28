@@ -14,11 +14,10 @@ section div.center div.ul-container ul{
     flex-grow: 1;
 }
 
-@media (max-aspect-ratio: 1/1){
-    section div.center div.ul-container{
-        flex-direction: column;
-        width: 90vw;
-    }
+button.g-form{
+    width: 20vw;
+    height: 10vh;
+    background: #379846;
 }
 
 section div.center div.data-container{
@@ -26,6 +25,30 @@ section div.center div.data-container{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+}
+
+@media (max-aspect-ratio: 1/1){
+    section div.center div.ul-container{
+        flex-direction: column;
+        width: 90vw;
+    }
+
+    button.g-form{
+        width: 70vw;
+        height: 10vh;
+        background: #379846;
+    }
+
+    section div.center div.data-container{
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+    }    
+}
+
+a.green-link{
+    color: #379846 !important;
+    text-decoration: underline;
 }
 
 

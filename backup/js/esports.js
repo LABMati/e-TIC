@@ -1,15 +1,22 @@
-const lol = document.querySelector("div.slide-lol")
-const csgo = document.querySelector("img.cszinho")
+let mediaQuery = window.matchMedia("(max-aspect-ratio: 1/1)")
+let header = document.querySelector("header")
+let mobileheader = document.querySelector("nav.mobile")
+let overlay = document.querySelector(".video-overlay")
+let video = document.querySelector("video")
 
-window.addEventListener("scroll", ev=>{
-    console.log("ae")
-    if(scrollY > 200){
-        console.log("ae")
-        slideEsports()
-    }
-})
+video.play()
 
-function slideEsports(){
-    lol.style.left = "10vw"
-    csgo.style.left = "70vw"
-}
+// window.addEventListener("scroll", ev=>{
+//     if(window.scrollY < innerHeight){
+//         header.style.opacity = "0"
+//         header.style.zIndex = '-4'
+//     }
+//     else{
+//         header.style.opacity = '1'
+//         header.style.zIndex = '2'
+//     }
+// })
+
+
+
+setTimeout(()=>overlay.style.height = video.offsetHeight + 'px', 1000)

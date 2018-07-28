@@ -2,6 +2,11 @@
     margin: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    
+}
+
+div{
+    font-family: Ubuntu !important;
 }
 
 h1, h2, h3, h4, h5, h5{
@@ -93,10 +98,14 @@ header{
 
 header nav {
     display: flex;
-    width: 60vw;
+    width: 70vw;
     justify-content: space-evenly;
     list-style: none;
     align-items: center;
+}
+
+header a.homelink{
+    width: 30vw;
 }
 
 header nav.desktop div {
@@ -125,11 +134,14 @@ button:focus {
     outline: 0
 }
 
+
 button:hover {
     box-shadow: -2px 2px 1px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
-
+div.parl{
+    background-attachment: fixed;
+}
 div.logo{
     display: flex;
     justify-content: space-evenly;
@@ -494,6 +506,10 @@ section.support .row .partner:hover {
     nav.mobile div.nav-header button i{
         font-size: 60%;
         margin: 1vw
+    }
+
+    .swal2-container{
+        font-family: Ubuntu;
     }
 
     nav.mobile div.nav-menu{
