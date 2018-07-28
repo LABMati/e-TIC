@@ -138,6 +138,13 @@ td, th{
 
 @media (max-aspect-ratio: 1/1){
 
+    button.regulamento{
+        width: 80vw;
+        height: 10vh;
+        background: #379846;
+        margin-top: 5vh;
+    }    
+
     .bg-video video{
         width: auto;
         height: 100%;
