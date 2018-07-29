@@ -87,7 +87,9 @@ div.window{
 .cd-schedule > .events .events-group > ul > .single-event:hover{
     filter: brightness(120%)    
 }
-
+.cd-schedule .events .top-info > span{
+    font-weight: bold !important
+}
 .segunda{
     background: #3aa05e !important;
 }
@@ -122,26 +124,32 @@ h2.toggleHide{
 }
 
 div.daySelection{
-    width: 40vw;
+    width: 100%;
     display: flex;
-    height: 10vh;
-    margin-top: 5vh;
+    height: 12vh;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color:#117D36;
 }
-
-div.daySelection > button{
+div.daySelection div.container{
+    display: flex;
+    width: 80vw;
+    justify-content: space-around
+}
+div.daySelection div.container button{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-grow: 1;
+    width: 12vw;
+    height: 8vh;
     font-size: 2em;
     user-select: none;
     color: white;
     background: #379846;
-    margin-left: 1vw;
     transition: .5s ease-in-out;
 }
 
-div.daySelection > button:focus{
+div.daySelection div.container button:focus{
     transform: scale(1.1)
 }
 

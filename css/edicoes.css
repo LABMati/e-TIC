@@ -5,12 +5,7 @@ div.about-item {
 #info {
     justify-content: space-between;
     align-items: center;
-    height: 100vh;
     flex-direction: column;
-}
-
-section#about{
-    height: 150vh !important;
 }
 
 #info div {
@@ -29,10 +24,6 @@ section#about{
     width: 30vw;
 }
 
-div.carousel-override{
-    height: 80vh !important;
-}
-
 @media (max-aspect-ratio: 1/1){
 
     div.carousel-override{
@@ -42,14 +33,6 @@ div.carousel-override{
 
     main section{
         margin-top: 10vh;
-    }
-
-    div#info{
-        /* margin-top: 10vh; */
-    }
-
-    section#about{
-        height: 300vh !important;
     }
     
 }

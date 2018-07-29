@@ -1,4 +1,4 @@
-let header = document.querySelector("header")
+// let header = document.querySelector("header")
 let aboutBut = document.querySelector("div.more")
 let about = document.querySelectorAll("section#about div.about-item")
 let steps = document.querySelectorAll(".step")

@@ -1,6 +1,6 @@
-let mediaQuery = window.matchMedia("(max-aspect-ratio: 1/1)")
-let header = document.querySelector("header")
-let mobileheader = document.querySelector("nav.mobile")
+// let mediaQuery = window.matchMedia("(max-aspect-ratio: 1/1)")
+// let header = document.querySelector("header")
+// let mobileheader = document.querySelector("nav.mobile")
 let overlay = document.querySelector(".video-overlay")
 let video = document.querySelector("video")
 

@@ -71,7 +71,7 @@ section{
     justify-content: center;
     align-items: center;
     flex-direction: column; 
-    margin-top: 20vh;
+    margin-top: 16vh;
 }
 section h2{
     text-align: center
@@ -83,30 +83,33 @@ a{
 }
 
 header{
-    height: 20vh;
+    height: 16vh;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     background: #fff;
-    z-index: 4;
+    z-index: 6;
     transition: .7s ease;
     box-shadow: 0 .4vh .4vh #e6e6e6;
 }
 
 header nav {
-    display: flex;
-    width: 60vw;
-    justify-content: space-evenly;
-    list-style: none;
+    display: grid;
+    grid-auto-flow: column;
     align-items: center;
+    width: 60vw;
+    list-style: none;
     padding: 1%;
 }
 
 header nav.desktop div {
-    width: 20vw;
+    display: flex;
+    justify-content: center;
+    flex-grow: 0
 }
 
 button {
@@ -147,10 +150,10 @@ div.logo{
 }
 
 div.logo > img{
-    width: 15vw; 
+    height: 12vh; 
 }
 
-header div{
+header > a >div{
     width: 40vw;
 }
 
@@ -165,9 +168,11 @@ section.carousel-container{
 }
 
 div.carousel{
-    height: 80vh;
+    height: 84vh;
     width: 100%;
     will-change: transform;
+    display: flex;
+    transition: 500ms ease-in-out transform;
 }
 
 section div.more{
@@ -215,6 +220,7 @@ a.green_link{
 
 section#about{
     justify-content: flex-start;
+    margin-bottom: 10vh;
 }
 
 section#about h2{
@@ -225,16 +231,6 @@ main p{
     width: 80%;
     font-size: 1.3em;
     text-align: justify 
-}
-
-a:hover{
-    color: #379846;
-}
-
-div.carousel{
-    display: flex;
-    transition: 500ms ease-in-out;
-    /* overflow: hidden; */
 }
 
 aside{
@@ -263,7 +259,6 @@ div.carousel div.window {
     width: 100%;
     height: 100%;
     flex: none;
-    transition: ease 1s;
 }
 
 
@@ -272,11 +267,11 @@ div.carousel div.window img{
 }
 
 div.carousel-override{
-    height: 80vh;
+    height: 84vh;
     width: 100%;
     flex: none;
     position: absolute;
-    top: 20vh;
+    top: 16vh;
     left: 0;
     display: flex;
     justify-content: space-evenly;
@@ -346,11 +341,14 @@ div.steps{
 }
 
 header div.logo img.logo{
-    width: 17%;
+    height: 12vh;
 }
-
-header{
-    overflow: visible;
+header a h4{
+    transition: 300ms ease transform
+}
+header a h4:hover{
+    color: #379846;
+    transform: scale(1.05)
 }
 
 .homelink{
@@ -383,7 +381,7 @@ section#about div.about-item{
     margin-top: 10vh;
     width: 100vw;
     opacity: 1;
-    transition: 5s ease;
+    transition: 5s ease opacity;
     display: flex
 }
 
@@ -662,7 +660,6 @@ section.support .row .partner:hover {
 
     div.about-item p {
         width: 90%;
-        font-size: 1em;
     }
 
     div.timer h4{
