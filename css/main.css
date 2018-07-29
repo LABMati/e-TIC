@@ -142,6 +142,7 @@ button:hover {
 div.parl{
     background-attachment: fixed;
 }
+
 div.logo{
     display: flex;
     justify-content: space-evenly;
@@ -149,12 +150,17 @@ div.logo{
     align-items: center;
 }
 
-div.logo > img{
-    height: 12vh; 
+header a {
+    height: 100%;
 }
 
-header > a >div{
+header > a > div{
+    height: 100%;
     width: 40vw;
+}
+
+header > a > div > img{
+    height: 80%;
 }
 
 header nav div h4{
@@ -340,9 +346,6 @@ div.steps{
     align-items: center;
 }
 
-header div.logo img.logo{
-    height: 12vh;
-}
 header a h4{
     transition: 300ms ease transform
 }

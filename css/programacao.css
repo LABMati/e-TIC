@@ -19,7 +19,7 @@ main nav.day-selector div{
 }
 
 main nav.day-selector div:hover{
-    filter: brightness(105%);
+    filter: brightness(60%);
 }
 
 section{
@@ -85,28 +85,14 @@ div.window{
 }
 
 .cd-schedule > .events .events-group > ul > .single-event:hover{
-    filter: brightness(120%)    
+    filter: brightness(105%)    
 }
+
 .cd-schedule .events .top-info > span{
     font-weight: bold !important
 }
-.segunda{
-    background: #3aa05e !important;
-}
 
-.terca{
-    background: #3aa05e !important;
-}
-
-.quarta{
-    background: #3aa05e !important;
-}
-
-.quinta{
-    background: #3aa05e !important;
-}
-
-.sexta{
+.event-bg{
     background: #3aa05e !important;
 }
 
@@ -128,8 +114,8 @@ div.daySelection{
     display: flex;
     height: 12vh;
     align-items: center;
+    margin-top: 5vh;
     justify-content: space-evenly;
-    background-color:#117D36;
 }
 div.daySelection div.container{
     display: flex;
@@ -154,6 +140,16 @@ div.daySelection div.container button:focus{
 }
 
 @media (max-aspect-ratio:1/1){
+    div.daySelection div.container button{
+        height: 12vw;
+        width: 12vw;
+        font-size: .8em;
+    }
+
+    .cd-schedule .events .mobileHide{
+        display: none;
+    }
+
     main nav.day-selector div.step{
         width: 15vw;
         height: 15vw;
