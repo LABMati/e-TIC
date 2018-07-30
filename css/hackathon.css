@@ -56,7 +56,7 @@ div.info{
     flex-direction: column;
 }
 div.info div.center{
-    background-image: url('../img/hackathon/final1.png');
+    background-image: url('../img/hackathon/final1-min.png');
     height: 50vmin;
     width: 50vmin;
     background-position: center;
@@ -85,10 +85,10 @@ div.parl{
     background-size: cover;
 }
 div.about div.parl{
-    background-image: url('../img/hackathon/about.jpg');
+    background-image: url('../img/hackathon/about-min.jpg');
 }
 div.how-works div.parl{
-    background-image: url('../img/hackathon/hack.jpg');
+    background-image: url('../img/hackathon/hack-min.jpg');
 }
 div.before div{
     width: 80%;
