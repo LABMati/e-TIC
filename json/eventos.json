@@ -11,7 +11,7 @@
     {
         "nome": "IoT - O controle de Tudo na Palma da sua Mão",
         "inicio": "08:00",
-        "final": "",
+        "final": "10:00",
         "descricao": "Tecnólogo em Automação Industrial com experiência no desenvolvimento de sistemas eletrônicos embarcados para diversas soluções. Atua no ensino técnico de eletroeletrônica e programação e é criador do canal do Youtube Eletrônica Fácil, onde atualmente possui mais de 68.000 Inscritos e mais de 300 vídeo aulas sobre as diversas áreas do mundo da eletroeletrônica. Palestrante em diversos eventos de tecnologia como Campus Party, Arduino Day e Latinoware, tem como principal interesse e motivação, inovar na área de aprendizado técnico através de vídeo aulas, palestras, workshops e cursos com didática simples e diferenciada, focando no aprendizado de todas as pessoas interessadas em evoluir profissionalmente e na melhoria da educação do Brasil. Seu Target é empreender e inovar com foco na evolução técnica do mundo da eletroeletrônica e automação tornando o mundo melhor e fazendo a diferença na comunidade DIY - Faça Você mesmo. <br> Canal no Youtube: www.youtube.com/eletronicafacil <br> Site Oficial: www.eletronicafacil.net",
         "palestrante": "Rodolpho Chrispim de Oliveira",
         "local": "Auditório",
@@ -19,8 +19,8 @@
     },
     {
         "nome": "Inteligência Artificial - Como estamos ensinando os supercomputadores pensarem",
-        "inicio": "09:45",
-        "final": "",
+        "inicio": "10:00",
+        "final": "12:00",
         "descricao": "O mundo está sendo transformado por algumas coisas que você já deve ter ouvido falar, como inteligência artificial, blockchain, big data, aprendizado de máquina e redes neurais. Se você não ouviu falar em nada nisso, você provavelmente estava em algum sono criogênico nos últimos três anos. Essa palestra vai falar um pouco de como as máquinas fazem para aprender coisas que humanos faziam com maestria e, hoje, são superados pelas máquinas. E uma surpresa: vou falar disso tudo sem envolver matemática. Vem!",
         "palestrante": "Johannes Von Lochter",
         "local": "Auditório",
@@ -46,11 +46,11 @@
     },
     {
         "nome": "Edição com Photoshop",
-        "inicio": "",
-        "final": "",
+        "inicio": "14:00",
+        "final": "17:00",
         "descricao": "",
         "palestrante": "Nicolas Lima",
-        "local": "",
+        "local": "Bloco B - Laboratórios de Informática",
         "id": "6"
     },
     {
@@ -59,16 +59,16 @@
         "final": "",
         "descricao": "",
         "palestrante": "Gabriel Pereira",
-        "local": "",
+        "local": "Bloco B - Laboratórios de Informática",
         "id": "7"
     },
     {
-        "nome": "Prezi: criando apresentações dinâmicas",
-        "inicio": "",
-        "final": "",
+        "nome": " Soldagem de PCB e Programação de Arduino para iniciantes",
+        "inicio": "13:00",
+        "final": "17:00",
         "descricao": "",
-        "palestrante": "Tatiana Tozzi",
-        "local": "",
+        "palestrante": "Rodolpho Chrispim de Oliveira",
+        "local": "Bloco B - Laboratórios de Informática",
         "id": "8"
     },
     {
@@ -113,7 +113,7 @@
         "final": "",
         "descricao": "",
         "palestrante": "Nicolas Lima",
-        "local": "",
+        "local": "Bloco B - Laboratórios de Informática",
         "id": "13"
     },
     {
@@ -122,7 +122,7 @@
         "final": "",
         "descricao": "",
         "palestrante": "Fernando Luiz Moro",
-        "local": "",
+        "local": "Bloco B - Laboratórios de Informática",
         "id": "14"
     },
     {
@@ -131,7 +131,7 @@
         "final": "",
         "descricao": "",
         "palestrante": "Marcelo Machado",
-        "local": "",
+        "local": "Bloco B - Laboratórios de Informática",
         "id": "15"
     },
     {
@@ -140,7 +140,7 @@
         "final": "",
         "descricao": "",
         "palestrante": "Alana Miranda",
-        "local": "",
+        "local": "Bloco B - Laboratórios de Informática",
         "id": "16"
     },
     {
@@ -203,7 +203,7 @@
         "final": "",
         "descricao": "",
         "palestrante": "",
-        "local": "",
+        "local": "Bloco B - Laboratórios de Informática",
         "id": "23"
     },
     {
@@ -221,7 +221,7 @@
         "final": "",
         "descricao": "",
         "palestrante": "Luiz Moscatelli",
-        "local": "",
+        "local": "Bloco B - Laboratórios de Informática",
         "id": "25"
     },
     {
@@ -230,7 +230,7 @@
         "final": "",
         "descricao": "",
         "palestrante": "LABMat(i)²",
-        "local": "",
+        "local": "Bloco B - Laboratórios de Informática",
         "id": "26"
     },
     {
@@ -239,7 +239,7 @@
         "final": "",
         "descricao": "",
         "palestrante": "Tatiana Tozzi",
-        "local": "",
+        "local": "Bloco B - Laboratórios de Informática",
         "id": "27"
     },
     {
@@ -257,7 +257,7 @@
         "final": "",
         "descricao": "",
         "palestrante": "Carlos Gabriel Godri",
-        "local": "",
+        "local": "Bloco B - Laboratórios de Informática",
         "id": "29"
     },
     {
@@ -266,7 +266,7 @@
         "final": "",
         "descricao": "",
         "palestrante": "TeamTSI16",
-        "local": "",
+        "local": "Bloco B - Laboratórios de Informática",
         "id": "30"
     },
     {
@@ -275,7 +275,7 @@
         "final": "",
         "descricao": "",
         "palestrante": "Jonas Ribas",
-        "local": "",
+        "local": "Bloco B - Laboratórios de Informática",
         "id": "31"
     },
     {
@@ -340,5 +340,32 @@
         "palestrante": "",
         "local": "Auditório",
         "id": "37"
+    },
+    {
+        "nome": "Aplicativos móveis híbridos com Ionic 3",
+        "inicio": "14:00",
+        "final": "17:00",
+        "descricao": "",
+        "palestrante": "Edson Pagliochi",
+        "local": "Bloco B - Laboratórios de Informática",
+        "id": "38"
+    },
+    {
+        "nome": "Desenvolvendo um site com PHP e Bootstrap",
+        "inicio": "14:00",
+        "final": "17:00",
+        "descricao": "",
+        "palestrante": "Isaque Palmieri",
+        "local": "Bloco B - Laboratórios de Informática",
+        "id": "39"
+    },
+    {
+        "nome": "WebCrawling com Python: Mineração web descomplicada",
+        "inicio": "08:00",
+        "final": "12:00",
+        "descricao": "",
+        "palestrante": "Rodrigo Ribeiro",
+        "local": "Bloco B - Laboratórios de Informática",
+        "id": "40"
     }
 ]
