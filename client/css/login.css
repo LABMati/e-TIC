@@ -44,7 +44,7 @@ div.container{
 
 /* Mobile overrides */
 
-@media (max-aspect-ratio: 2/1){
+@media (max-aspect-ratio: 9/7){
     div.form div.row{
         width: 100%;
     }
@@ -217,7 +217,7 @@ i.fa-exclamation{
     visibility: hidden;
 }
 
-@media only screen and (max-aspect-ratio: 2/1) {
+@media only screen and (max-aspect-ratio: 9/7) {
     div.header > img {
         margin-bottom: 3.2vw;
         width: 25%;
