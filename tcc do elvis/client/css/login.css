@@ -194,17 +194,33 @@ i.fa-exclamation{
     }
 }
 @media only screen and (max-width: 400px) {
-	a.a_cadastro{
-		margin-left: 35%;
-	}
-	div.container{
-        height: 99vh;
+    body {
+        height: 160vw;
+    }
+    div.container{
+        height: 160vw;
+        width: 80vw
     }
     .alert{
         width: 70% !important;
     }
+    div.rowEntrar {
+        align-items: center;
+        flex-direction: column;
+        margin-left: 0;
+        height: 36vw;    
+    }
+    div.rowEntrar button, a {
+        width: 100%;
+        height: 9.6vw;
+    }
+    input#login, input#senha {
+        height: 9.9vw;
+    }
+    div.input-group label {
+        width: 20vw
+    }
 }
-
 i.sobeImg{
 	transform: translateY(-10px) translate3d(0,0,0);
     font-size: 15px;

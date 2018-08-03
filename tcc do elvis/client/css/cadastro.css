@@ -86,9 +86,6 @@ form button{
 		width: 50vw;
 		margin-bottom: 3.2vw;
 	}
-	form > p{
-		text-align: center
-	}
 	form button{
 		width: 90vw
 	}
@@ -110,5 +107,25 @@ form button{
 	form button{
 		height: 13vw;
 		margin-top: 3.2vw;
+	}
+}
+@media (max-width: 400px) {
+	form {
+		width: 80%
+	}
+	form > p {
+		position: relative;
+		left: 5%;
+		width: 100%;
+	}
+	form div.user-data input {
+		height: 10vw;
+	}
+	form div.user-data p {
+		text-align: center;
+	}
+	form button {
+		width: 80vw;
+		height: 10vw;
 	}
 }
