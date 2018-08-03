@@ -1,0 +1,446 @@
+		
+		.grid-container {
+		  display: grid;
+		  grid-template-columns: 15% 85%;
+		  grid-template-rows: auto;
+		  grid-template-areas: 'menu  main';
+		}
+		.menu {
+			grid-area: menu;
+		}
+		.main {
+			grid-area: main;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			min-height: 100vh;
+			border: 1px solid var(--corPlaceholder);
+		}
+		
+
+		*{
+			margin: 0px;
+			padding: 0px;
+			box-sizing: border-box;
+			font-family: 'Roboto Slab', serif;
+		}
+		body{
+			background: url("../imagens/background.png");
+			overflow-x: hidden;
+		}
+
+		table{
+			display: flex;
+			flex-direction: column;
+		}
+
+		table tr{
+			display: flex;
+			flex-grow: 1;
+			width: 100%;
+		}
+
+		table > tr > th{
+			display: flex;
+			width: 15%;
+			flex-wrap: wrap;
+			overflow-x: hidden;
+			padding-left: 1vw;
+		}
+
+		table > tr th:nth-child(4){
+			padding: 0;
+		}
+
+		table > tr th:nth-child(1), table > tr th:nth-child(2){
+			width: 35%;
+		}
+
+		select {
+			width: 100%;
+		}
+
+		div.containerMain{
+			width: var(--tamContainerListarAtividades);
+			display: flex;
+			text-align: center;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+			/*margin: 1%;*/
+		}
+		h1.headerMain{
+			width: 100%;
+			color: var(--corTitulo);
+			margin-bottom: 2vh;
+			background-color: var(--corPrincipal);
+			line-height: 3;
+			text-transform: uppercase;
+			border: none;
+		}
+		span{
+			color: var(--corTexto);
+		}
+		button{
+			line-height: 2;
+    		font-size: 19px;
+			border: none;
+			color: var(--corTextoBotao);
+			background-color: var(--corBotao);
+			text-overflow: ellipsis;
+		    overflow: hidden;
+		}
+
+		div.divTituloListarAtividades{
+			display: flex;
+		}
+		.tituloListarAtividades{
+			flex-basis: 100%;
+			font-weight: bold;
+		}
+		.editarListarAtividades{
+			flex-basis: 10%;
+			color: black;
+		}
+		.excluirListarAtividades{
+			flex-basis: 10%;
+			color: black;
+		}
+	
+		
+		/*INICIO MENU*/
+		div.menu{
+			background-color: var(--corPrincipal);
+			border: none;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+		    padding-top: 10vh;
+		    padding-left: 5%;
+		    padding-right: 5%;
+		}
+		div.divMenu{
+			display: flex;
+			flex-direction: column;
+		}
+		div.divMenu button{
+		    height: 50px;
+		    font-size: 15px;  
+		    border-bottom: 0.5px solid var(--corBordaTop);
+		  /*  color: white;*/
+		    background-color: transparent;
+		    text-align: justify;
+		    padding-left: 5%;
+		}
+		/*FIM MENU*/
+
+		
+		/*INICIO LISTAR ATIVIDADES*/
+		div.atividade{
+			flex-basis: 31%;
+		    line-height: 2;
+		    margin: 1%;
+		    margin-top: 0;
+		    padding: 1%;
+		    background-color: white;
+		    overflow: hidden;
+		    display: flex;
+		    flex-direction: column;
+		    border: 2px solid var(--corPrincipal);
+		    box-shadow: 0 4px 2px -2px grey;
+		}
+		div.btnAtividade{
+			width: 100%;
+			margin: 0px;
+			padding: 0px;
+			text-overflow: ellipsis;
+		    overflow: hidden;
+		    white-space: nowrap;
+		    flex-grow: 1;
+		    display: flex;
+		    align-items: flex-end;
+		}
+		div.atividade button{
+			width: 49%;
+			height: 35px;
+		}
+		div.atividade button:nth-child(1){
+			border-right:  1px solid white;
+		}
+		div.atividade h2{
+			color: var(--corTitulo);
+			text-overflow: ellipsis;
+    		overflow: hidden;
+		}
+		div.atividade h3{
+			color: var(--corTexto);
+		}
+		/*FIM LISTAR ATIVIDADES*/
+		
+
+		/* INICIO MODAL ATIVIDADES*/
+		.modal {
+		    display: none;
+		    position: fixed;
+		    z-index: 1;
+		    padding-top: 100px;
+		    left: 0;
+		    top: 0;
+		    width: 100%;
+		    height: 100%;
+		    overflow: auto;
+		    background-color: #181717ab;
+		}
+		.modal-content {
+		    background-color: #fefefe;
+		    margin: auto;
+		    padding: 20px;
+		    border: 1px solid #888;
+		    width: 40%;
+		    text-align: center;
+		    border: 1px outset var(--corBorda);
+    		border-top: 3px outset var(--corBordaTop);
+    	}
+		.modal-content h3 {
+			line-height: 2;
+		}
+		.modal-content p {
+			margin-bottom: 1%;
+		}
+		.close {
+		    float: right;
+		    font-size: 28px;
+		    font-weight: bold;
+		    margin-top: -20px;
+    		color: red;
+		}
+		.close:hover,
+		.close:focus {
+		    color: var(--corTexto);
+		    text-decoration: none;
+		    cursor: pointer;
+		}
+		/*FIM MODAL ATIVIDADES*/
+
+
+		/*INICIO CRIAR ATIVIDADES*/
+		div.criarAtividade{
+			margin: auto;
+			width: 60%;
+			display: flex;
+			text-align: center;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		/*	border: 1px solid var(--corBorda);
+			border-top: 3px solid var(--corBordaTop);*/
+			border: 2px solid var(--corPrincipal);
+    		background-color: var(--corFundoTags);
+    		box-shadow: 0 4px 2px -2px grey;
+		}
+		div.criarAtividade .row{
+			width: 95%;
+			padding: 5px;
+			margin: 1%;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+		}
+		div.divPaiApresentadores{
+			background-color: var(--corPrincipal);
+			position: absolute;
+			overflow: auto;
+			width: 45%;
+			margin-top: 36px;
+			display: flex;
+			line-height: 2;
+			flex-direction: column;
+		}
+		div.divPaiApresentadores div{
+			border-bottom: 1px solid black;
+			color: var(--corTexto);
+		}
+		div.criarAtividade .row input,div.criarAtividade .row textarea, div.criarAtividade .row select,div.criarAtividade .row button{
+			width: 100%;
+			line-height: 2;
+			margin: 1%;
+			border: none;
+			color: var(--corTexto);
+			background-color: transparent;
+			font-size: 14px;
+			outline: none;
+		}
+		div.criarAtividade .row button{
+			color: var(--corTextoBotao);
+		}
+		div.criarAtividade .row input,div.criarAtividade .row textarea,div.criarAtividade .row select{
+			border-bottom: 1px solid black;
+		}
+		div.criarAtividade .row button:nth-child(1){
+			border-right:  1px solid white;
+		}
+		div.criarAtividade .row.btnCriarAtividade{
+			background-color: var(--corBotao);
+			width: 95%;
+		}
+		div.criarAtividade .row h1{
+			color: var(--corTexto);
+			text-transform: uppercase;
+		}
+		div.criarAtividade .row input::placeholder, div.criarAtividade .row textarea::placeholder { 
+		   color: var(--corTexto);
+		}
+		/*FIM CRIAR ATIVIDADES*/
+
+
+
+		/*INICIO TABELA PERMISSOES*/
+		table.tabelaPermissoes{
+			width: 80%;
+    		border: 2px solid var(--corPrincipal);
+    		background-color: var(--corFundoTags);
+			box-shadow: 0 4px 2px -2px grey;
+			border-spacing: 0;
+		}
+		table.tabelaPermissoes tr{
+			line-height: 2;
+			width: 100%;
+		}
+		table.tabelaPermissoes tr th{
+			border-right: 2px solid white;
+			color: var(--corTexto);
+			font-weight: 300;
+		}
+
+		table.tabelaPermissoes tr:nth-child(odd){
+			background: rgba(15, 104, 4, 0.61);
+			color: white !important;
+		}
+
+		table.tabelaPermissoes tr:nth-child(1) th{
+			background-color: rgba(15, 104, 4, 0.61);
+			color: white !important;
+			text-transform: uppercase;
+		}
+		/*FIM TABELA PERMISSOES*/
+
+
+		button.btnImprimir{
+			width: 80%;
+			float: right;
+			font-weight: bold;		
+			font-size: 1em;
+			background-color: var(--corPrincipal);
+		}
+		
+		.tabelaChamadaForcada{
+		    line-height: 2;
+		    background-color: #04665d;
+		    border: 2px outset #04665d;
+		    margin: 1%;
+		}
+		.row{
+			line-height: 2;
+			width: 100%;
+			color: var(--corTexto);
+		}
+		button.btnChamada{
+			width: 100%;
+			border-bottom: 1px solid;
+		}
+		.fa-bars{
+			display: none;
+		}
+
+		div.more-menu{
+			display: none;
+		}
+
+		@keyframes transicaoEntrada {
+		    0%   {transform: translateX(+100vmax);}
+		    25%   {transform: translateX(+75vmax);}
+		    50%   {transform: translateX(+50vmax);}
+		    75%   {transform: translateX(+25vmax);}
+		    100% {transform: translateX(0vmax);}
+		}
+		.transicaoEntrada{
+			animation: transicaoEntrada linear .7s;
+		}	
+
+		@media print {
+			.main{
+				align-items: baseline;
+			}
+			.grid-container {
+				grid-template-columns: 100%;
+				grid-template-areas: 'main';
+			}
+			.noPrint{
+				display: none;
+			}
+			div.containerMain{
+				width: 100%;
+			}
+			table{
+				border: none !important;				
+			}
+			tr{			
+			 	page-break-inside: avoid;
+			}
+			th{
+				border: 1px solid black !important;
+			}
+		}
+		@media only screen and (max-width: 1399px) {
+			div.atividade{
+				flex-basis: 48%;
+			}
+		}
+		@media only screen and (max-width: 759px) {
+			.grid-container {
+			  grid-template-columns: 100%;
+			  grid-template-rows: auto;
+			  grid-template-areas: 'main';
+			}
+			div.containerMain {
+				padding-top: 0;
+			}		
+			div.atividade{
+				flex-basis: 95%;
+			}
+			h1.headerListaAtividade{
+				line-height: 2;
+				width: 100%
+			}
+
+			div.more-menu{
+				display: flex;
+				background: var(--corPrincipal);
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 10vh;
+				align-items: center;
+				justify-content: flex-start;
+			}
+
+			.fa-bars{
+				display: block;
+			    position: fixed;
+			    color: white;
+			    font-size: 2em;
+				z-index: 1;
+				margin-left: 5vw;
+			}
+
+			div.menu{
+				position: fixed;
+				display: none;
+			}
+			.alert{
+				width: 70% !important;
+			}
+			.modal-content{
+				width: 80%;
+			}
+		}
+		

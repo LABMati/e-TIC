@@ -248,49 +248,42 @@ class Usuario extends Conexao{
 				throw new Exception("Not Found;ERRO, Email não cadastrado!", 404);
 			}
 
-			require 'email/PHPMailerAutoload.php';
-			$mail = new PHPMailer;
-			
-			// Enable verbose debug output
-
-			$mail->isSMTP();
-
-			$mail->SMTPDebug = 1;		// Debugar: 1 = erros e mensagens, 2 = mensagens apenas
-			$mail->SMTPAuth = true;		// Autenticação ativada
-			$mail->SMTPSecure = 'tls';	// SSL REQUERIDO pelo GMail
-			$mail->Host = 'smtp.gmail.com';	// SMTP utilizado
-			$mail->Port = 587;  		//
-
-			$mail->Username = 'etic';                 // SMTP username
-			$mail->Password = 'Etic#2017';                      // SMTP password
-
-			$remetente = iconv("UTF-8", "CP1252", 'e-TIC 2018 - Não Responda');
-			$mail->setFrom('etic@ifc-camboriu.edu', $remetente);
-			$mail->addAddress($KEYS['email']);     // Add a recipient $KEYS['email']
-
-			$mail->isHTML(true);
-			$titulo = iconv("UTF-8", "CP1252", 'Recuperação de Senha');
-			$mail->Subject = iconv("UTF-8", "CP1252", 'Recuperação de Senha e-TIC 2018');
-			$mail->Body    = iconv("UTF-8", "CP1252",
-			"Caso não tenha solicitado uma alteração de senha ignore este e-mail
-			Recuperação de Senha e-TIC 2018</h1>
-			Foi solicitado a recuperação da senha no sistema e-TIC para essa conta. Clique no botão abaixo para alterar sua senha. (Atenção esse link é válido por 1 hora!)
-			www.etic.ifc-camboriu.edu.br/etic-2018/client/home.html?token=.$token.");
-			//$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-			$mail->send();
+			$to = $KEYS['email'];
+			$email_subject = "Recuperação de senha e-TIC 2018 - Não responda";
+			$email_body = wordwrap("Caso não tenha solicitado uma alteração de senha ignore este e-mail\n
+Recuperação de Senha e-TIC 2018\n\n
+Foi solicitado a recuperação da senha no sistema e-TIC para essa conta. Clique no botão abaixo para alterar sua senha. (Atenção esse link é válido por 1 hora!)
+www.etic.ifc-camboriu.edu.br/etic-2018/client/home.html?token=.$token.", 70);
+			$header = "From: etic@ifc-camboriu.edu.br";
+			try{
+				mail($to,$email_subject,$email_body, $header);
+			}
+			catch(Exception $e){
+				throw $e;
+			}
 		}catch(Exception $e){
 			throw $e;
-		}
+		}	
 	}
 
 	function alterarSenha($KEYS, $token){
 		parent::auth($token, Conexao::NORMAL);
 		try{
-			$resultado = $this->conexao->prepare('UPDATE usuario, seguranca SET usuario.senha = :senha WHERE usuario.idusuario = seguranca.idusuario AND seguranca.token = :token');
-			$resultado->bindParam(':senha', hash('sha256', $KEYS['senha']), PDO::PARAM_STR);
-			$resultado->bindParam(':token', $token, PDO::PARAM_STR);
-			
-			if(!$resultado->execute()) throw new Exception("Internal Server Error;ERRO, Não foi possível alterar a senha!", 500);
+			$idUser = $this->conexao->prepare('SELECT idusuario FROM seguranca WHERE token = :token');
+			$idUser->bindParam(':token', $token, PDO::PARAM_STR);
+			$idUser->execute();
+			$idUser = $idUser->fetch(PDO::FETCH_ASSOC);
+
+			if(isset($idUser['idusuario'])){	
+				$hash = hash('sha256', $KEYS['senha']);
+				$resultado = $this->conexao->prepare('UPDATE usuario SET senha = :senha WHERE idusuario = :id');
+				$resultado->bindParam(':senha', $hash , PDO::PARAM_STR);
+				$resultado->bindParam(':id', $idUser['idusuario'], PDO::PARAM_STR);
+				$resultado->execute();
+				
+				if(!$resultado->execute()) throw new Exception("Internal Server Error;ERRO, Não foi possível alterar a senha!", 500);
+
+			}
 
 		}catch(Exception $e){
 			throw $e;
@@ -299,9 +292,10 @@ class Usuario extends Conexao{
 
 	function login($KEYS){
 		try{
+			$hash = hash('sha256', $KEYS['senha']);
 			$resultado = $this->conexao->prepare('SELECT idusuario,email,senha from usuario where email = :login and senha = :senha');
 			$resultado->bindParam(':login', $KEYS['login'], PDO::PARAM_STR);
-			$resultado->bindParam(':senha', hash('sha256', $KEYS['senha']), PDO::PARAM_STR);
+			$resultado->bindParam(':senha', $hash, PDO::PARAM_STR);
 			// $resultado->bindParam(':senha', $KEYS['senha'], PDO::PARAM_STR);
 			$resultado->execute();
 
@@ -310,8 +304,7 @@ class Usuario extends Conexao{
 			
 			if($resultado){
 				$this->idusuario = $resultado['idusuario'];
-				$token = MD5(rand(3000,10000));
-
+				$token = MD5(rand(0,1000000000000));
 
 				$insereToken = $this->conexao->prepare('INSERT into seguranca (token, expiracao, idusuario) values(:token, DATE_ADD(NOW(), INTERVAL 5 MINUTE),:idusuario)');
 
@@ -370,8 +363,9 @@ class Usuario extends Conexao{
 			throw $e;
 		}
 	try{
-		if(!$this->validaCPF($KEYS['cpf'])||!$this->validaCampos($KEYS['indicacao'])||!$this->validaCampos($KEYS['empresa'])||!$this->validaCampos($KEYS['deficiencia'])||!$this->validaCampos($KEYS['escola']))
-			die("Favor, não inserir valores como: 'não'");
+		if(!$this->validaCPF($KEYS['cpf']))
+			die("CPF");
+		
 		$resultado = $this->conexao->prepare('INSERT INTO usuario(nome,email,senha,cpf,idtipo, certificado,turma,empresa,deficiencia,indicacao,escola,nascimento) VALUES(:nome, :email, :senha, :cpf, 3, NULL,  :turma, :empresa, :deficiencia, :indicacao, :escola, :nascimento)');
 		$resultado->bindParam(':nome', $KEYS['nome'], PDO::PARAM_STR);
 		$resultado->bindParam(':email', $KEYS['email'], PDO::PARAM_STR);
@@ -384,12 +378,14 @@ class Usuario extends Conexao{
 		$resultado->bindParam(':indicacao', $KEYS['indicacao'], PDO::PARAM_STR);
 		$resultado->bindParam(':escola', $KEYS['escola'], PDO::PARAM_STR);
 		$resultado->execute();
+
 	}catch(Exception $e){
 		throw new Exception("INTERNAL SERVER ERROR;ERRO, Cadastro não realizado", 500);
 	}
 	$id=$this->conexao->lastInsertId();
-	$this->enviarEmail($KEYS,$id);
+		$this->enviarEmail($KEYS,$id);
 	}
+
 	function enviarEmail($KEYS,$id){	
 		$to = $KEYS['email'];
 		$email_subject = "Cadastro e-TIC 2018 - Não responda";
@@ -398,7 +394,7 @@ Este número pode ser fornecido a um amigo e ser utilizado no cadastro dele como
 Você pode convidar e compartilhar seu Código de Indicação para seus amigos.\n
 Aqueles que tiverem o maior número de participação nos eventos (palestras, minicursos, competições) irão concorrer a diversos prêmios.\n
 Você tem inúmeras razões para participar e trazer muita gente contigo para o IX e-TIC.\n\n
-Aguardamos você, atenciosamente,\n<strong>Comissão organizadora do IX e-TIC.</strong>", 70);
+Aguardamos você, atenciosamente,\nComissão organizadora do IX e-TIC.", 70);
 		$header = "From: etic@ifc-camboriu.edu.br";
 		try{
 			mail($to,$email_subject,$email_body, $header);
