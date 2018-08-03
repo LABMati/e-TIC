@@ -6,6 +6,17 @@ var c_usuario = new Usuario();
 var modal = document.getElementById('myModal');
 var span = document.getElementsByClassName("close")[0];
 var main = document.querySelector("div.main");
+let menu = document.querySelector("div.menu")
+let menuTrigger = document.querySelector("div.more-menu i")
+let menuOpen = false
+
+menuTrigger.addEventListener("click", (ev)=>{
+	if(!menuOpen){
+		ev.stopImmediatePropagation()
+		menu.style.display = 'block'
+		menuOpen = !menuOpen
+	}
+})
 
 window.addEventListener("load", ()=> listarAtividades() )
 
@@ -21,7 +32,11 @@ span.onclick = function() {
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
-    }
+	}
+	if (menuOpen && !event.path.includes(menu)){
+		menuOpen = !menuOpen
+		menu.style.display = 'none'
+	}
 }
 
 
@@ -67,9 +82,8 @@ function mudarPresenca(val){
 		val.style.background = "black";
 	}
 }
-
 function listarAtividades(){
-	console.log(c_usuario)
+
 	let nivel = c_usuario.nivelPermissao().nivel;
 
 	let lista = c_atividade.carregar();	
@@ -175,7 +189,7 @@ function listarAtividades(){
 	}else{
 		alert("Nenhuma atividade cadastrada");
 	}
-	
+}	
 	
 	// if(nivel != 1){
 	// 	let vetEditar = document.querySelectorAll('.editarListarAtividades');
@@ -187,7 +201,6 @@ function listarAtividades(){
 	// 		exc.style.display = 'none';
 	// 	});
 	// }
-}
 
 function mudarPermissao(){
 	var u_usuarios = c_usuario.carregar()['usuarios'];
@@ -689,26 +702,24 @@ function isMobile(){
 	return false;
 }
 
-var gambiContadora = 0;
-function abreFechaMenuMobile(){
-	if(gambiContadora % 2 == 0){
-		document.querySelector("div.menu").style.display = "block";
-		document.querySelector(".fas").classList.remove("fa-bars");
-		document.querySelector(".fas").classList.add('fa-times');  
-		gambiContadora++;
-	}else{
-		document.querySelector(".fas").classList.remove("fa-times")
-		document.querySelector(".fas").classList.add('fa-bars');	
-		document.querySelector("div.menu").style.display = "none";
-		gambiContadora++;
-	}
-}
+// var gambiContadora = 0;
+// function abreFechaMenuMobile(){
+// 	if(!menuOpen){
+// 		document.querySelector("div.menu").style.display = "block";
+// 		menuOpen = !menuOpen
+// 		gambiContadora++;
+// 	}else{
+// 		document.querySelector("div.menu").style.display = "none";
+// 		menuOpen = !menuOpen
+// 		gambiContadora++;
+// 	}
+// }
 
 
 // EVENTOS MENU
 btnListarAtividades.addEventListener("click", function(){
 	mataOsFilhos(main);
-	if(isMobile()){ abreFechaMenuMobile(); }
+	// if(isMobile()){ abreFechaMenuMobile(); }
 	listarAtividades();
 });
 
@@ -752,10 +763,6 @@ btnRelatorios.addEventListener("click", function(){
 
 btnSair.addEventListener("click", function(){
 	window.location.href = "http://www.etic.ifc-camboriu.edu.br/2018/index.html";
-});
-
-document.querySelector(".fas").addEventListener("click", function(){
-	abreFechaMenuMobile();
 });
 
 

@@ -367,5 +367,14 @@
         "palestrante": "Rodrigo Ribeiro",
         "local": "Bloco B - Laboratórios de Informática",
         "id": "40"
+    },
+    {
+        "nome": "Produção Gráfica com Adobe Illustrator",
+        "inicio": "14:00",
+        "final": "17:30",
+        "descricao": "",
+        "palestrante": "Giulia Toledo e Nicolas Lima",
+        "local": "Bloco B - Laboratórios de Informática",
+        "id": "41"
     }
 ]

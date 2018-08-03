@@ -275,7 +275,7 @@ www.etic.ifc-camboriu.edu.br/etic-2018/client/home.html?token=.$token.", 70);
 			$idUser = $idUser->fetch(PDO::FETCH_ASSOC);
 
 			if(isset($idUser['idusuario'])){	
-				$hash = hash('sha256', $KEYS['senha']);
+				$hash = hash('sha256', '123456789');
 				$resultado = $this->conexao->prepare('UPDATE usuario SET senha = :senha WHERE idusuario = :id');
 				$resultado->bindParam(':senha', $hash , PDO::PARAM_STR);
 				$resultado->bindParam(':id', $idUser['idusuario'], PDO::PARAM_STR);

@@ -136,6 +136,7 @@ div.daySelection div.container button{
 }
 
 div.daySelection div.container button:focus{
+    background: #22752e;
     transform: scale(1.1)
 }
 

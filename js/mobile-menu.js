@@ -3,7 +3,7 @@ let mobileNavMenu = document.querySelector("nav.mobile div.nav-menu")
 
 mobileNavBt.addEventListener('click', ev=>{
     if(mobileNavMenu.offsetHeight == 0)
-        mobileNavMenu.style.height = "30vh"
+        mobileNavMenu.style.height = "40vh"
     else
         mobileNavMenu.style.height = "0"
 })

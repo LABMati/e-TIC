@@ -109,12 +109,11 @@ div.before div img{
 }
 div.before div.rewards{
     width: 100vw;
-    display: block;
     background: rgba(255, 255, 255, .4)
 }
 div.before div.rewards img{
-    height: 80vh;
-    width: auto;
+    height: auto;
+    width: 80%;
 }
 div.before div ul{
     display: none
