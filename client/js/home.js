@@ -129,8 +129,7 @@ function listarAtividades(){
 			}
 		
 			let categoria = document.createElement('h3');
-			atividade.appendChild(categoria).innerText = linha['categoria'];
-
+			atividade.appendChild(categoria).innerText = linha['categoria'].charAt(0).toUpperCase() + linha['categoria'].slice(1);
 
 
 			let horario = document.createElement('span');
@@ -140,8 +139,8 @@ function listarAtividades(){
 			let h_fim = linha['hora_fim'].split(" ");
 			h_inicio[1] = h_inicio[1].substring(0, h_inicio[1].length - 3)
 			h_fim[1] = h_fim[1].substring(0, h_fim[1].length - 3)
-		atividade.appendChild(horario).innerText = data_inicio[2]+ "-" + data_inicio[1] +
-		 "-" + data_inicio[0] + " | " + h_inicio[1] + "-" + h_fim[1];
+		atividade.appendChild(horario).innerText = data_inicio[2]+ "/" + data_inicio[1]
+		+ " | " + h_inicio[1] + "-" + h_fim[1];
 
 		let btnAtividade = document.createElement('div');
 		atividade.appendChild(btnAtividade).classList.add('btnAtividade');
@@ -152,7 +151,7 @@ function listarAtividades(){
 		btnInformacoes.onclick = function() {
 			document.querySelector("h3.modalTitulo").innerText = linha['titulo'];
 			document.querySelector("p.modalDescricao").innerText = linha['descricao'];
-			document.querySelector("span.modalData").innerText = horario.innerText + " | ";
+			document.querySelector("span.modalData").innerHTML = "<strong>"+horario.innerText+"</strong>";
 			//document.querySelector("span.modalVagas").innerText = "Vagas: "+ linha['vagasDisponiveis'];
 	    	modal.style.display = "block";
 		}
@@ -361,17 +360,19 @@ function criarAtividades(listaApresentadores){
 	row = document.createElement('div');
 	criarAtividade.appendChild(row).classList.add('row');
 	let titulo = document.createElement('input');
-	row.appendChild(titulo).placeholder = "titulo";
+	row.appendChild(titulo).placeholder = "Título";
 
 	row = document.createElement('div');
 	criarAtividade.appendChild(row).classList.add('row');
 	let descricao = document.createElement('textarea');
-	row.appendChild(descricao).placeholder = "descricao";
+	descricao.maxLength=255
+	descricao.style.resize='vertical'
+	row.appendChild(descricao).placeholder = "Descrição (Max. 255 caracteres)";
 
 	divApresentador = document.createElement('div');
 	criarAtividade.appendChild(divApresentador).classList.add('row');
 	let inpApresentador = document.createElement('input');
-	divApresentador.appendChild(inpApresentador).placeholder = "apresentador";
+	divApresentador.appendChild(inpApresentador).placeholder = "Apresentador";
 	var divPaiApresentadores = document.createElement('div');
 	divApresentador.appendChild(divPaiApresentadores).classList.add('divPaiApresentadores');
 
@@ -416,7 +417,7 @@ function criarAtividades(listaApresentadores){
 
 	let capacidade = document.createElement('input');
 	capacidade.type = "number";
-	row.appendChild(capacidade).placeholder = "capacidade";
+	row.appendChild(capacidade).placeholder = "Capacidade";
 
 	row = document.createElement('div');
 	criarAtividade.appendChild(row).classList.add('row');

@@ -61,7 +61,7 @@ main {
     font-family: Ubuntu;
     background: url("../img/png/bg2-min-min.png");
     overflow: hidden;
-    background-attachment: fixed;
+    background-size: cover;
     will-change: scroll-position;
 }
 

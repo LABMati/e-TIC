@@ -53,3 +53,12 @@ function checkMail(mail){
 		return false;
 	}
 }
+
+window.addEventListener('load', () => {
+    if (window.innerWidth / window.innerHeight < 9 / 7) {
+        let link = document.createElement('link')
+        link.rel = "stylesheet"
+        link.href = "css/mobile-cadastro.css"
+        document.head.appendChild(link)
+    }
+})
