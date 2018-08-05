@@ -100,47 +100,47 @@ function listarAtividades(){
 	let L_inscricoes = lista['inscricoes'];
 	
 	if(L_atividades.length > 0){
-		L_atividades.forEach(function(linha){
+		L_atividades.forEach(function (linha) {
 
-		let atividade = document.createElement('div');
-		containerAtividade.appendChild(atividade).classList.add('atividade');
+			let atividade = document.createElement('div');
+			containerAtividade.appendChild(atividade).classList.add('atividade');
 
-		let divTitulo = document.createElement('div');
-		atividade.appendChild(divTitulo).classList.add('divTituloListarAtividades');
+			let divTitulo = document.createElement('div');
+			atividade.appendChild(divTitulo).classList.add('divTituloListarAtividades');
 
-		let titulo = document.createElement('span');
-		titulo.classList.add('tituloListarAtividades');
-		divTitulo.appendChild(titulo).innerText = linha['titulo'];
+			let titulo = document.createElement('span');
+			titulo.classList.add('tituloListarAtividades');
+			divTitulo.appendChild(titulo).innerText = linha['titulo'];
 
-		if(nivel == 1){
-			titulo.width = '80%';
-			let editar = document.createElement('i');
-			editar.classList.add('editarListarAtividades','fas','fa-pencil-alt');
-			divTitulo.appendChild(editar);
+			if (nivel == 1) {
+				titulo.width = '80%';
+				let editar = document.createElement('i');
+				editar.classList.add('editarListarAtividades', 'fas', 'fa-pencil-alt');
+				divTitulo.appendChild(editar);
 
-			let excluir = document.createElement('i');
-			excluir.classList.add('excluirListarAtividades', 'fas', 'fa-times');
-			divTitulo.appendChild(excluir);
-			excluir.onclick = function(){
-				c_atividade.excluir(btnInscrever.id);
-				mataOsFilhos(main);
-				listarAtividades();
+				let excluir = document.createElement('i');
+				excluir.classList.add('excluirListarAtividades', 'fas', 'fa-times');
+				divTitulo.appendChild(excluir);
+				excluir.onclick = function () {
+					c_atividade.excluir(btnInscrever.id);
+					mataOsFilhos(main);
+					listarAtividades();
+				}
 			}
-		}
 		
-		let categoria = document.createElement('h3');
-		atividade.appendChild(categoria).innerText = linha['categoria'];
+			let categoria = document.createElement('h3');
+			atividade.appendChild(categoria).innerText = linha['categoria'].charAt(0).toUpperCase() + linha['categoria'].slice(1);
 
 
+			let horario = document.createElement('span');
+			let h_inicio = linha['hora_inicio'].split(" ");
 
-		let horario = document.createElement('span');
-		let h_inicio = linha['hora_inicio'].split(" ");
-
-		let data_inicio = h_inicio[0].split("-");
-		let h_fim =  linha['hora_fim'].split(" ");
-
-		atividade.appendChild(horario).innerText = data_inicio[2]+ "-" + data_inicio[1] +
-		 "-" + data_inicio[0] + " | " + h_inicio[1] + "-" + h_fim[1];
+			let data_inicio = h_inicio[0].split("-");
+			let h_fim = linha['hora_fim'].split(" ");
+			h_inicio[1] = h_inicio[1].substring(0, h_inicio[1].length - 3)
+			h_fim[1] = h_fim[1].substring(0, h_fim[1].length - 3)
+		atividade.appendChild(horario).innerText = data_inicio[2]+ "/" + data_inicio[1]
+		+ " | " + h_inicio[1] + "-" + h_fim[1];
 
 		let btnAtividade = document.createElement('div');
 		atividade.appendChild(btnAtividade).classList.add('btnAtividade');
@@ -151,8 +151,8 @@ function listarAtividades(){
 		btnInformacoes.onclick = function() {
 			document.querySelector("h3.modalTitulo").innerText = linha['titulo'];
 			document.querySelector("p.modalDescricao").innerText = linha['descricao'];
-			document.querySelector("span.modalData").innerText = horario.innerText + " | ";
-			document.querySelector("span.modalVagas").innerText = "Vagas: "+ linha['vagasDisponiveis'];
+			document.querySelector("span.modalData").innerHTML = "<strong>"+horario.innerText+"</strong>";
+			//document.querySelector("span.modalVagas").innerText = "Vagas: "+ linha['vagasDisponiveis'];
 	    	modal.style.display = "block";
 		}
 
@@ -360,17 +360,19 @@ function criarAtividades(listaApresentadores){
 	row = document.createElement('div');
 	criarAtividade.appendChild(row).classList.add('row');
 	let titulo = document.createElement('input');
-	row.appendChild(titulo).placeholder = "titulo";
+	row.appendChild(titulo).placeholder = "Título";
 
 	row = document.createElement('div');
 	criarAtividade.appendChild(row).classList.add('row');
 	let descricao = document.createElement('textarea');
-	row.appendChild(descricao).placeholder = "descricao";
+	descricao.maxLength=255
+	descricao.style.resize='vertical'
+	row.appendChild(descricao).placeholder = "Descrição (Max. 255 caracteres)";
 
 	divApresentador = document.createElement('div');
 	criarAtividade.appendChild(divApresentador).classList.add('row');
 	let inpApresentador = document.createElement('input');
-	divApresentador.appendChild(inpApresentador).placeholder = "apresentador";
+	divApresentador.appendChild(inpApresentador).placeholder = "Apresentador";
 	var divPaiApresentadores = document.createElement('div');
 	divApresentador.appendChild(divPaiApresentadores).classList.add('divPaiApresentadores');
 
@@ -415,7 +417,7 @@ function criarAtividades(listaApresentadores){
 
 	let capacidade = document.createElement('input');
 	capacidade.type = "number";
-	row.appendChild(capacidade).placeholder = "capacidade";
+	row.appendChild(capacidade).placeholder = "Capacidade";
 
 	row = document.createElement('div');
 	criarAtividade.appendChild(row).classList.add('row');

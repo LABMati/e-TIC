@@ -1,0 +1,35 @@
+form{
+    width: 90vw
+}
+header img{
+    width: 50vw;
+    margin-bottom: 3.2vw;
+}
+form button{
+    width: 90vw
+}
+div.criarAtividade{
+    padding-top: 8vw;
+    padding-bottom: 8vw
+}
+form div.user-data{
+    margin-bottom: 8vw;
+}
+form div.user-data input{
+    height: 10vw;
+    margin-top: 3.2vw;
+    padding-left: 4vw;
+}
+form div.user-data p{
+    margin-top: 4.8vw;
+}
+form button{
+    height: 13vw;
+    margin-top: 3.2vw;
+}
+form div.explanation{
+    align-items: center;
+}
+form div.explanation p.code{
+    width: 90%
+}

@@ -20,23 +20,34 @@ formulario.addEventListener('keypress', function(k){
 	}
 });
 
-esqueciSenha.addEventListener('click', async function(){
-	let email = await swal({
-		title: 'Digite seu email cadastrado',
-		input: 'email',
-		inputPlaceholder: 'E-mail'
-	})
-	console.log(email)
-	if(email)
-		usuario.recuperarSenha(email.value)
-	else{
-		swal(
-			{
-				title: "Erro",
-				type: "error",
-				text: "Não foi possível enviar seu email, tente novamente ou entre em contato conosco"
-			}
-		)
-	}
+// esqueciSenha.addEventListener('click', async function(){
+// 	let email = await swal({
+// 		title: 'Digite seu email cadastrado',
+// 		input: 'email',
+// 		inputPlaceholder: 'E-mail'
+// 	})
+// 	console.log(email)
+// 	if(email)
+// 		usuario.recuperarSenha(email.value)
+// 	else{
+// 		swal(
+// 			{
+// 				title: "Erro",
+// 				type: "error",
+// 				text: "Não foi possível enviar seu email, tente novamente ou entre em contato conosco"
+// 			}
+// 		)
+// 	}
 
-});
+// });
+
+window.addEventListener('load', () => {
+	let ratio = window.innerWidth / window.innerHeight
+	if (ratio < 9 / 7) {
+		let link = document.createElement('link')
+		link.rel = "stylesheet"
+		link.href = "css/mobile-login.css"
+		document.head.appendChild(link)
+	}
+		
+})

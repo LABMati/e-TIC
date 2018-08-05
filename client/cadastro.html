@@ -2,9 +2,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Cadastro e-TIC 2018</title>
+	<title>e-TIC 2018 - Cadastro</title>
 	<script defer async src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script defer async src="http://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.js"></script>
+    <!-- <script defer async src="http://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.js"></script> -->
    	<script defer async src="js/bootstrap/js/jquery.min.js"></script>
 
 	<link rel="stylesheet" href="js/bootstrap/css/bootstrap.css">
@@ -13,13 +13,20 @@
 	<link href="css/root.css" rel="stylesheet">
 	<link href="vendor/sweetalert/swal.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/cadastro.css">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="../../2018/img/icon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../../2018/img/icon/favicon.ico" type="image/x-icon">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<div class="criarAtividade transicaoEntrada">
 		<header>
-			<img src="imagens/sipatLogo.png" alt="" class="logo">
-			<img src="imagens/etic.png" alt="">
+			<a href="http://www.etic.ifc-camboriu.edu.br/2018">
+				<img src="imagens/sipatLogo.png" alt="" class="logo">
+				<img src="imagens/etic.png" alt="">
+			</a>
 		</header>
 		<h1>Cadastro e-TIC 2018</h1>
 		<form>
@@ -46,6 +53,18 @@
 			<div class="user-data">
 				<p>Tem um código de indicação?</p>
 				<input type="text" id="indicacao" maxlength="15"  placeholder="Código de indicação">
+			</div>
+			<div class="explanation">
+				<p class="code">
+					Este número pode ser fornecido a um amigo e ser utilizado em seu cadastro como um Código de Indicação. Aqueles que tiverem mais indicações, e estiverem presentes na cerimônia de encerramento (31/08
+					a partir das 19h), concorrerão a prêmios.
+				</p>
+				<p class="code">
+					Você pode convidar e compartilhar seu Código de Indicação com seus amigos. Convide e traga mais gente com você!
+				</p>
+				<p class="code">
+					Você receberá seu Código de Indicação por Email. (Procure também na sua Caixa de Spam).
+				</p>
 			</div>
 			<button type="button" class="btnEntrar" id="btn_cadastrar">Cadastrar-se</button>
 		</form>
