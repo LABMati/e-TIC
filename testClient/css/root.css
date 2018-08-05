@@ -1,0 +1,13 @@
+:root {
+	--corFundo: #efefef;
+    --corPrincipal: #379846;
+    --corBorda: black;
+    --corBordaTop: white;
+    --corTitulo: white;
+    --corTexto: black;
+    --corBotao: #379846;
+    --corTextoBotao: white;
+    --corPlaceholder: #BEBEBE;
+    --tamContainerListarAtividades: 100%;
+    --corFundoTags: white;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>e-TIC 2018 - Cadastro</title>
+	<script defer async src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <!-- <script defer async src="http://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.js"></script> -->
+   	<script defer async src="js/bootstrap/js/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="js/bootstrap/css/bootstrap.css">
+	<link href="css/bootstrap-notify.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	<link href="css/root.css" rel="stylesheet">
+	<link href="vendor/sweetalert/swal.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/cadastro.css">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="../../2018/img/icon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../../2018/img/icon/favicon.ico" type="image/x-icon">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="criarAtividade transicaoEntrada">
+		<header>
+			<a href="http://www.etic.ifc-camboriu.edu.br/2018">
+				<img src="imagens/sipatLogo.png" alt="" class="logo">
+				<img src="imagens/etic.png" alt="">
+			</a>
+		</header>
+		<h1>Cadastro e-TIC 2018</h1>
+		<form>
+			<p>Os campos com "*" são obrigatórios</p>
+			<div class="user-data">
+				<h2>Dados pessoais</h2>
+				<input type="text" id="nome" max="50" placeholder="Nome Completo*">
+				<input type="email" id="email" placeholder="Email*">
+				<input type="text" id="cpf" placeholder="CPF*">
+				<input type="text" id="nascimento" placeholder="Data de nascimento*">
+				<input type="password" id="senha" placeholder="Senha*">
+				<input type="password" id="r-senha" placeholder="Confirme sua senha*">
+				<p>Apresenta necessidade especial?</p>
+				<span>(Deixar em branco caso não apresente)</span>
+				<input type="text" id="deficiencia" maxlength="30"  placeholder="Especifique">
+			</div>
+			<div class="user-data">
+				<h2>Dados institucionais</h2>
+				<span>(Deixar em branco caso não apresente)</span>
+				<input type="text" id="escola" maxlength="30" placeholder="Instituição de ensino">
+				<input type="text" id="turma" maxlength="10" placeholder="Turma">
+				<input type="text" id="empresa" maxlength="30" placeholder="Empresa">
+			</div>
+			<div class="user-data">
+				<p>Tem um código de indicação?</p>
+				<input type="text" id="indicacao" maxlength="15"  placeholder="Código de indicação">
+			</div>
+			<div class="explanation">
+				<p class="code">
+					Este número pode ser fornecido a um amigo e ser utilizado em seu cadastro como um Código de Indicação. Aqueles que tiverem mais indicações, e estiverem presentes na cerimônia de encerramento (31/08
+					a partir das 19h), concorrerão a prêmios.
+				</p>
+				<p class="code">
+					Você pode convidar e compartilhar seu Código de Indicação com seus amigos. Convide e traga mais gente com você!
+				</p>
+				<p class="code">
+					Você receberá seu Código de Indicação por Email. (Procure também na sua Caixa de Spam).
+				</p>
+			</div>
+			<button type="button" class="btnEntrar" id="btn_cadastrar">Cadastrar-se</button>
+		</form>
+	</div>
+	<!-- <script defer type="text/javascript" src="js/bootstrap-notify.js"></script> -->
+	<script type="text/javascript" src="vendor/vmasker/vmasker.min.js"></script>
+	<script type="text/javascript" src="vendor/sweetalert/swal.min.js"></script>
+	<script type="text/javascript" src="js/usuario.js"></script>
+	<script type="text/javascript" src="js/cadastro.js"></script>
+</body>
+</html>
