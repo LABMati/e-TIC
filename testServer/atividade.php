@@ -246,6 +246,7 @@ class Atividade extends Conexao{
 			if($editar->fetch(PDO::FETCH_ASSOC)['qtd'] > 0){
 				$editar = $this->conexao->prepare('UPDATE atividade
 					SET
+						idcategoria = :idcategoria,
 						descricao = :descricao,
 						hora_inicio = :hora_inicio,
 						hora_fim = :hora_fim,
@@ -253,6 +254,7 @@ class Atividade extends Conexao{
 					WHERE idatividade = :idatividade');
 
 				$editar->bindParam(':idatividade', $KEYS['idatividade'], PDO::PARAM_INT);
+				$editar->bindParam(':idcategoria', $KEYS['idcategoria'], PDO::PARAM_INT);
 				$editar->bindParam(':descricao', $KEYS['descricao'], PDO::PARAM_STR);
 				$editar->bindParam(':hora_inicio', $KEYS['hora_inicio'], PDO::PARAM_STR);
 				$editar->bindParam(':hora_fim', $KEYS['hora_fim'], PDO::PARAM_STR);

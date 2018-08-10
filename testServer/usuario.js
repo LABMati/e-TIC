@@ -108,7 +108,7 @@ class Usuario{
         var keys = {
             email: email
         };
-        this.requisicao('recuperarSenha', keys, function(){
+        this.requisicao('recuperarSenha', keys, ()=>{
             swal(
                 {
                     title: "Sucesso",
@@ -117,8 +117,7 @@ class Usuario{
                 }
             )
             return true;
-        }, function(e){
-            if(e == 404)
+        }, ()=>{
             swal(
                 {
                     title: "Erro",
@@ -197,7 +196,6 @@ class Usuario{
                 if(e.target.status === 200) { //Se der 200 siginifica que está logado     
                     if(callback(e.target.responseText)) resposta = e.target.responseText;
                 }else{
-                    console.log(erro);
                     if(!erro(e.target.status)) window.location.href = "./login.html";
                 }                       
             }

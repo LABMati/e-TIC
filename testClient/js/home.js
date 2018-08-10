@@ -21,14 +21,17 @@ menuTrigger.addEventListener("click", (ev)=>{
 	}
 })
 
-window.addEventListener("load", ()=> listarAtividades() )
+window.addEventListener("load", ()=>{
+	if(getAllUrlParams().token !== undefined){
+		window.sessionStorage.setItem('token', getAllUrlParams().token);
+		c_usuario.alterarSenha()
+	}
+	listarAtividades()
+})
 
 // Password alteration
 
-if(getAllUrlParams().token !== undefined){
-	window.sessionStorage.setItem('token', getAllUrlParams().token);
-	c_usuario.alterarSenha(prompt('Digite sua nova senha:'));
-}
+
 
 span.onclick = ()=> {
     modal.style.display = "none";
@@ -123,7 +126,6 @@ function listarAtividades(){
 				editar.classList.add('editarListarAtividades', 'fas', 'fa-pencil-alt');
 				divTitulo.appendChild(editar);
 				editar.addEventListener("click", ()=>{
-					console.log("entrou")
 					c_atividade.editar(btnInscrever.id)
 				})
 

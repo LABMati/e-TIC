@@ -339,6 +339,11 @@
 			  width: 90%;
 			  margin-bottom: 5vmax;
 		  }
+
+		  div.input-group-sw > select{
+			  width: 90%;
+			  margin-bottom: 5vmax;
+		  }
   
 		  button.btnImprimir{
 			  width: 80%;

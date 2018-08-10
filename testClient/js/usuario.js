@@ -93,12 +93,9 @@ class Usuario{
         });
     }
 
-    alterarSenha(novaSenha){
-        var keys = {
-            senha: novaSenha
-        };
-        this.requisicao('alterarSenha', keys, function(){
-            alert("Senha Alterada com sucesso!");
+    alterarSenha(){
+        this.requisicao('alterarSenha', function(){
+            alert("Senha Alterada com sucesso, cheque seu e-mail!");
             return true;
         }, function(e){
             if(e == 500)alert("Não foi possível alterar a senha!");
@@ -148,7 +145,7 @@ class Usuario{
                     if(callback(e.target.responseText)) resposta = e.target.responseText;
                 }else{
                     console.log(erro);
-                    if(!erro(e.target.status)) window.location.href = "./login.html";
+                    // if(!erro(e.target.status)) window.location.href = "./login.html";
                 }                       
             }
         }   

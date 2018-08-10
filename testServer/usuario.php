@@ -224,49 +224,51 @@ class Usuario extends Conexao{
 		}
 	}
 
+	function rand_string( $length ) {
+		$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		return substr(str_shuffle($chars),0,$length);
+	}
+
 	function recuperarSenha($KEYS){
 		try{
 			$resultado = $this->conexao->prepare('SELECT idusuario FROM usuario where email = :email');
 			$resultado->bindParam(':email', $KEYS['email'], PDO::PARAM_STR);
 			$resultado->execute();
-
 			$resultado = $resultado->fetch(PDO::FETCH_ASSOC);
-
-			
 			if($resultado){
-				$this->idusuario = $resultado['idusuario'];
-				$token = MD5(rand(3000,10000));
-
-
-				$insereToken = $this->conexao->prepare('INSERT into seguranca (token, expiracao, idusuario) values(:token, DATE_ADD(NOW(), INTERVAL 1 HOUR), :idusuario)');
-
-				$insereToken->bindParam(':token', $token, PDO::PARAM_STR);
-				$insereToken->bindParam(':idusuario', $this->idusuario, PDO::PARAM_STR);
-				$insereToken->execute();
+				$idusuario = $resultado['idusuario'];
+				$pass = $this->rand_string(10);
+				$hash = hash('sha256', $pass);
+				$resultado = $this->conexao->prepare('UPDATE usuario SET senha = :senha WHERE idusuario = :id');
+				$resultado->bindParam(':senha', $hash , PDO::PARAM_STR);
+				$resultado->bindParam(':id', $idusuario, PDO::PARAM_STR);
+				$resultado->execute();
+				if($resultado->rowCount() > 0){
+					$to = $KEYS['email'];
+					$email_subject = "Nova senha e-TIC 2018 - Não responda";
+					$email_body = wordwrap("Caso não tenha solicitado uma alteração de senha ignore este e-mail\n
+Recuperação de Senha e-TIC 2018\n\n
+Foi solicitado a recuperação da senha no sistema e-TIC para essa conta. Sua nova senha é: ".$pass, 70);
+					$header = "From: etic@ifc-camboriu.edu.br";
+					try{
+						mail($to,$email_subject,$email_body, $header);
+					}
+					catch(Exception $e){
+						throw $e;
+					}
+				}else{
+					throw new Exception("Internal Server Error", 500);
+				}
 			}
 			else{
 				throw new Exception("Not Found;ERRO, Email não cadastrado!", 404);
-			}
-
-			$to = $KEYS['email'];
-			$email_subject = "Recuperação de senha e-TIC 2018 - Não responda";
-			$email_body = wordwrap("Caso não tenha solicitado uma alteração de senha ignore este e-mail\n
-Recuperação de Senha e-TIC 2018\n\n
-Foi solicitado a recuperação da senha no sistema e-TIC para essa conta. Clique no botão abaixo para alterar sua senha. (Atenção esse link é válido por 1 hora!)
-www.etic.ifc-camboriu.edu.br/etic-2018/client/home.html?token=.$token.", 70);
-			$header = "From: etic@ifc-camboriu.edu.br";
-			try{
-				mail($to,$email_subject,$email_body, $header);
-			}
-			catch(Exception $e){
-				throw $e;
 			}
 		}catch(Exception $e){
 			throw $e;
 		}	
 	}
 
-	function alterarSenha($KEYS, $token){
+	function alterarSenha($token){
 		parent::auth($token, Conexao::NORMAL);
 		try{
 			$idUser = $this->conexao->prepare('SELECT idusuario FROM seguranca WHERE token = :token');
@@ -275,14 +277,38 @@ www.etic.ifc-camboriu.edu.br/etic-2018/client/home.html?token=.$token.", 70);
 			$idUser = $idUser->fetch(PDO::FETCH_ASSOC);
 
 			if(isset($idUser['idusuario'])){	
-				$hash = hash('sha256', '123456789');
+				$pass = $this->rand_string(10);
+				$hash = hash('sha256', $pass);
 				$resultado = $this->conexao->prepare('UPDATE usuario SET senha = :senha WHERE idusuario = :id');
 				$resultado->bindParam(':senha', $hash , PDO::PARAM_STR);
 				$resultado->bindParam(':id', $idUser['idusuario'], PDO::PARAM_STR);
 				$resultado->execute();
 				
-				if(!$resultado->execute()) throw new Exception("Internal Server Error;ERRO, Não foi possível alterar a senha!", 500);
+				if(!$resultado->execute()){
+					throw new Exception("Internal Server Error;ERRO, Não foi possível alterar a senha!", 500);
+				}else{
+					$emailUser = $this->conexao->prepare('SELECT email FROM usuario WHERE idusuario = :idusuario');
+					$emailUser->bindParam(':idusuario', $idUser['idusuario'], PDO::PARAM_STR);
+					
+					if($emailUser->execute()){
+						$emailUser = $emailUser->fetch(PDO::FETCH_ASSOC);
 
+						$to = $emailUser['email'];
+						$email_subject = "Nova senha e-TIC 2018 - Não responda";
+						$email_body = wordwrap("Caso não tenha solicitado uma alteração de senha ignore este e-mail\n
+Recuperação de Senha e-TIC 2018\n\n
+Foi solicitado a recuperação da senha no sistema e-TIC para essa conta. Sua nova senha é: ".$pass, 70);
+						$header = "From: etic@ifc-camboriu.edu.br";
+						try{
+							mail($to,$email_subject,$email_body, $header);
+						}
+						catch(Exception $e){
+							throw $e;
+						}
+					}else{
+						throw new Exception("Internal Server", 500);
+					}
+				}
 			}
 
 		}catch(Exception $e){

@@ -55,18 +55,20 @@ class Atividade{
                 "<input id='h-fim' type='datetime-local' class='sw-input' value='"+ target.hora_fim +"'>"+
             
             "</div>",
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
             preConfirm: ()=>{
                 return [
                     document.querySelector("input#title").value,
                     document.querySelector("select#category").selectedIndex,
                     document.querySelector("textarea#description").value,
-                    document.querySelector("input#h-ini").value,
-                    document.querySelector("input#h-fim").value,
+                    document.querySelector("input#h-ini").value.replace('T', ' '),
+                    document.querySelector("input#h-fim").value.replace('T', ' '),
                 ]
             }
         })
 
-        var keys = {
+        let keys = {
             titulo: target.editValues.value[0],
             idcategoria: target.editValues.value[1],
             descricao: target.editValues.value[2],
@@ -76,12 +78,13 @@ class Atividade{
         }
 
         this.requisicao('editarAtividade', keys, 
-        ()=>{
-            swal({
+        async ()=>{
+            await swal({
                 title: "Sucesso",
                 type: "success",
                 text: "Atividade editada com sucesso"
             })
+            window.location.reload()
         }, 
         (code)=>{
             if(code == 400){
@@ -104,13 +107,41 @@ class Atividade{
         var keys = {
             idatividade: id
         }
-        this.requisicao('excluirAtividade', keys, function(){alert('Atividade apagada com sucesso!')}, function(code){
-            if(code == 400){
-                alert("Nenhuma atividade deletada!");
-                return true;
+
+        swal({
+
+            title: 'Tem certeza que deseja deletar a atividade?',
+            text: "Esse é um passo sem reversão",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#379846',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, apague!'
+
+            }).then((result) => {
+            if (result.value) {
+                this.requisicao('excluirAtividade', keys, 
+                async ()=>{
+                    await swal({
+                        title: "Sucesso",
+                        type: "success",
+                        text: "Atividade excluida com sucesso"
+                    })
+                    window.location.reload()
+                }, 
+                (code)=>{
+                    if(code == 400){
+                        swal({
+                            title: "Erro",
+                            type: "error",
+                            text: "Ocorreu um erro ao excluir a atividade" 
+                        })  
+                        return true;
+                    }
+                    else return false;
+                });
             }
-            else return false;
-        });
+        })
     }
 
     carregar() {
