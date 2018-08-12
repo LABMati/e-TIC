@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+section {
+    height: auto !important;
+}
+>>>>>>> 956c52735b57089ef544be9d2e84bc633df517f5
 section div.carousel div.window{
     display: flex;
     justify-content: space-evenly;
@@ -9,12 +15,19 @@ section div.carousel div.window div.window-item{
 
 .header{
     width: 100vw;
+<<<<<<< HEAD
     height: 84vh;
+=======
+    height: 80vh;
+>>>>>>> 956c52735b57089ef544be9d2e84bc633df517f5
     background-image: url("../img/png/0bw-min.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+<<<<<<< HEAD
     background-attachment: fixed;
+=======
+>>>>>>> 956c52735b57089ef544be9d2e84bc633df517f5
     display: flex;
     align-items: center;
     justify-content: center
@@ -109,15 +122,28 @@ div.before div img{
 }
 div.before div.rewards{
     width: 100vw;
+<<<<<<< HEAD
     background: rgba(255, 255, 255, .4)
 }
 div.before div.rewards img{
     height: auto;
     width: 80%;
+=======
+    display: block;
+    background: rgba(255, 255, 255, .4)
+}
+div.before div.rewards img{
+    height: 80vh;
+    width: auto;
+}
+div.before div ul{
+    display: none
+>>>>>>> 956c52735b57089ef544be9d2e84bc633df517f5
 }
 div.before div ul{
     display: none
 }
+
 
 
 @media (max-aspect-ratio: 1/1){
@@ -125,6 +151,10 @@ div.before div ul{
         margin-top: 11vh;
     }
     .header{
+<<<<<<< HEAD
+=======
+        margin-top: 10vh;
+>>>>>>> 956c52735b57089ef544be9d2e84bc633df517f5
         width: 100vw;
         height: 40vh;
     }

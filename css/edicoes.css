@@ -8,6 +8,10 @@ div.about-item {
     flex-direction: column;
 }
 
+section#about{
+    height: 150vh !important;
+}
+
 #info div {
     display: flex;
     justify-content: space-between;
@@ -24,6 +28,13 @@ div.about-item {
     width: 30vw;
 }
 
+<<<<<<< HEAD
+=======
+div.carousel-override{
+    height: 80vh !important;
+}
+
+>>>>>>> 956c52735b57089ef544be9d2e84bc633df517f5
 @media (max-aspect-ratio: 1/1){
 
     div.carousel-override{
@@ -34,5 +45,16 @@ div.about-item {
     main section{
         margin-top: 10vh;
     }
+<<<<<<< HEAD
+=======
+
+    div#info{
+        margin-top: -25vh;
+    }
+
+    section#about{
+        height: 350vh !important;
+    }
+>>>>>>> 956c52735b57089ef544be9d2e84bc633df517f5
     
 }

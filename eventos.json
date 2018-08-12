@@ -1,0 +1,142 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin
+[
+    {
+        "nome": "Credenciamento",
+        "inicio": "07:30",
+        "final": "12:30",
+        "descricao": "Todos os inscritos devem comparecer para se registar e pegar seus crachás",
+        "palestrante": "",
+        "local": "A definir"
+    },
+    {
+        "nome": "Inteligência Artificial - Como nossos textos ensinam os computadores a pensar",
+        "inicio": "7:30",
+        "final": "12:30",
+        "descricao": "Tecnólogo em Processamento de Dados, especialista em Engenharia de Banco de Dados pela Unicamp, mestre em ciência da computação pela UFSCar com ênfase em processamento de linguagem natural, e atualmente doutorando pela Unicamp com ênfase novamente em processamento de linguagem natural. Apaixonado por inteligência artificial, 'matemágica' dos métodos de aprendizado de máquina e tentando compreender o significado das coisas, literalmente, para produzir algo decente na sua linha de pesquisa.",
+        "palestrante": "Johannes Von Lochter",
+        "local": "Auditório"
+    },
+    {
+        "nome": "IoT e Blockchain - O presente e o futuro da tecnologia",
+        "inicio": "08:30",
+        "final": "09:30",
+        "descricao": "Tecnólogo em Automação Industrial com experiência no desenvolvimento de sistemas eletrônicos embarcados para diversas soluções. Atua no ensino técnico de eletroeletrônica e programação e é criador do canal do Youtube Eletrônica Fácil, onde atualmente possui mais de 68.000 Inscritos e mais de 300 vídeo aulas sobre as diversas áreas do mundo da eletroeletrônica. Palestrante em diversos eventos de tecnologia como Campus Party, Arduino Day e Latinoware, tem como principal interesse e motivação, inovar na área de aprendizado técnico através de vídeo aulas, palestras, workshops e cursos com didática simples e diferenciada, focando no aprendizado de todas as pessoas interessadas em evoluir profissionalmente e na melhoria da educação do Brasil. Seu Target é empreender e inovar com foco na evolução técnica do mundo da eletroeletrônica e automação tornando o mundo melhor e fazendo a diferença na comunidade DIY - Faça Você mesmo. <br> Canal no Youtube: www.youtube.com/eletronicafacil <br> Site Oficial: www.eletronicafacil.net",
+        "palestrante": "Rodolpho Chrispim de Oliveira",
+        "local": "Auditório"
+    },
+    {
+        "nome": "Minicursos a serem definidos",
+        "inicio": "13:30",
+        "final": "17:30",
+        "descricao": "",
+        "palestrante": "",
+        "local": "Laboratórios de Informática"
+    },
+    {
+        "nome": "Cerimônia de abertura",
+        "inicio": "18:30",
+        "final": "22:30",
+        "descricao": "",
+        "palestrante": "",
+        "local": "Auditório"
+    },
+    {
+        "nome": "Minicursos a serem definidos",
+        "inicio": "13:30",
+        "final": "17:30",
+        "descricao": "",
+        "palestrante": "",
+        "local": "Laboratórios de Informática"
+    },
+    {
+        "nome": "O presente e o futuro dos esportes eletrônicos",
+        "inicio": "13:30",
+        "final": "15:30",
+        "descricao": "",
+        "palestrante": "Giovani Krauss e Renato Kfuri",
+        "local": "Auditório"
+    },
+    {
+        "nome": "GDPR Regulação Europeu de Proteção de Dados Pessoais",
+        "inicio": "15:30",
+        "final": "17:30",
+        "descricao": "",
+        "palestrante": "Dr. Valderi R. Q. Leithardt",
+        "local": "Auditório"
+    },
+    {
+        "nome": "Palestra a ser definida",
+        "inicio": "18:30",
+        "final": "20:30",
+        "descricao": "",
+        "palestrante": "",
+        "local": "Auditório"
+    },
+    {
+        "nome": "Painel Profissão Trader - Conheça o mundo da bolsa de valores FOREX e criptomoedas",
+        "inicio": "20:30",
+        "final": "22:30",
+        "descricao": "",
+        "palestrante": "Luan Detoni e Edu Moraes",
+        "local": "Auditório"
+    },
+    {
+        "nome": "Palestra a ser definida",
+        "inicio": "08:30",
+        "final": "10:30",
+        "descricao": "",
+        "palestrante": "",
+        "local": "Auditório"
+    },
+    {
+        "nome": "Palestra a ser definida",
+        "inicio": "10:30",
+        "final": "12:30",
+        "descricao": "",
+        "palestrante": "",
+        "local": "Auditório"
+    },
+    {
+        "nome": "Minicursos a serem definidos",
+        "inicio": "13:30",
+        "final": "17:30",
+        "descricao": "",
+        "palestrante": "",
+        "local": "Laboratórios de Informática"
+    },
+    {
+        "nome": "Minicursos a serem definidos",
+        "inicio": "18:30",
+        "final": "22:30",
+        "descricao": "",
+        "palestrante": "",
+        "local": "Laboratórios de Informática"
+    },
+    {
+        "nome": "Hackathon Turismo Inteligente - Mobilidade Sustentável",
+        "inicio": "08:30",
+        "final": "22:30",
+        "descricao": "",
+        "palestrante": "",
+        "local": "Bloco B - Laboratórios de Informática"
+    },
+    {
+        "nome": "Campeonatos de e-Sports",
+        "inicio": "08:30",
+        "final": "22:30",
+        "descricao": "League of Legends e Counter Strike Global Offensive",
+        "palestrante": "",
+        "local": "Bloco B - Laboratórios de Informática"
+    },
+    {
+        "nome": "Cerimônia de Encerramento",
+        "inicio": "18:30",
+        "final": "22:30",
+        "descricao": "",
+        "palestrante": "",
+        "local": "Auditório"
+    }
+]
