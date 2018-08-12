@@ -14,13 +14,21 @@ class Usuario{
             function(r){
                 var resposta = JSON.parse(r);
                 window.sessionStorage.setItem('token', resposta.token);
-                alert("Sucesso","Logando!!","pastel-success");
+                swal({
+                    title: "Sucesso",
+                    text: "Login autorizado, redirecionando",
+                    type: "success"
+                })
                 setTimeout(function(){    window.location.href = "./home.html"; },1000);
                   
             },
             function(e){
                 if(e == 401){
-                    alert("Erro","Usuário ou senha Inválido","pastel-danger");
+                    swal({
+                        title: "Login não autorizado",
+                        text: "E-mail ou senha inválidos",
+                        type: "error"
+                    })
                     setTimeout(function(){
                         window.location.href = "./login.html";
                     },1000);
@@ -50,11 +58,19 @@ class Usuario{
 
 
         this.requisicao('cadastrarUsuario', keys, function(){
-            alert("Sucesso","Cadastrado concluido","pastel-success");
+            swal({
+                title: "Sucesso",
+                text: "Usuário criado",
+                type: "success"
+            })
             setTimeout(function(){ window.location.href = "./login.html"; }, 1000);
             
         }, function(){
-            alert("Erro","Usuario ja cadastrado","pastel-danger");
+            swal({
+                title: "Usuário já cadastrado",
+                text: "Seus dados de e-mail e/ou CPF já se encontram no nosso banco de dados",
+                type: "error"
+            })
             // setTimeout(function(){ window.location.href = "./cadastro.html"; }, 1000);           
             return true;
         });
@@ -93,12 +109,9 @@ class Usuario{
         });
     }
 
-    alterarSenha(novaSenha){
-        var keys = {
-            senha: novaSenha
-        };
-        this.requisicao('alterarSenha', keys, function(){
-            alert("Senha Alterada com sucesso!");
+    alterarSenha(){
+        this.requisicao('alterarSenha', function(){
+            alert("Senha Alterada com sucesso, cheque seu e-mail!");
             return true;
         }, function(e){
             if(e == 500)alert("Não foi possível alterar a senha!");
@@ -142,16 +155,34 @@ class Usuario{
         var token = "&token=" + window.sessionStorage.getItem('token');
         this.xmlhttp.open("POST","../server/router.php?option=" + option + token, false);
        
-        this.xmlhttp.onreadystatechange = function(e){
-            if(e.target.readyState === 4) {
-                if(e.target.status === 200) { //Se der 200 siginifica que está logado     
-                    if(callback(e.target.responseText)) resposta = e.target.responseText;
+        this.xmlhttp.addEventListener("readystatechange", (ev)=>{
+            console.log(ev)
+            if(ev.target.readyState === 4) {
+                if(ev.target.status === 200) { //Se der 200 siginifica que está logado     
+                    if(callback(ev.target.responseText)) resposta = ev.target.responseText;
                 }else{
-                    console.log(erro);
-                    if(!erro(e.target.status)) window.location.href = "./login.html";
+                    if(ev.target.status === 409 || ev.target.status === 401){
+                        swal({
+                            title : "Erro",
+                            text: "Acesso negado",
+                            type: "error"
+                        })
+                        setTimeout(()=>{
+                            window.location.href = "./login.html";
+                        }, 2000)
+                    }    
+                    else if(ev.target.status === 500){
+                        swal({
+                            title : "Erro",
+                            text: "Erro interno no servidor, entre em contato conosco"
+                        })  
+                        setTimeout(()=>{
+                            window.location.href = "./login.html";
+                        }, 2000)
+                    }
                 }                       
             }
-        }   
+        })   
         this.xmlhttp.send(post ? JSON.stringify(post) : null);
         return resposta;
     }

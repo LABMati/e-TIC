@@ -59,6 +59,17 @@
 		  select {
 			  width: 100%;
 		  }
+
+		  table.report-table > * > tr > td, table.report-table > * > tr > th{
+			  width: 25%;
+			  display: flex;
+			  justify-content: flex-start;
+			  align-items: center;
+		  }
+
+		  table.report-table > * > tr{
+			  border: 1px solid black;
+		  }
   
 		  div.containerMain{
 			  width: var(--tamContainerListarAtividades);
@@ -69,6 +80,11 @@
 			  justify-content: center;
 			  /*margin: 1%;*/
 		  }
+
+		  div.report {
+			  flex-direction: column !important;
+		  }
+
 		  h1.headerMain{
 			  width: 100%;
 			  color: var(--corTitulo);
@@ -321,7 +337,29 @@
 			  text-transform: uppercase;
 		  }
 		  /*FIM TABELA PERMISSOES*/
-  
+		  
+
+		  .swal2-popup .swal2-styled.swal2-confirm{
+			  background: #379846 !important;
+		  }
+
+		  div.input-group-sw{
+			  display: flex;
+			  flex-direction: column;
+			  justify-content: center;
+			  align-items: center;
+			  width: 100%;
+		  }
+
+		  div.input-group-sw > input, div.input-group-sw > textarea{
+			  width: 90%;
+			  margin-bottom: 5vmax;
+		  }
+
+		  div.input-group-sw > select{
+			  width: 90%;
+			  margin-bottom: 5vmax;
+		  }
   
 		  button.btnImprimir{
 			  width: 80%;

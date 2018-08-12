@@ -23,6 +23,11 @@ div.form div.row {
     width: 50%;
 }
 
+.swal2-popup .swal2-styled.swal2-cancel{
+    display: flex !important;
+    justify-content: center !important;
+}
+
 div.form{
     display: flex;
     flex-direction: column;

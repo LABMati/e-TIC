@@ -1,8 +1,11 @@
+let c_panel = {
+	listarAtividades : document.querySelector("#btnListarAtividades"),
+	btnInscreverAtividade : document.querySelector("#btnInscreverAtividade")
+}
 
-var btnListarAtividades = document.querySelector("#btnListarAtividades");
-var btnInscreverAtividade = document.querySelector("#btnInscreverAtividade");
-var c_atividade = new Atividade();
-var c_usuario = new Usuario();
+let c_atividade = new Atividade();
+let c_usuario = new Usuario();
+
 var modal = document.getElementById('myModal');
 var span = document.getElementsByClassName("close")[0];
 var main = document.querySelector("div.main");
@@ -18,14 +21,19 @@ menuTrigger.addEventListener("click", (ev)=>{
 	}
 })
 
-window.addEventListener("load", ()=> listarAtividades() )
+window.addEventListener("load", ()=>{
+	if(getAllUrlParams().token !== undefined){
+		window.sessionStorage.setItem('token', getAllUrlParams().token);
+		c_usuario.alterarSenha()
+	}
+	listarAtividades()
+})
 
-if(getAllUrlParams().token !== undefined){
-	window.sessionStorage.setItem('token', getAllUrlParams().token);
-	c_usuario.alterarSenha(prompt('Digite sua nova senha:'));
-}
+// Password alteration
 
-span.onclick = function() {
+
+
+span.onclick = ()=> {
     modal.style.display = "none";
 }
 
@@ -46,7 +54,11 @@ function jaTaInscrito(val,btn = null){
 		val.innerText = "Inscrever-se";
 		val.style.background = "#631725";
 		if(btn){
-			alert("Sucesso","Você foi desinscrito","pastel-info");
+			swal({
+				title: "Sucesso",
+				text: "Você foi desinscrito",
+				type: "success"
+			})
 		}		
 	}
 	else{
@@ -54,7 +66,11 @@ function jaTaInscrito(val,btn = null){
 		val.style.background = "rgb(22, 64, 27)";
 		val.disabled = false;
 		if(btn){
-			alert("Sucesso","Inscricão realizada","pastel-success");
+			swal({
+				title: "Sucesso",
+				text: "Inscrição realizada",
+				type: "success"
+			});
 		}
 	}
 }
@@ -113,10 +129,13 @@ function listarAtividades(){
 			divTitulo.appendChild(titulo).innerText = linha['titulo'];
 
 			if (nivel == 1) {
-				titulo.width = '80%';
+				// titulo.width = '80%';
 				let editar = document.createElement('i');
 				editar.classList.add('editarListarAtividades', 'fas', 'fa-pencil-alt');
 				divTitulo.appendChild(editar);
+				editar.addEventListener("click", ()=>{
+					c_atividade.editar(btnInscrever.id)
+				})
 
 				let excluir = document.createElement('i');
 				excluir.classList.add('excluirListarAtividades', 'fas', 'fa-times');
@@ -148,12 +167,18 @@ function listarAtividades(){
 		var btnInformacoes = document.createElement('button');
 		btnAtividade.appendChild(btnInformacoes).innerText = "+Informações";
 
-		btnInformacoes.onclick = function() {
-			document.querySelector("h3.modalTitulo").innerText = linha['titulo'];
-			document.querySelector("p.modalDescricao").innerText = linha['descricao'];
-			document.querySelector("span.modalData").innerHTML = "<strong>"+horario.innerText+"</strong>";
-			//document.querySelector("span.modalVagas").innerText = "Vagas: "+ linha['vagasDisponiveis'];
-	    	modal.style.display = "block";
+		btnInformacoes.onclick = ()=> {
+			// document.querySelector("h3.modalTitulo").innerText = linha['titulo'];
+			// document.querySelector("p.modalDescricao").innerText = linha['descricao'];
+			// document.querySelector("span.modalData").innerHTML = "<strong>"+horario.innerText+"</strong>";
+			// //document.querySelector("span.modalVagas").innerText = "Vagas: "+ linha['vagasDisponiveis'];
+			// modal.style.display = "block";
+			
+			swal({
+				title: linha['titulo'],
+				text: linha['descricao'],
+				footer: horario.innerText
+			})
 		}
 
 
@@ -179,7 +204,13 @@ function listarAtividades(){
 			c_usuario.inscricao(this.id, function(){
 				jaTaInscrito(btnInscrever,this);
 			}, function(erro){
-				if(erro == 409) alert("ERRO","Conflito de Horário ou Vagas esgotadas","pastel-danger");
+				if(erro == 409){
+					swal({
+						title: "Erro",
+						text: "Conflito de horário ou vagas esgotadas",
+						type: "error"
+					})
+				}
 				else window.location.href = "./login.html";
 				return true;
 			});
@@ -187,7 +218,11 @@ function listarAtividades(){
 	
 	});
 	}else{
-		alert("Nenhuma atividade cadastrada");
+		swal({
+			title: "Erro",
+			text: "Nenhum atividade cadastrada",
+			type: "error"
+		})
 	}
 }	
 	
@@ -242,9 +277,19 @@ function mudarPermissao(){
 
 		selectPermissao.addEventListener("change",function(){
 			c_usuario.alterarAutorizacao(this.id, this.selectedOptions.item(0).id, function(){
-				alert("Alterado com Sucesso!");
+				swal({
+					title: "Sucesso",
+					text: "Permissão alterada",
+					type: "success"
+				})
 			}, function(erro){
-				if(erro == 406) alert("Erro ao Mudar Permissao");
+				if(erro == 406) {
+					swal({
+						title: "Erro",
+						text: "Não foi possível alterar a permissão",
+						type: "error"
+					})	
+				}
 				else window.location.href = "./login.html";
 				return true;			
 			});
@@ -331,8 +376,13 @@ function chamada(){
 						c_atividade.fazerChamada(btnAtividade.id, btnPresenca.id, function(){
 							mudarPresenca(btnPresenca);
 						}, function(erro){
-							alert("deu erro");
-							if(erro == 406) alert("Erro ao fazer chamada");
+							if(erro == 406){
+								swal({
+									title: "Erro",
+									text: "Erro ao fazer chamada",
+									type: "error"
+								})
+							}
 							else window.location.href = "./login.html";
 							return true;			
 						});
@@ -342,7 +392,11 @@ function chamada(){
 			});
 		});
 	}else{
-		alert("Você não tem atividades cadastradas :/")
+		swal({
+			title: "Erro",
+			text: "Você não possui atividades cadastradas",
+			type: "error"
+		})
 	}
 }
 
@@ -458,14 +512,24 @@ function criarAtividades(listaApresentadores){
 
 		/*inpApresentador.id,*/
 		
-		function(){
-			alert("Sucesso", "Atividade criada", "pastel-success");
+		()=>{
+			swal({
+				title: "Sucesso",
+				text: "Atividade criada",
+				type: "success"
+			})
 			mataOsFilhos(main);
 			criarAtividades();
 		},
 		function(erro){
 			
-			if(erro == 404) alert("Erro","Dados inexistentos ou incorretos","pastel-danger");
+			if(erro == 404) {
+				swal({
+					title: "Erro",
+					text: "Dados inexistentes ou incorretos",
+					type: "error"
+				})
+			}
 			else window.location.href = "./login.html";
 			return true;			
 		});
@@ -500,67 +564,160 @@ function interfaceUsuario(){
 }
 
 function relatorios(){
+	let buttons = {}
+
 	var containerRelatorios = document.createElement('div');
-	main.appendChild(containerRelatorios).classList.add('containerMain');
+	main.appendChild(containerRelatorios).classList.add('containerMain', 'report');
 
 	let headerRelatorios = document.createElement('h1');
 	headerRelatorios.innerText = "Relatórios";
 	containerRelatorios.appendChild(headerRelatorios).classList.add('headerMain');
 
-	let listarUsuarios = document.createElement('button');
-	listarUsuarios.innerText = "Listar Usuários";
-	containerRelatorios.appendChild(listarUsuarios);
+	buttons.listarUsuarios = document.createElement('button');
+	buttons.listarUsuarios.innerText = "Listar Usuários";
+	containerRelatorios.appendChild(buttons.listarUsuarios);
 
-	listarUsuarios.onclick = function(){
-		mataOsFilhos(containerRelatorios);
+	buttons.infoGeral = document.createElement('button');
+	buttons.infoGeral.innerText = "Informações Gerais";
+	containerRelatorios.appendChild(buttons.infoGeral);
 
-		let listaDeUsuarios = document.createElement('h1');
-		listaDeUsuarios.innerText = "lista De Usuarios";
-		containerRelatorios.appendChild(listaDeUsuarios).classList.add('headerMain');
+	buttons.listarUsuarios.addEventListener("click", ()=>{
+		let data = {
+			option: "listarUsuarios"
+		}
+
+		data = JSON.stringify(data)
+
+		let rep = new Report("report", 
+			(response)=>{
+				if(document.querySelector("div.containerMain table") !== null){
+					document.querySelector("div.containerMain table").remove();
+				}
+				let table = buildTable(4, ["ID", "Nome", "E-mail", "CPF"], response)
+				containerRelatorios.appendChild(table)
+			},
+			()=>{
+				swal({
+					title: "Erro",
+					text: "Não foi possível realizar a consulta"
+				})
+			},
+			data)
+	})
+
+	buttons.infoGeral.addEventListener("click",()=>{
+		let data = {
+			option: "numeroDeUsuarios"
+		}
+
+		data = JSON.stringify(data)
+
+		let rep = new Report("report", 
+			(response)=>{
+				if(document.querySelector("div.containerMain table") !== null){
+					document.querySelector("div.containerMain table").remove();
+				}
+				let table = buildTable(1, ["Total"], response)
+				containerRelatorios.appendChild(table)
+			},
+			()=>{
+				swal({
+					title: "Erro",
+					text: "Não foi possível realizar a consulta"
+				})
+			},
+			data)
+	})
 
 
-		let btnImprimir = document.createElement('button');
-		containerRelatorios.appendChild(btnImprimir).classList.add('btnImprimir','noPrint');
-		btnImprimir.innerText = "Imprimir";	
+	// listarUsuarios.onclick = function(){
+	// 	mataOsFilhos(containerRelatorios);
 
-		let u_usuarios = c_usuario.carregar()['usuarios'].sort(function(a, b){
-			if(a.nome < b.nome) return -1;
-			if(a.nome > b.nome) return 1;
-			return 0;
-		});
+	// 	let listaDeUsuarios = document.createElement('h1');
+	// 	listaDeUsuarios.innerText = "lista De Usuarios";
+	// 	containerRelatorios.appendChild(listaDeUsuarios).classList.add('headerMain');
 
-		let table=document.createElement('table');
-		let linha=document.createElement('tr');
-		let nome=document.createElement('th');
-		let email=document.createElement('th');
-		let cpf=document.createElement('th');
+
+	// 	let btnImprimir = document.createElement('button');
+	// 	containerRelatorios.appendChild(btnImprimir).classList.add('btnImprimir','noPrint');
+	// 	btnImprimir.innerText = "Imprimir";	
+
+	// 	let u_usuarios = c_usuario.carregar()['usuarios'].sort(function(a, b){
+	// 		if(a.nome < b.nome) return -1;
+	// 		if(a.nome > b.nome) return 1;
+	// 		return 0;
+	// 	});
+
+	// 	let table=document.createElement('table');
+	// 	let linha=document.createElement('tr');
+	// 	let nome=document.createElement('th');
+	// 	let email=document.createElement('th');
+	// 	let cpf=document.createElement('th');
 	
-		containerRelatorios.appendChild(table).classList.add('tabelaPermissoes');
-		table.appendChild(linha);
-		linha.appendChild(nome).innerText = "nome";
-		linha.appendChild(email).innerText = "email";
-		linha.appendChild(cpf).innerText = "cpf";
+	// 	containerRelatorios.appendChild(table).classList.add('tabelaPermissoes');
+	// 	table.appendChild(linha);
+	// 	linha.appendChild(nome).innerText = "nome";
+	// 	linha.appendChild(email).innerText = "email";
+	// 	linha.appendChild(cpf).innerText = "cpf";
 
-		u_usuarios.forEach(function(usuario){
-			let linha=document.createElement('tr');
-			table.appendChild(linha);
-			let nome=document.createElement('th');
-			let email=document.createElement('th');
-			let cpf=document.createElement('th');
+	// 	u_usuarios.forEach(function(usuario){
+	// 		let linha=document.createElement('tr');
+	// 		table.appendChild(linha);
+	// 		let nome=document.createElement('th');
+	// 		let email=document.createElement('th');
+	// 		let cpf=document.createElement('th');
 
-			linha.appendChild(nome).innerText = usuario['nome'];
-			linha.appendChild(email).innerText = usuario['email'];
-			linha.appendChild(cpf).innerText = usuario['cpf'];							
-		});
+	// 		linha.appendChild(nome).innerText = usuario['nome'];
+	// 		linha.appendChild(email).innerText = usuario['email'];
+	// 		linha.appendChild(cpf).innerText = usuario['cpf'];							
+	// 	});
 
-		btnImprimir.onclick = function(){
-			window.print();
+	// 	btnImprimir.onclick = function(){
+	// 		window.print();
 
+	// 	}
+		
+	// 	// window.location.href = "home.html";
+	// };
+
+}
+
+function buildTable(columnsNumber, columnsName, data){
+	if(columnsName.length != columnsNumber){
+		swal({
+			title: "Erro ao construir a tabela",
+			text: "Verifique a quantidade de campos",
+			type: "error"
+		})
+		return false
+	}else{
+
+		const table = document.createElement("TABLE")
+		table.classList.add("report-table")
+		table.tableHead = document.createElement("THEAD")
+		table.appendChild(table.tableHead)
+		table.tableHead.tr = document.createElement("TR")
+		table.tableHead.appendChild(table.tableHead.tr)
+
+		for (let i = 0; i < columnsName.length; i++) {
+			let th = document.createElement("TH")
+			th.innerText = columnsName[i]
+			table.tableHead.tr.appendChild(th)
 		}
 		
-		// window.location.href = "home.html";
-	};
-
+		table.tableBody = document.createElement("TBODY")
+		table.appendChild(table.tableBody)
+		for (let i = 0; i < data.length; i++) {
+			let tr = document.createElement("TR")
+			table.tableBody.appendChild(tr)
+			for (let j = 0; j < data[j].length; j++) {
+				let td = document.createElement("TD")
+				td.innerText = data[i][j]
+				tr.appendChild(td)
+			}
+		}
+		return table;
+	}
 }
 
 function chamadaForcada(){
@@ -704,30 +861,13 @@ function isMobile(){
 	return false;
 }
 
-// var gambiContadora = 0;
-// function abreFechaMenuMobile(){
-// 	if(!menuOpen){
-// 		document.querySelector("div.menu").style.display = "block";
-// 		menuOpen = !menuOpen
-// 		gambiContadora++;
-// 	}else{
-// 		document.querySelector("div.menu").style.display = "none";
-// 		menuOpen = !menuOpen
-// 		gambiContadora++;
-// 	}
-// }
-
-
 // EVENTOS MENU
-btnListarAtividades.addEventListener("click", function(){
+c_panel.listarAtividades.addEventListener("click", function(){
 	mataOsFilhos(main);
-	// if(isMobile()){ abreFechaMenuMobile(); }
 	listarAtividades();
 });
 
-
-
-btnInscreverAtividade.addEventListener("click", function(){
+c_panel.btnInscreverAtividade.addEventListener("click", function(){
 	mataOsFilhos(main);
 	var listaApresentadores = c_usuario.carregarApresentadores()['apresentadores'];
 	criarAtividades(listaApresentadores);

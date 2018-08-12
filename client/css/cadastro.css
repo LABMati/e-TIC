@@ -96,6 +96,7 @@ form button{
 		transform: scale(1.1);
 	}
 }
+
 @media (max-aspect-ratio: 9/7) {
 	form{
 		width: 90vw

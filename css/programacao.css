@@ -109,6 +109,10 @@ h2.toggleHide{
     color: #2200CC;
 }
 
+div.timeline{
+    display: none !important;
+}
+
 div.daySelection{
     width: 100%;
     display: flex;

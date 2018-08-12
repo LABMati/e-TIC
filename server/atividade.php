@@ -238,28 +238,27 @@ class Atividade extends Conexao{
 		parent::auth($token, Conexao::ADMIN);
 
 		try{
-			$editar = $this->conexao->prepare('SELECT COUNT(*) as qtd FROM usuario_atividade as ua WHERE ua.idatividade :idatividade');
+			$editar = $this->conexao->prepare('SELECT COUNT(*) as qtd FROM atividade as a WHERE a.idatividade = :idatividade');
 
 			$editar->bindParam(':idatividade', param_filter($KEYS['idatividade'],'int'), PDO::PARAM_INT);
 			$editar->execute();
 
-			if($categorias->fetch(PDO::FETCH_ASSOC)['qtd'] > 0){
+			if($editar->fetch(PDO::FETCH_ASSOC)['qtd'] > 0){
 				$editar = $this->conexao->prepare('UPDATE atividade
-					SET idcategoria = :idcategoria,
+					SET
+						idcategoria = :idcategoria,
 						descricao = :descricao,
-						capacidade = :capacidade,
 						hora_inicio = :hora_inicio,
 						hora_fim = :hora_fim,
 						titulo = :titulo
 					WHERE idatividade = :idatividade');
 
-				$editar->bindParam(':idatividade', param_filter($KEYS['idatividade'],'int'), PDO::PARAM_INT);
-				$editar->bindParam(':idcategoria', param_filter($KEYS['idcategoria'],'int'), PDO::PARAM_INT);
-				$editar->bindParam(':descricao', param_filter($KEYS['descricao'],'str'), PDO::PARAM_STR);
-				$editar->bindParam(':capacidade', param_filter($KEYS['capacidade'],'int'), PDO::PARAM_INT);
-				$editar->bindParam(':hora_inicio', param_filter($KEYS['hora_inicio'],'str'), PDO::PARAM_STR);
-				$editar->bindParam(':hora_fim', param_filter($KEYS['hora_fim'],'str'), PDO::PARAM_STR);
-				$editar->bindParam(':titulo', param_filter($KEYS['titulo'],'str'), PDO::PARAM_STR);
+				$editar->bindParam(':idatividade', $KEYS['idatividade'], PDO::PARAM_INT);
+				$editar->bindParam(':idcategoria', $KEYS['idcategoria'], PDO::PARAM_INT);
+				$editar->bindParam(':descricao', $KEYS['descricao'], PDO::PARAM_STR);
+				$editar->bindParam(':hora_inicio', $KEYS['hora_inicio'], PDO::PARAM_STR);
+				$editar->bindParam(':hora_fim', $KEYS['hora_fim'], PDO::PARAM_STR);
+				$editar->bindParam(':titulo', $KEYS['titulo'], PDO::PARAM_STR);
 				$editar->execute();
 			}
 			else{

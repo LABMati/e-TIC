@@ -376,5 +376,41 @@
         "palestrante": "Giulia Toledo e Nicolas Lima",
         "local": "Bloco B - Laboratórios de Informática",
         "id": "41"
+    },
+    {
+        "nome": "Robótica Educacional com Lego e II Campeonato de Sumô de Robôs do IFC Camboriú",
+        "inicio": "14:00",
+        "final": "15:30",
+        "descricao": "O minicurso ensinará com criar robôs utilizando sensores integrados ao Kit de Robótica Educacional da Lego. Serão duas turmas em horários diferentes e ao final os robôs se enfrentarão   ",
+        "palestrante": "Gustavo Castro Nova Microway",
+        "local": "Bloco B - Laboratórios de Informática",
+        "id": "42"
+    },
+    {
+        "nome": "Robótica Educacional com Lego e II Campeonato de Sumô de Robôs do IFC Camboriú",
+        "inicio": "14:00",
+        "final": "17:30",
+        "descricao": "O minicurso ensinará com criar robôs utilizando sensores integrados ao Kit de Robótica Educacional da Lego. Serão duas turmas em horários diferentes e ao final os robôs se enfrentarão",
+        "palestrante": "Gustavo Castro Nova Microway",
+        "local": "Bloco B - Laboratórios de Informática",
+        "id": "43"
+    },
+    {
+        "nome": "Drones em ação: Vem voar com a gente",
+        "inicio": "14:00",
+        "final": "17:30",
+        "descricao": "O que são drones? Quais os tipos de drones? Uso de drones em construções, engenharia e agronomia. Funcionamento:Câmeras, sensores, ferramentas adicionais, segurança e regulamentação Demonstração de voo com integração com os participantes.",
+        "palestrante": "Gabriel Gall e Gustavo Silva",
+        "local": "Bloco B - Laboratórios de Informática",
+        "id": "41"
+    },
+    {
+        "nome": "Programação Funcional para Humanos - introdução à programação funcional para pessoas que já possuem nível básico de programação",
+        "inicio": "08:00",
+        "final": "09:30",
+        "descricao": "",
+        "palestrante": "Gabriel Schade",
+        "local": "Bloco B - Laboratórios de Informática",
+        "id": "41"
     }
 ]

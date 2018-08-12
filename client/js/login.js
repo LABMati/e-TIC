@@ -20,6 +20,18 @@ formulario.addEventListener('keypress', function(k){
 	}
 });
 
+esqueciSenha.addEventListener("click", async ()=>{
+	let email = await swal({
+		title: "Digite seu e-mail cadastrado",
+		input: 'email',
+		inputPlaceholder: "E-mail",
+		showCancelButton: true,
+		cancelButtonColor: '#d33'
+	})
+
+	usuario.recuperarSenha(await email.value)
+})
+
 // esqueciSenha.addEventListener('click', async function(){
 // 	let email = await swal({
 // 		title: 'Digite seu email cadastrado',
