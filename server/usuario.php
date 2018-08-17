@@ -47,23 +47,20 @@ class Usuario extends Conexao{
 				$inscricoes->bindParam(':idatividade',$KEYS['idatividade'], PDO::PARAM_INT);
 				$inscricoes->execute();
 			}
-
 			else{
-				$vagasDisponiveis = $this->conexao->prepare('SELECT (atividade.capacidade - count(usuario_atividade.idusuario)) as vagas
-				FROM usuario_atividade, atividade
-				WHERE usuario_atividade.idatividade = :idatividade and atividade.idatividade = :idatividade'); 
+				$vagasDisponiveis = $this->conexao->prepare('SELECT (atividade.capacidade - count(usuario_atividade.idusuario)) as vagas from atividade INNER JOIN usuario_atividade ON atividade.idatividade = usuario_atividade.idatividade WHERE atividade.idatividade = :idatividade'); 
 				$vagasDisponiveis->bindParam(':idatividade', $KEYS['idatividade'], PDO::PARAM_STR);
 				$vagasDisponiveis->execute();
 				$vagasDisponiveis = $vagasDisponiveis->fetch(PDO::FETCH_ASSOC);
-				if($vagasDisponiveis['vagas'] <= 0 )
-					throw new Exception('Conflict;Vagas Esgotadas',409);
-				////
+				
+
 				$atividade = $this->conexao->prepare('SELECT hora_inicio, hora_fim FROM atividade WHERE idatividade = :idatividade');
 				$atividade->bindParam(':idatividade', $KEYS['idatividade'], PDO::PARAM_STR);
 				$atividade->execute();
 				$atividade = $atividade->fetch(PDO::FETCH_ASSOC);
 
-				$valida_hora = $this->conexao->prepare('SELECT u.idusuario FROM usuario u 
+				if($vagasDisponiveis['vagas'] > 0){
+					$valida_hora = $this->conexao->prepare('SELECT u.idusuario FROM usuario u 
 					INNER JOIN usuario_atividade ua
 					ON u.idusuario = ua.idusuario
 					INNER JOIN atividade a on a.idatividade = ua.idatividade
@@ -75,27 +72,50 @@ class Usuario extends Conexao{
 							(:hora_inicio >= a.hora_fim and :hora_fim > a.hora_fim)
 						) 
 					) and (u.idusuario = :idusuario)
-				');
+					');
 
-				$valida_hora->bindParam(':hora_inicio',$atividade['hora_inicio'], PDO::PARAM_STR);
-				$valida_hora->bindParam(':hora_fim',$atividade['hora_fim'], PDO::PARAM_STR);
-				$valida_hora->bindParam(':idusuario',$idusuario['idusuario'], PDO::PARAM_INT);
-				$valida_hora->execute();
-				$valida_hora = $valida_hora->fetch(PDO::FETCH_ASSOC);
-				if(!$valida_hora){
+					$valida_hora->bindParam(':hora_inicio',$atividade['hora_inicio'], PDO::PARAM_STR);
+					$valida_hora->bindParam(':hora_fim',$atividade['hora_fim'], PDO::PARAM_STR);
+					$valida_hora->bindParam(':idusuario',$idusuario['idusuario'], PDO::PARAM_INT);
+					$valida_hora->execute();
+					$valida_hora = $valida_hora->fetch(PDO::FETCH_ASSOC);
+
+					if(!$valida_hora){
+						$resultado = $this->conexao->prepare('INSERT INTO usuario_atividade(idusuario,idatividade) VALUES (:idusuario, :idatividade)');
+						$resultado->bindParam(':idusuario', $idusuario['idusuario'], PDO::PARAM_STR);
+						$resultado->bindParam(':idatividade', $KEYS['idatividade'], PDO::PARAM_STR);
+						$resultado->execute();
+					}else{
+						throw new Exception("Conflict;ERRO, Horários não compatíveis", 409);
+					}
+				}else{
 					$resultado = $this->conexao->prepare('INSERT INTO usuario_atividade(idusuario,idatividade) VALUES (:idusuario, :idatividade)');
 					$resultado->bindParam(':idusuario', $idusuario['idusuario'], PDO::PARAM_STR);
 					$resultado->bindParam(':idatividade', $KEYS['idatividade'], PDO::PARAM_STR);
 					$resultado->execute();
-				}else{
-					throw new Exception("Conflict;ERRO, Horários não compatíveis", 409);
+
+					$tamFila = ($vagasDisponiveis['vagas']*-1);
+					$fila = $this->conexao->prepare("SELECT u.idusuario FROM atividade a INNER JOIN usuario_atividade ua ON ua.idatividade=a.idatividade INNER JOIN usuario u ON u.idusuario=ua.idusuario WHERE ua.idatividade=:idAtividade ORDER BY(ua.hora_inscricao) DESC LIMIT :tamFila");
+					$fila->bindParam(':idAtividade', $KEYS['idatividade'], PDO::PARAM_STR);
+					$fila->bindParam(':tamFila', $tamFila, PDO::PARAM_STR);
+					$fila->execute();
+					$fila = array_reverse($fila);
+
+					$posFila = array_search($KEYS[idusuario], $fila);
+					if(!$posFila){
+						$posFila=0;
+					}
+					$posFila++;
+					echo (json_decode($posFila));
+					//$fila = $this->conexao->prepare('SELECT u.idusuario, ua.hora_inscricao FROM atividade a INNER JOIN usuario_atividade ua ON ua.idatividade=a.idatividade INNER JOIN usuario u ON u.idusuario=ua.idusuario WHERE ua.idatividade=:id ORDER BY(ua.hora_inscricao) DESC');
 				}
-			}		
+			}
 		}
 		catch(Exception $e){
 			throw $e;
 		}
 	}
+
 	function inscricaoForcada($KEYS, $token){
 		parent::auth($token, Conexao::ADMIN);
 
@@ -266,7 +286,7 @@ Foi solicitado a recuperação da senha no sistema e-TIC para essa conta. Sua no
 			}
 		}catch(Exception $e){
 			throw $e;
-		}	
+		}
 	}
 
 	function alterarSenha($token){
@@ -284,7 +304,7 @@ Foi solicitado a recuperação da senha no sistema e-TIC para essa conta. Sua no
 				$resultado->bindParam(':senha', $hash , PDO::PARAM_STR);
 				$resultado->bindParam(':id', $idUser['idusuario'], PDO::PARAM_STR);
 				$resultado->execute();
-				
+
 				if(!$resultado->execute()){
 					throw new Exception("Internal Server Error;ERRO, Não foi possível alterar a senha!", 500);
 				}else{
@@ -328,7 +348,7 @@ Foi solicitado a recuperação da senha no sistema e-TIC para essa conta. Sua no
 
 			$resultado = $resultado->fetch(PDO::FETCH_ASSOC);
 
-			
+
 			if($resultado){
 				$this->idusuario = $resultado['idusuario'];
 				$token = MD5(rand(0,1000000000000));
@@ -350,9 +370,6 @@ Foi solicitado a recuperação da senha no sistema e-TIC para essa conta. Sua no
 		}catch(Exception $e){
 			throw $e;
 		}
-	}
-	function validaCampos($valor){//sorry for that
-    	return !in_array(preg_replace('/ã/','a',strtolower('não')),array('nao','nenhum','nenhuma'));
 	}
 	function validaCPF($cpf) {
 		$cpf = preg_replace("/[^0-9]/", "", $cpf);
@@ -392,7 +409,6 @@ Foi solicitado a recuperação da senha no sistema e-TIC para essa conta. Sua no
 	try{
 		if(!$this->validaCPF($KEYS['cpf']))
 			die("CPF");
-		
 		$resultado = $this->conexao->prepare('INSERT INTO usuario(nome,email,senha,cpf,idtipo, certificado,turma,empresa,deficiencia,indicacao,escola,nascimento) VALUES(:nome, :email, :senha, :cpf, 3, NULL,  :turma, :empresa, :deficiencia, :indicacao, :escola, :nascimento)');
 		$resultado->bindParam(':nome', $KEYS['nome'], PDO::PARAM_STR);
 		$resultado->bindParam(':email', $KEYS['email'], PDO::PARAM_STR);
@@ -413,7 +429,7 @@ Foi solicitado a recuperação da senha no sistema e-TIC para essa conta. Sua no
 		$this->enviarEmail($KEYS,$id);
 	}
 
-	function enviarEmail($KEYS,$id){	
+	function enviarEmail($KEYS,$id){
 		$to = $KEYS['email'];
 		$email_subject = "Cadastro e-TIC 2018 - Não responda";
 		$email_body = wordwrap("Olá, seu cadastro foi efetuado com sucesso!\nAgora você pode gerenciar sua participação em todos os eventos do IX e-TIC (Encontro de Tecnologia da Informação e Comunicação do IFC - Camboriú) que ocorrerá de 27 à 31 de agosto. \nSeu número inscrição e código de indicação é: 2018".$id."\n
@@ -460,7 +476,7 @@ Aguardamos você, atenciosamente,\nComissão organizadora do IX e-TIC.", 70);
 		include("mpdf60/mpdf.php");
 
 		setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-		$dia=(strftime('%A, %d de %B de %Y', strtotime('today'))) ;
+		$dia=(strftime('%A, %d de %B de %Y', strtotime('today')));
 
 		$html="
 

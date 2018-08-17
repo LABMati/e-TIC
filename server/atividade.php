@@ -22,7 +22,6 @@ class Atividade extends Conexao{
 		$inscricoes->execute();
 		$inscricoes = $inscricoes->fetchAll(PDO::FETCH_ASSOC);
 
-		
 		//PEGA ATIVIDIDADES CADASTRADAS
 		$atividades = $this->conexao->prepare('SELECT atividade.idatividade, categoria.nome as categoria, titulo, descricao, hora_inicio, hora_fim,
 				(SELECT atividade.capacidade - count(idusuario)
@@ -33,32 +32,17 @@ class Atividade extends Conexao{
 		$atividades->execute();
 		$atividades = $atividades->fetchAll(PDO::FETCH_ASSOC);
 
-
-		$vagasDisponiveis = $this->conexao->prepare('SELECT count(idusuario) as vagasDisponiveis
-				FROM usuario_atividade
-				WHERE usuario_atividade.idatividade = :idatividade');
-		$vagasDisponiveis->bindParam(':idatividade',$idusuario['idusuario'], PDO::PARAM_INT);
-		$vagasDisponiveis->execute();
-		$vagasDisponiveis = $vagasDisponiveis->fetchAll(PDO::FETCH_ASSOC);
-
-		// $categorias = $this->conexao->prepare('SELECT * FROM categoria');
-		// $categorias->execute();
-		// $categorias = $categorias->fetchAll(PDO::FETCH_ASSOC);
-
 		$resultado = array(
 			'atividades' => $atividades,
 			'inscricoes' => $inscricoes
-			// 'categorias' =>$categorias
 		);
 
 		echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
 	}
 	function carregarForcado($keys, $token){
 		parent::auth($token, Conexao::ADMIN);
-
-		
 		$idusuario = $keys['idusuario'];
-		
+
 		$inscricoes = $this->conexao->prepare('SELECT a.idatividade FROM usuario u
 				INNER JOIN usuario_atividade ua
 				ON u.idusuario = ua.idusuario
@@ -82,14 +66,12 @@ class Atividade extends Conexao{
 		// $atividades->execute();
 		// $atividades = $atividades->fetchAll(PDO::FETCH_ASSOC);
 
-
 		// $vagasDisponiveis = $this->conexao->prepare('SELECT count(idusuario) as vagasDisponiveis
 		// 		FROM usuario_atividade
 		// 		WHERE usuario_atividade.idatividade = :idatividade');
 		// $vagasDisponiveis->bindParam(':idatividade',$idusuario['idusuario'], PDO::PARAM_INT);
 		// $vagasDisponiveis->execute();
 		// $vagasDisponiveis = $vagasDisponiveis->fetchAll(PDO::FETCH_ASSOC);
-
 
 		// $resultado = array(
 		// 	'atividades' => $atividades,
@@ -196,7 +178,7 @@ class Atividade extends Conexao{
 			$chamada->bindParam(':token', $token, PDO::PARAM_STR);
 		}
 		try{
-			
+
 			$chamada->bindParam(':idatividade', $KEYS['idatividade'], PDO::PARAM_INT);
 			$chamada->execute();
 			$chamada = $chamada->fetchAll(PDO::FETCH_ASSOC);
@@ -211,7 +193,7 @@ class Atividade extends Conexao{
 
 	function carregarCategorias($token){
 		parent::auth($token, Conexao::ADMIN);
-			
+
 		//PEGA AS CATEGORIAS
 		$categorias = $this->conexao->prepare('SELECT idcategoria,nome FROM categoria');
 		$categorias->execute();
@@ -225,7 +207,7 @@ class Atividade extends Conexao{
 	}
 	function excluir($KEYS, $token){
 		parent::auth($token, Conexao::ADMIN);
-			
+
 		$atividade = $this->conexao->prepare('DELETE FROM atividade WHERE idatividade = :idatividade');
 		$atividade->bindParam(':idatividade', $KEYS['idatividade'], PDO::PARAM_INT);
 
@@ -269,4 +251,3 @@ class Atividade extends Conexao{
 		}
 	}
 }
-

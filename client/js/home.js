@@ -29,10 +29,6 @@ window.addEventListener("load", ()=>{
 	listarAtividades()
 })
 
-// Password alteration
-
-
-
 span.onclick = ()=> {
     modal.style.display = "none";
 }
@@ -49,7 +45,7 @@ window.onclick = function(event) {
 
 
 //GAMBIARRA PRECISA SER PARADAAAA
-function jaTaInscrito(val,btn = null){
+function jaTaInscrito(val,btn = null, condition){
 	if(val.innerText == "Inscrito"){
 		val.innerText = "Inscrever-se";
 		val.style.background = "#631725";
@@ -60,6 +56,20 @@ function jaTaInscrito(val,btn = null){
 				type: "success"
 			})
 		}		
+	}else if(val.innerText == "Na fila"){
+		val.innerText = "Entrar na fila";
+		val.style.background = "#631725";
+		if(btn){
+			swal({
+				title: "Sucesso",
+				text: "Você saiu da fila",
+				type: "success"
+			})
+		}		
+	}else if(condition <= 0){
+		val.innerText = "Na fila";
+		val.style.background = "rgb(22, 64, 27)";
+		val.disabled = false;
 	}
 	else{
 		val.innerText = "Inscrito";
@@ -74,6 +84,7 @@ function jaTaInscrito(val,btn = null){
 		}
 	}
 }
+
 
 function jaTaPresente(val){
 	if((val.value == "faltou")||(val.value == 0)) {
@@ -129,7 +140,7 @@ function listarAtividades(){
 			divTitulo.appendChild(titulo).innerText = linha['titulo'];
 
 			if (nivel == 1) {
-				// titulo.width = '80%';
+
 				let editar = document.createElement('i');
 				editar.classList.add('editarListarAtividades', 'fas', 'fa-pencil-alt');
 				divTitulo.appendChild(editar);
@@ -168,12 +179,6 @@ function listarAtividades(){
 		btnAtividade.appendChild(btnInformacoes).innerText = "+Informações";
 
 		btnInformacoes.onclick = ()=> {
-			// document.querySelector("h3.modalTitulo").innerText = linha['titulo'];
-			// document.querySelector("p.modalDescricao").innerText = linha['descricao'];
-			// document.querySelector("span.modalData").innerHTML = "<strong>"+horario.innerText+"</strong>";
-			// //document.querySelector("span.modalVagas").innerText = "Vagas: "+ linha['vagasDisponiveis'];
-			// modal.style.display = "block";
-			
 			swal({
 				title: linha['titulo'],
 				text: linha['descricao'],
@@ -185,24 +190,23 @@ function listarAtividades(){
 		var btnInscrever = document.createElement('button');
 		
 		if(linha['vagasDisponiveis'] <= 0){
-			btnAtividade.appendChild(btnInscrever).innerText = "Esgotado";
-			btnInscrever.disabled = true;
-			btnInscrever.style.backgroundColor  = "rgb(1, 41, 98)";
+			btnAtividade.appendChild(btnInscrever).innerText = (parseInt(linha['vagasDisponiveis']) * -1) + " na fila, entrar";
+			btnInscrever.style.backgroundColor  = "#363f98";
 		}else{
 			btnAtividade.appendChild(btnInscrever).innerText = "Inscrever-se";
 		}
+		
 		btnInscrever.id = linha['idatividade'];
 
-		
-		L_inscricoes.forEach(function(linha){
-			if(btnInscrever.id == linha['idatividade']){
-				jaTaInscrito(btnInscrever);
+		for (let inscricao of L_inscricoes) {
+			if(btnInscrever.id == inscricao['idatividade']){
+				jaTaInscrito(btnInscrever, null, linha['vagasDisponiveis']);
 			}
-		});
+		}
 
 		btnInscrever.onclick = function(){
 			c_usuario.inscricao(this.id, function(){
-				jaTaInscrito(btnInscrever,this);
+				jaTaInscrito(btnInscrever,this, linha['vagasDisponiveis']);
 			}, function(erro){
 				if(erro == 409){
 					swal({
@@ -628,58 +632,6 @@ function relatorios(){
 			},
 			data)
 	})
-
-
-	// listarUsuarios.onclick = function(){
-	// 	mataOsFilhos(containerRelatorios);
-
-	// 	let listaDeUsuarios = document.createElement('h1');
-	// 	listaDeUsuarios.innerText = "lista De Usuarios";
-	// 	containerRelatorios.appendChild(listaDeUsuarios).classList.add('headerMain');
-
-
-	// 	let btnImprimir = document.createElement('button');
-	// 	containerRelatorios.appendChild(btnImprimir).classList.add('btnImprimir','noPrint');
-	// 	btnImprimir.innerText = "Imprimir";	
-
-	// 	let u_usuarios = c_usuario.carregar()['usuarios'].sort(function(a, b){
-	// 		if(a.nome < b.nome) return -1;
-	// 		if(a.nome > b.nome) return 1;
-	// 		return 0;
-	// 	});
-
-	// 	let table=document.createElement('table');
-	// 	let linha=document.createElement('tr');
-	// 	let nome=document.createElement('th');
-	// 	let email=document.createElement('th');
-	// 	let cpf=document.createElement('th');
-	
-	// 	containerRelatorios.appendChild(table).classList.add('tabelaPermissoes');
-	// 	table.appendChild(linha);
-	// 	linha.appendChild(nome).innerText = "nome";
-	// 	linha.appendChild(email).innerText = "email";
-	// 	linha.appendChild(cpf).innerText = "cpf";
-
-	// 	u_usuarios.forEach(function(usuario){
-	// 		let linha=document.createElement('tr');
-	// 		table.appendChild(linha);
-	// 		let nome=document.createElement('th');
-	// 		let email=document.createElement('th');
-	// 		let cpf=document.createElement('th');
-
-	// 		linha.appendChild(nome).innerText = usuario['nome'];
-	// 		linha.appendChild(email).innerText = usuario['email'];
-	// 		linha.appendChild(cpf).innerText = usuario['cpf'];							
-	// 	});
-
-	// 	btnImprimir.onclick = function(){
-	// 		window.print();
-
-	// 	}
-		
-	// 	// window.location.href = "home.html";
-	// };
-
 }
 
 function buildTable(columnsNumber, columnsName, data){
@@ -754,7 +706,6 @@ function chamadaForcada(){
 
 	function carregaAtividadesForcada(){
 		mataOsFilhos(divPai);
-		console.log("to aqui no enter")
 
 		
 		if(inputNomeUsuario.value != "" ){
@@ -774,14 +725,13 @@ function chamadaForcada(){
 
 				 		var atividadesCadastradas;
 				 		c_atividade.carregarForcado(item.id,function(e){
-								atividadesCadastradas = JSON.parse(e);
-								}, function(erro){
-									if(erro == 409) alert("ERRO","ERRO","pastel-danger");
-									else window.location.href = "./login.html";
-									return true;
-								});
-
-				 		// console.log(atividadesCadastradas['atividades']);
+							atividadesCadastradas = JSON.parse(e);
+							}, function(erro){
+								if(erro == 409) alert("ERRO","ERRO","pastel-danger");
+								else window.location.href = "./login.html";
+								return true;
+							}
+						);
 
 				 		let headerChamadaForcada = document.createElement('h1');
 						headerChamadaForcada.innerText = this.innerText;
@@ -904,7 +854,7 @@ btnRelatorios.addEventListener("click", function(){
 });
 
 btnSair.addEventListener("click", function(){
-	window.location.href = "http://www.etic.ifc-camboriu.edu.br/2018/index.html";
+	window.location.href = "http://www.etic.ifc-camboriu.edu.br/etic-2018/client/login.html";
 });
 
 

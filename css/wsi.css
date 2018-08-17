@@ -19,6 +19,9 @@ button.g-form{
     height: 10vh;
     background: #379846;
 }
+p.mt-5 span{
+    text-decoration: line-through;
+}
 section div.center div.send{
     display: flex;
     flex-direction: column;

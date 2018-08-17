@@ -124,9 +124,9 @@ class Usuario{
 
     inscricao(idatividade, inscreveu, erro){
         var keys = {
-            idatividade: idatividade
+            idatividade: idatividade,
         };
-         JSON.parse(this.requisicao('inscricao',keys, inscreveu, erro));
+        JSON.parse(this.requisicao('inscricao',keys, inscreveu, erro));
     }
 
     inscricaoForcada(idatividade,idusuario, inscreveu, erro){
@@ -153,7 +153,7 @@ class Usuario{
         this.xmlhttp = new XMLHttpRequest();
         var resposta = false;
         var token = "&token=" + window.sessionStorage.getItem('token');
-        this.xmlhttp.open("POST","../server/router.php?option=" + option + token, false);
+        this.xmlhttp.open("POST","../testServer/router.php?option=" + option + token, false);
        
         this.xmlhttp.addEventListener("readystatechange", (ev)=>{
             console.log(ev)

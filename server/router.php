@@ -48,7 +48,7 @@ try{
 } catch (Exception $e) {
 	$erro = explode(";beleza", $e->getMessage());
 	header("HTTP/1.1 ". $e->getCode()." ".$erro[0] );
-	var_dump($erro);
+	// var_dump($erro);
 	echo $erro[1];
 } 
 

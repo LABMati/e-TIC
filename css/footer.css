@@ -16,14 +16,10 @@ footer .side{
 }
 footer .side hr{
     width: 50%;
-<<<<<<< HEAD
     background-color: #fff;
     border: 1px solid white;
     margin-top: 1vh;
     margin-bottom: 1vh;
-=======
-    background-color: #fff
->>>>>>> 956c52735b57089ef544be9d2e84bc633df517f5
 }
 footer .side h2{
     text-align: center;

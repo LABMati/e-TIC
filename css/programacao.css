@@ -27,7 +27,6 @@ section{
     justify-content: flex-start;
 }
 
-<<<<<<< HEAD
 section#about div.cd-schedule {
     width: 80%;
     height:80%;
@@ -38,11 +37,6 @@ section#about div.cd-schedule {
 
 .hidden{
     display: none !important;
-=======
-div.cd-schedule {
-    width: 100%;
-    height:60vh;
->>>>>>> 956c52735b57089ef544be9d2e84bc633df517f5
 }
 
 ul li.palestra{
@@ -72,7 +66,6 @@ div.window{
 .cd-schedule .events .events-group > ul{
     display: flex;
     
-<<<<<<< HEAD
 }
 
 .cd-schedule .events .events-group > ul > li.half{
@@ -83,21 +76,6 @@ div.window{
 .cd-schedule .events .events-group > ul > li > a > em{
     font-size: 100%;
     color: white;
-=======
-}
-
-.cd-schedule .events .events-group > ul > li.half{
-    width: 50%;
-    position: unset;
-}
-
-.cd-schedule .events .events-group > ul > li > a > em{
-    font-size: 100%;
-}
-
-.cd-schedule .timeline li span{
-    display: none;
->>>>>>> 956c52735b57089ef544be9d2e84bc633df517f5
 }
 
 .cd-schedule > .events .events-group > ul > .single-event{
@@ -107,7 +85,6 @@ div.window{
 }
 
 .cd-schedule > .events .events-group > ul > .single-event:hover{
-<<<<<<< HEAD
     filter: brightness(105%)    
 }
 
@@ -165,37 +142,6 @@ div.daySelection div.container button{
 div.daySelection div.container button:focus{
     background: #22752e;
     transform: scale(1.1)
-=======
-    filter: brightness(120%)    
-}
-
-.segunda{
-    background: #0d7b34 !important;
-}
-
-.terca{
-    background: #0d7b34 !important;
-}
-
-.quarta{
-    background: #0d7b34 !important;
-}
-
-.quinta{
-    background: #23a538 !important;
-}
-
-.sexta{
-    background: #23a538 !important;
-}
-
-.swal2-popup .swal2-styled.swal2-confirm{
-    background: #23a538 !important;
-}
-
-div.hide{
-    display: none;
->>>>>>> 956c52735b57089ef544be9d2e84bc633df517f5
 }
 
 @media (max-aspect-ratio:1/1){
@@ -219,7 +165,6 @@ div.hide{
         overflow-x: hidden;
         margin-top: 10vh;
     }
-<<<<<<< HEAD
 
     div.daySelection{
         width: 80vw;
@@ -227,7 +172,5 @@ div.hide{
         height: 10vh;
         margin-top: 5vh;
     }
-=======
->>>>>>> 956c52735b57089ef544be9d2e84bc633df517f5
     
 }
