@@ -143,8 +143,10 @@ td, th{
         height: 10vh;
         background: #379846;
         margin-top: 5vh;
-    }    
-
+    }
+    .bg-video{
+        height: 100vh !important;
+    }
     .bg-video video{
         width: auto;
         height: 100%;
