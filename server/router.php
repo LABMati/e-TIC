@@ -43,13 +43,14 @@ try{
 		case 'excluirAtividade': die($atividade->excluir($KEYS, $HEADER['token']));
 		case 'editarAtividade': die($atividade->editar($KEYS, $HEADER['token']));
 		case 'report': die($report->authenticate($KEYS, $HEADER['token']));
+		case 'carregarInscritos': die($atividade->carregarInscritos($GET['id']));
+		case 'carregarAtividadeUnica': die($atividade->carregarAtividadeUnica($GET['id']));
+		case 'carregarTodasAtividades': die($atividade->carregarTodasAtividades());
 		default: throw new Exception("Not Found;ERRO, Metodo não encontrado", 404);
 	}	
 } catch (Exception $e) {
 	$erro = explode(";beleza", $e->getMessage());
 	header("HTTP/1.1 ". $e->getCode()." ".$erro[0] );
-	// var_dump($erro);
-	echo $erro[1];
 } 
 
 

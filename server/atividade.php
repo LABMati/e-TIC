@@ -4,14 +4,14 @@ class Atividade extends Conexao{
 
 	protected $idusuario;
 
+	// Retorna todas as atividades cadastradas no banco, juntamente com as atividades em que o usuário requisitor está cadastro bem como suas filas
+
 	function carregar($token){
 		parent::auth($token, Conexao::NORMAL);
-
-		//PEGA OS ID USUARIO APARTIR DO TOKEN
 		$idusuario = $this->conexao->prepare('SELECT idusuario FROM seguranca WHERE token = :token');
-			$idusuario->bindParam(':token', $token, PDO::PARAM_STR);
-			$idusuario->execute();
-			$idusuario = $idusuario->fetch(PDO::FETCH_ASSOC);
+		$idusuario->bindParam(':token', $token, PDO::PARAM_STR);
+		$idusuario->execute();
+		$idusuario = $idusuario->fetch(PDO::FETCH_ASSOC);
 
 		$inscricoes = $this->conexao->prepare('SELECT a.idatividade FROM usuario u 
 				INNER JOIN usuario_atividade ua
@@ -20,13 +20,47 @@ class Atividade extends Conexao{
 				WHERE u.idusuario = :idusuario');
 		$inscricoes->bindParam(':idusuario',$idusuario['idusuario'], PDO::PARAM_INT);
 		$inscricoes->execute();
-		$inscricoes = $inscricoes->fetchAll(PDO::FETCH_ASSOC);
+		$inscricoes2 = [];
+		$iterator = 0;
+		$filas = array(
+			'idatividade' => [],
+			'posicao' => []
+		);
 
+		while($row = $inscricoes->fetch(PDO::FETCH_ASSOC)){
+			array_push($inscricoes2, $row['idatividade']);
+
+			
+			$vagasDisponiveis = $this->conexao->prepare('SELECT (atividade.capacidade - count(usuario_atividade.idusuario)) as vagas from atividade INNER JOIN usuario_atividade ON atividade.idatividade = usuario_atividade.idatividade WHERE atividade.idatividade = :idatividade'); 
+			$vagasDisponiveis->bindParam(':idatividade', $row['idatividade'], PDO::PARAM_STR);
+			$vagasDisponiveis->execute();
+			$vagasDisponiveis = $vagasDisponiveis->fetch(PDO::FETCH_ASSOC);
+			$tamFila = $vagasDisponiveis['vagas']*-1;
+
+			if($vagasDisponiveis>0){
+				$fila = $this->conexao->prepare("SELECT u.idusuario FROM atividade AS a INNER JOIN usuario_atividade AS ua ON ua.idatividade=a.idatividade INNER JOIN usuario u ON u.idusuario=ua.idusuario WHERE ua.idatividade=:idAtividade ORDER BY(ua.hora_inscricao) DESC LIMIT :tamFila");
+				$fila->bindParam(':idAtividade', $row['idatividade'], PDO::PARAM_INT);
+				$fila->bindParam(':tamFila', $tamFila, PDO::PARAM_INT);
+				$fila->execute();
+				$fila = $fila->fetchAll(PDO::FETCH_ASSOC);
+				$fila = array_reverse($fila);
+				$posFila = 0;
+				for($i=0;$i<sizeof($fila);$i++){
+					if($idusuario['idusuario']==$fila[$i]['idusuario'])
+						$posFila=$i+1;
+				}
+				if($posFila != 0){
+					array_push($filas['idatividade'], $row['idatividade']);
+					array_push($filas['posicao'], $posFila);
+				}
+			}
+		}
+			
 		//PEGA ATIVIDIDADES CADASTRADAS
-		$atividades = $this->conexao->prepare('SELECT atividade.idatividade, categoria.nome as categoria, titulo, descricao, hora_inicio, hora_fim,
+		$atividades = $this->conexao->prepare('SELECT atividade.idatividade, categoria.nome as categoria, titulo, descricao,hora_inicio, hora_fim,
 				(SELECT atividade.capacidade - count(idusuario)
 				FROM usuario_atividade
-				WHERE usuario_atividade.idatividade = atividade.idatividade ) as vagasDisponiveis
+				WHERE usuario_atividade.idatividade = atividade.idatividade ) as vagasDisponiveis, capacidade
 			FROM atividade, categoria
 			WHERE categoria.idcategoria = atividade.idcategoria ORDER BY hora_inicio ASC');
 		$atividades->execute();
@@ -34,11 +68,13 @@ class Atividade extends Conexao{
 
 		$resultado = array(
 			'atividades' => $atividades,
-			'inscricoes' => $inscricoes
+			'inscricoes' => $inscricoes2,
+			'filas' => $filas
 		);
 
 		echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
 	}
+
 	function carregarForcado($keys, $token){
 		parent::auth($token, Conexao::ADMIN);
 		$idusuario = $keys['idusuario'];
@@ -56,46 +92,107 @@ class Atividade extends Conexao{
 			'inscricoes' => $inscricoes
 		);
 		echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
-
-		// $atividades = $this->conexao->prepare('SELECT atividade.idatividade, categoria.nome as categoria, titulo, descricao, hora_inicio, hora_fim,
-		// 		(SELECT atividade.capacidade - count(idusuario)
-		// 		FROM usuario_atividade
-		// 		WHERE usuario_atividade.idatividade = atividade.idatividade ) as vagasDisponiveis
-		// 	FROM atividade, categoria
-		// 	WHERE categoria.idcategoria = atividade.idcategoria ORDER BY hora_inicio ASC');
-		// $atividades->execute();
-		// $atividades = $atividades->fetchAll(PDO::FETCH_ASSOC);
-
-		// $vagasDisponiveis = $this->conexao->prepare('SELECT count(idusuario) as vagasDisponiveis
-		// 		FROM usuario_atividade
-		// 		WHERE usuario_atividade.idatividade = :idatividade');
-		// $vagasDisponiveis->bindParam(':idatividade',$idusuario['idusuario'], PDO::PARAM_INT);
-		// $vagasDisponiveis->execute();
-		// $vagasDisponiveis = $vagasDisponiveis->fetchAll(PDO::FETCH_ASSOC);
-
-		// $resultado = array(
-		// 	'atividades' => $atividades,
-		// 	'inscricoes' => $inscricoes
-		// );
-
-		// echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
 	}
+
+	// Cria uma atividade no banco de dados com as informações passadas no JSON do payload
+
 	function cadastro($KEYS, $token){
 		parent::auth($token, Conexao::ADMIN);
 
-		//FALTA VALIDAR DADOS NAOPRONTO
 		try{
-			$cadastro = $this->conexao->prepare('INSERT INTO atividade(idcategoria, descricao, capacidade, hora_inicio, hora_fim, titulo/*, idusuario*/) Values(:idcategoria, :descricao, :capacidade, :hora_inicio, :hora_fim, :titulo/*, :idusuario*/)');
+			$cadastro = $this->conexao->prepare('INSERT INTO atividade(idcategoria, descricao, capacidade, hora_inicio, hora_fim, titulo) Values(:idcategoria, :descricao, :capacidade, :hora_inicio, :hora_fim, :titulo/*, :idusuario*/)');
 			$cadastro->bindParam(':idcategoria', param_filter($KEYS['idcategoria'],'int'), PDO::PARAM_STR);
 			$cadastro->bindParam(':descricao', param_filter($KEYS['descricao'],'str'), PDO::PARAM_STR);
 			$cadastro->bindParam(':capacidade', param_filter($KEYS['capacidade'],'int'), PDO::PARAM_INT);
 			$cadastro->bindParam(':hora_inicio', param_filter($KEYS['hora_inicio'],'str'), PDO::PARAM_STR);
 			$cadastro->bindParam(':hora_fim', param_filter($KEYS['hora_fim'],'str'), PDO::PARAM_STR);
 			$cadastro->bindParam(':titulo', param_filter($KEYS['titulo'],'str'), PDO::PARAM_STR);
-			//$cadastro->bindParam(':idusuario', $KEYS['idusuario'], PDO::PARAM_INT);
 			$cadastro->execute();
 		}catch(Exception $e){
 			throw $e;
+		}
+	}
+
+
+	// Devolve todos os inscritos de uma atividade X recebendo o ID dessa atividade
+
+	function carregarInscritos($id){
+		try{
+			 
+			$query = $this->conexao->prepare("SELECT u.idusuario as id, u.nome, ua.presenca FROM usuario AS u INNER JOIN usuario_atividade as ua ON u.idusuario = ua.idusuario WHERE ua.idatividade = ? ORDER BY ua.hora_inscricao");
+
+			$query->bindParam(1, $id, PDO::PARAM_STR);
+			$query->execute();
+			$response = $query->fetchAll(PDO::FETCH_ASSOC)
+
+			if($query->rowCount() > 0){
+				echo json_encode($response);
+			}else{
+				die("O ID enviado não está cadastrado ou não possui usuários inscritos");
+			}
+				
+		}catch(PDOException $e){
+			die("Erro" . $e->getMessage());
+		}
+	}
+
+	function carregarInscritosGeral(){
+		try{
+			 
+			$query = $this->conexao->prepare("SELECT u.idusuario as id, u.nome, ua.presenca, a.titulo as nome_atividade FROM usuario AS u INNER JOIN usuario_atividade as ua ON u.idusuario = ua.idusuario INNER JOIN atividade as a ON a.idatividade = ua.idatividade ORDER BY a.titulo, ua.hora_inscricao");
+
+			$query->bindParam(1, $id, PDO::PARAM_STR);
+			$query->execute();
+			$response = $query->fetchAll(PDO::FETCH_ASSOC)
+
+			if($query->rowCount() > 0){
+				echo json_encode($response);
+			}else{
+				die("O ID enviado não está cadastrado ou não possui usuários inscritos");
+			}
+				
+		}catch(PDOException $e){
+			die("Erro" . $e->getMessage());
+		}
+	}
+
+	// Devolve uma atividade com seu id, titulo, e valor em eticoins a partir de um ID passado
+
+	function carregarAtividadeUnica($id){
+		try{
+			$query = $this->conexao->prepare("SELECT a.idatividade, a.titulo as nome, c.valor as eticoin FROM atividade AS a INNER JOIN categoria as c ON a.idcategoria = c.idcategoria WHERE a.idatividade = ?");
+
+			$query->bindParam(1, $id, PDO::PARAM_STR);
+			$query->execute();
+			$response = $query->fetchAll(PDO::FETCH_ASSOC)
+
+			if($query->rowCount() > 0){
+				echo json_encode($response);
+			}else{
+				die("O ID enviado não está cadastrado ou não possui usuários inscritos");
+			}
+				
+		}catch(PDOException $e){
+			die("Erro" . $e->getMessage());
+		}
+	}
+
+	// Retorna todas as atividades com seu id, título e valor em eticoins
+
+	function carregarTodasAtividades(){
+		try{
+			$query = $this->conexao->prepare("SELECT a.idatividade, a.titulo as nome, c.valor as eticoin FROM atividade AS a INNER JOIN categoria as c ON a.idcategoria = c.idcategoria");
+			$query->execute();
+			$response = $query->fetchAll(PDO::FETCH_ASSOC)
+
+			if($query->rowCount() > 0){
+				echo json_encode($response);
+			}else{
+				die("O ID enviado não está cadastrado ou não possui usuários inscritos");
+			}
+				
+		}catch(PDOException $e){
+			die("Erro" . $e->getMessage());
 		}
 	}
 
@@ -126,7 +223,7 @@ class Atividade extends Conexao{
 		if(parent::auth($token, Conexao::APRESENTADOR)){
 			$chamada = $this->conexao->prepare('
 					UPDATE atividade, seguranca, usuario, usuario_atividade
-					SET usuario_atividade.presenca = !usuario_atividade.presenca
+					SET usuario_atividade.presenca = CURRENT_TIMESTAMP()
 					WHERE usuario_atividade.idatividade = :idatividade
 					AND usuario_atividade.idusuario = :idusuario
 				');
@@ -134,7 +231,7 @@ class Atividade extends Conexao{
 		else{
 			$chamada = $this->conexao->prepare('
 					UPDATE atividade, seguranca, usuario, usuario_atividade
-					SET usuario_atividade.presenca = !usuario_atividade.presenca
+					SET usuario_atividade.presenca = CURRENT_TIMESTAMP()
 					WHERE seguranca.token = :token
 					AND atividade.idusuario = seguranca.idusuario
 					AND atividade.idatividade = usuario_atividade.idatividade
@@ -143,7 +240,6 @@ class Atividade extends Conexao{
 				');
 			$chamada->bindParam(':token', $token, PDO::PARAM_STR);
 		}
-
 		try{
 			
 			$chamada->bindParam(':idatividade', $KEYS['idatividade'], PDO::PARAM_INT);
@@ -194,7 +290,6 @@ class Atividade extends Conexao{
 	function carregarCategorias($token){
 		parent::auth($token, Conexao::ADMIN);
 
-		//PEGA AS CATEGORIAS
 		$categorias = $this->conexao->prepare('SELECT idcategoria,nome FROM categoria');
 		$categorias->execute();
 		$categorias = $categorias->fetchAll(PDO::FETCH_ASSOC);
@@ -216,6 +311,9 @@ class Atividade extends Conexao{
 		}
 	}
 
+
+	// Modifica a atividade que já está cadastrada no banco, caso ela exista, com os dados passados pelo usuário 
+
 	function editar($KEYS, $token){
 		parent::auth($token, Conexao::ADMIN);
 
@@ -230,6 +328,7 @@ class Atividade extends Conexao{
 					SET
 						idcategoria = :idcategoria,
 						descricao = :descricao,
+						capacidade = :capacidade,
 						hora_inicio = :hora_inicio,
 						hora_fim = :hora_fim,
 						titulo = :titulo
@@ -238,6 +337,7 @@ class Atividade extends Conexao{
 				$editar->bindParam(':idatividade', $KEYS['idatividade'], PDO::PARAM_INT);
 				$editar->bindParam(':idcategoria', $KEYS['idcategoria'], PDO::PARAM_INT);
 				$editar->bindParam(':descricao', $KEYS['descricao'], PDO::PARAM_STR);
+				$editar->bindParam(':capacidade', $KEYS['capacidade'], PDO::PARAM_STR);
 				$editar->bindParam(':hora_inicio', $KEYS['hora_inicio'], PDO::PARAM_STR);
 				$editar->bindParam(':hora_fim', $KEYS['hora_fim'], PDO::PARAM_STR);
 				$editar->bindParam(':titulo', $KEYS['titulo'], PDO::PARAM_STR);

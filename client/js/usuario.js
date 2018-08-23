@@ -153,10 +153,9 @@ class Usuario{
         this.xmlhttp = new XMLHttpRequest();
         var resposta = false;
         var token = "&token=" + window.sessionStorage.getItem('token');
-        this.xmlhttp.open("POST","../testServer/router.php?option=" + option + token, false);
+        this.xmlhttp.open("POST","../server/router.php?option=" + option + token, false);
        
         this.xmlhttp.addEventListener("readystatechange", (ev)=>{
-            console.log(ev)
             if(ev.target.readyState === 4) {
                 if(ev.target.status === 200) { //Se der 200 siginifica que está logado     
                     if(callback(ev.target.responseText)) resposta = ev.target.responseText;

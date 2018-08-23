@@ -137,7 +137,7 @@ class Usuario{
         this.xmlhttp = new XMLHttpRequest();
         var resposta = false;
         var token = "&token=" + window.sessionStorage.getItem('token');
-        this.xmlhttp.open("POST","../server/router.php?option=" + option + token, false);
+        this.xmlhttp.open("POST","../testServer/router.php?option=" + option + token, false);
        
         this.xmlhttp.onreadystatechange = function(e){
             if(e.target.readyState === 4) {

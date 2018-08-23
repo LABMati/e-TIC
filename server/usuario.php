@@ -90,24 +90,30 @@ class Usuario extends Conexao{
 					}
 				}else{
 					$resultado = $this->conexao->prepare('INSERT INTO usuario_atividade(idusuario,idatividade) VALUES (:idusuario, :idatividade)');
-					$resultado->bindParam(':idusuario', $idusuario['idusuario'], PDO::PARAM_STR);
-					$resultado->bindParam(':idatividade', $KEYS['idatividade'], PDO::PARAM_STR);
+					$resultado->bindParam(':idusuario', $idusuario['idusuario'], PDO::PARAM_INT);
+					$resultado->bindParam(':idatividade', $KEYS['idatividade'], PDO::PARAM_INT);
 					$resultado->execute();
 
 					$tamFila = ($vagasDisponiveis['vagas']*-1);
 					$fila = $this->conexao->prepare("SELECT u.idusuario FROM atividade a INNER JOIN usuario_atividade ua ON ua.idatividade=a.idatividade INNER JOIN usuario u ON u.idusuario=ua.idusuario WHERE ua.idatividade=:idAtividade ORDER BY(ua.hora_inscricao) DESC LIMIT :tamFila");
-					$fila->bindParam(':idAtividade', $KEYS['idatividade'], PDO::PARAM_STR);
-					$fila->bindParam(':tamFila', $tamFila, PDO::PARAM_STR);
+					$fila->bindParam(':idAtividade', $KEYS['idatividade'], PDO::PARAM_INT);
+					$fila->bindParam(':tamFila', $tamFila, PDO::PARAM_INT);
 					$fila->execute();
+					$fila = $fila->fetchAll(PDO::FETCH_ASSOC);
 					$fila = array_reverse($fila);
-
-					$posFila = array_search($KEYS[idusuario], $fila);
-					if(!$posFila){
-						$posFila=0;
+					for($i=0;$i<sizeof($fila);$i++){
+						if($idusuario['idusuario']==$fila[$i]['idusuario'])
+							$posFila=$i+1;
 					}
-					$posFila++;
-					echo (json_decode($posFila));
-					//$fila = $this->conexao->prepare('SELECT u.idusuario, ua.hora_inscricao FROM atividade a INNER JOIN usuario_atividade ua ON ua.idatividade=a.idatividade INNER JOIN usuario u ON u.idusuario=ua.idusuario WHERE ua.idatividade=:id ORDER BY(ua.hora_inscricao) DESC');
+					print_r($posFila);
+					// echo($idusuario['idusuario']);
+					//$posFila = array_search($idusuario['idusuario'], $fila);
+					// if(!$posFila){
+					// 	$posFila=0;
+					// }
+					// $posFila++;
+					// echo (json_decode($posFila));
+					// $fila = $this->conexao->prepare('SELECT u.idusuario, ua.hora_inscricao FROM atividade a INNER JOIN usuario_atividade ua ON ua.idatividade=a.idatividade INNER JOIN usuario u ON u.idusuario=ua.idusuario WHERE ua.idatividade=:id ORDER BY(ua.hora_inscricao) DESC');
 				}
 			}
 		}

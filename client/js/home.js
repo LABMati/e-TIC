@@ -43,57 +43,92 @@ window.onclick = function(event) {
 	}
 }
 
-
-//GAMBIARRA PRECISA SER PARADAAAA
-function jaTaInscrito(val,btn = null, condition){
-	if(val.innerText == "Inscrito"){
-		val.innerText = "Inscrever-se";
-		val.style.background = "#631725";
-		if(btn){
-			swal({
-				title: "Sucesso",
-				text: "Você foi desinscrito",
-				type: "success"
-			})
-		}		
-	}else if(val.innerText == "Na fila"){
-		val.innerText = "Entrar na fila";
-		val.style.background = "#631725";
-		if(btn){
-			swal({
-				title: "Sucesso",
-				text: "Você saiu da fila",
-				type: "success"
-			})
-		}		
-	}else if(condition <= 0){
-		val.innerText = "Na fila";
-		val.style.background = "rgb(22, 64, 27)";
-		val.disabled = false;
-	}
-	else{
-		val.innerText = "Inscrito";
-		val.style.background = "rgb(22, 64, 27)";
-		val.disabled = false;
-		if(btn){
-			swal({
-				title: "Sucesso",
-				text: "Inscrição realizada",
-				type: "success"
-			});
-		}
+function jaTaInscrito(val, clicked = null, option, condition){
+	switch(option){
+		case 0:
+			if(val.innerText == "Inscrito"){
+				val.innerText = "Inscrever-se";
+				val.style.background = "#631725";
+				if(clicked){
+					swal({
+						title: "Sucesso",
+						text: "Você foi desinscrito",
+						type: "success"
+					})
+				}		
+			}
+			else if(val.innerText == "Na fila"){
+				val.innerText = "Entrar na fila";
+				val.style.background = "#631725";
+				if(clicked){
+					swal({
+						title: "Sucesso",
+						text: "Você saiu da fila",
+						type: "success"
+					})
+				}		
+			}
+			else if(val.innerText == "Inscrever-se"){
+				val.innerText = "Inscrito";
+				val.style.background = "rgb(22, 64, 27)";
+				val.disabled = false;
+				if(clicked){
+					swal({
+						title: "Sucesso",
+						text: "Você se inscreveu",
+						type: "success"
+					})
+				}		
+			}
+			else{
+				val.innerText = "Na fila";
+				val.style.background = "rgb(22, 64, 27)";
+				val.disabled = false;
+				if(clicked){
+					swal({
+						title: "Sucesso",
+						text: "Você entrou na fila",
+						type: "success"
+					})
+				}	
+			}
+		break;
+		case 1:
+			if(condition > 0){
+				val.innerText = "Na fila";
+				val.style.background = "rgb(22, 64, 27)";
+				val.disabled = false;
+			}else{	
+				val.innerText = "Inscrito";
+				val.style.background = "rgb(22, 64, 27)";
+				val.disabled = false;
+			}
+		break;
+		case 2:
+			val.innerText = "Inscrito";
+			val.style.background = "rgb(22, 64, 27)";
+			val.disabled = false;
+			if(btn){
+				swal({
+					title: "Sucesso",
+					text: "Inscrição realizada",
+					type: "success"
+				});
+			}
+		break;
 	}
 }
 
 
-function jaTaPresente(val){
-	if((val.value == "faltou")||(val.value == 0)) {
-		val.value = "faltou";
-		val.style.background = "#631725";
+function jaTaPresente(bt){
+	
+	if(bt.value =='0000-00-00 00:00:00') {
+		bt.value = 'faltou'
+		bt.style.background = '#631725'
 	}
 	else{
-		val.value = "presente";
-		val.style.background = "rgb(22, 64, 27)";
+		bt.value = 'presente'
+		bt.style.background = 'rgb(22, 64, 27)'
 	}	
 }
 
@@ -123,7 +158,7 @@ function listarAtividades(){
 
 	containerAtividade.classList.add('transicaoEntrada');
 	let L_atividades = lista['atividades'];
-	// let L_categorias = lista['categorias'];
+	let L_filas = lista['filas'];
 	let L_inscricoes = lista['inscricoes'];
 	
 	if(L_atividades.length > 0){
@@ -188,8 +223,8 @@ function listarAtividades(){
 
 
 		var btnInscrever = document.createElement('button');
-		
-		if(linha['vagasDisponiveis'] <= 0){
+
+		if((parseInt(linha['vagasDisponiveis']) * -1) >= 0){
 			btnAtividade.appendChild(btnInscrever).innerText = (parseInt(linha['vagasDisponiveis']) * -1) + " na fila, entrar";
 			btnInscrever.style.backgroundColor  = "#363f98";
 		}else{
@@ -198,15 +233,24 @@ function listarAtividades(){
 		
 		btnInscrever.id = linha['idatividade'];
 
+		// Seta os botões como "Inscrito" para todas as inscrições (incluindo filas)
 		for (let inscricao of L_inscricoes) {
-			if(btnInscrever.id == inscricao['idatividade']){
-				jaTaInscrito(btnInscrever, null, linha['vagasDisponiveis']);
+			if(btnInscrever.id == inscricao){
+				jaTaInscrito(btnInscrever, null, 1, 0);
 			}
 		}
 
+		// Seta os botões como "Na fila" para os usuários que se encontram em filas
+		for (let i = 0; i < L_filas.idatividade.length; i++) {
+			if(L_filas.idatividade[i] == linha['idatividade']){
+				jaTaInscrito(btnInscrever, null, 1, L_filas.posicao[i])
+			}
+		}
+
+
 		btnInscrever.onclick = function(){
 			c_usuario.inscricao(this.id, function(){
-				jaTaInscrito(btnInscrever,this, linha['vagasDisponiveis']);
+				jaTaInscrito(btnInscrever,this, 0);
 			}, function(erro){
 				if(erro == 409){
 					swal({

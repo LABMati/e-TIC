@@ -9,9 +9,9 @@ class Atividade extends Conexao{
 
 		//PEGA OS ID USUARIO APARTIR DO TOKEN
 		$idusuario = $this->conexao->prepare('SELECT idusuario FROM seguranca WHERE token = :token');
-			$idusuario->bindParam(':token', $token, PDO::PARAM_STR);
-			$idusuario->execute();
-			$idusuario = $idusuario->fetch(PDO::FETCH_ASSOC);
+		$idusuario->bindParam(':token', $token, PDO::PARAM_STR);
+		$idusuario->execute();
+		$idusuario = $idusuario->fetch(PDO::FETCH_ASSOC);
 
 		$inscricoes = $this->conexao->prepare('SELECT a.idatividade FROM usuario u 
 				INNER JOIN usuario_atividade ua

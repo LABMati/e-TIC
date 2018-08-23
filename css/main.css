@@ -716,4 +716,8 @@ section.support .row .partner:hover {
     a.regButton button{
         width: 100%;
     }
+
+    section#about div a button{
+        width: 80vw;
+    }
 }

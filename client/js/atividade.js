@@ -34,6 +34,8 @@ class Atividade{
             
                 "<label for='title'> Título </label>"+
                 "<input id='title' type='text' class='sw-input' value='"+ target.titulo +"'>" +
+                "<label for='cap'> Capacidade </label>"+
+                "<input id='cap' type='text' class='sw-input' value='"+ target.capacidade +"'>" +
             
                 "<label for='category'>Categoria</label>"+
                 "<select id='category'>"+
@@ -60,6 +62,7 @@ class Atividade{
             preConfirm: ()=>{
                 return [
                     document.querySelector("input#title").value,
+                    document.querySelector("input#cap").value,
                     document.querySelector("select#category").selectedIndex,
                     document.querySelector("textarea#description").value,
                     document.querySelector("input#h-ini").value.replace('T', ' '),
@@ -70,10 +73,11 @@ class Atividade{
 
         let keys = {
             titulo: target.editValues.value[0],
-            idcategoria: target.editValues.value[1],
-            descricao: target.editValues.value[2],
-            hora_inicio: target.editValues.value[3],
-            hora_fim: target.editValues.value[4],
+            capacidade: target.editValues.value[1],
+            idcategoria: target.editValues.value[2],
+            descricao: target.editValues.value[3],
+            hora_inicio: target.editValues.value[4],
+            hora_fim: target.editValues.value[5],
             idatividade: idatividade
         }
 
@@ -183,7 +187,7 @@ class Atividade{
         this.xmlhttp = new XMLHttpRequest();
         var resposta = false;
         var token = "&token=" + window.sessionStorage.getItem('token');
-        this.xmlhttp.open("POST","../testServer/router.php?option=" + option + token, false);
+        this.xmlhttp.open("POST","../server/router.php?option=" + option + token, false);
        
         this.xmlhttp.onreadystatechange = function(e){
             if(e.target.readyState === 4) {
