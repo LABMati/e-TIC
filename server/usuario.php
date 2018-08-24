@@ -86,7 +86,7 @@ class Usuario extends Conexao{
 						$resultado->bindParam(':idatividade', $KEYS['idatividade'], PDO::PARAM_STR);
 						$resultado->execute();
 					}else{
-						throw new Exception("Conflict;ERRO, Horários não compatíveis", 409);
+						die (json_encode(['error'=> "409"]));
 					}
 				}else{
 					$resultado = $this->conexao->prepare('INSERT INTO usuario_atividade(idusuario,idatividade) VALUES (:idusuario, :idatividade)');
@@ -106,14 +106,6 @@ class Usuario extends Conexao{
 							$posFila=$i+1;
 					}
 					print_r($posFila);
-					// echo($idusuario['idusuario']);
-					//$posFila = array_search($idusuario['idusuario'], $fila);
-					// if(!$posFila){
-					// 	$posFila=0;
-					// }
-					// $posFila++;
-					// echo (json_decode($posFila));
-					// $fila = $this->conexao->prepare('SELECT u.idusuario, ua.hora_inscricao FROM atividade a INNER JOIN usuario_atividade ua ON ua.idatividade=a.idatividade INNER JOIN usuario u ON u.idusuario=ua.idusuario WHERE ua.idatividade=:id ORDER BY(ua.hora_inscricao) DESC');
 				}
 			}
 		}

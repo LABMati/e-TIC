@@ -16,7 +16,7 @@ switch($_GET['option']){
 
 
             $conexao->exec("SET @row_num = 0");
-            $query = $conexao->prepare("SELECT * FROM (SELECT @row_num := @row_num+1 AS num, @row_num>{$capacidade['capacidade']} AS espera, u.idusuario as id, u.nome FROM usuario AS u INNER JOIN usuario_atividade as ua ON u.idusuario = ua.idusuario WHERE ua.idatividade = ?) AS x ORDER BY nome");
+            $query = $conexao->prepare("SELECT * FROM (SELECT @row_num := @row_num+1 AS num, @row_num>{$capacidade['capacidade']} AS espera, u.idusuario as id, u.nome FROM usuario AS u INNER JOIN usuario_atividade as ua ON u.idusuario = ua.idusuario WHERE ua.idatividade = ?) AS x ORDER BY espera, nome");
             
             $query->bindParam(1, $_GET['id'], PDO::PARAM_STR);
             $query->execute();
@@ -170,4 +170,17 @@ switch($_GET['option']){
             die("Erro" . $e->getMessage());
         }
     break;
+    case "carregarTodosInscritos":
+        try{
+            $query = $conexao->prepare("SELECT u.idusuario, u.nome FROM usuario AS u ORDER BY u.nome");
+            $query->execute();
+            $response = $query->fetchAll(PDO::FETCH_ASSOC);
+            if($query->rowCount() > 0){
+                die(json_encode($response));
+            }else{
+                die(json_encode(['erro'=>500]));
+            }
+        }catch(PDOException $e){
+            die("Erro" . $e->getMessage());
+        }        
 }
